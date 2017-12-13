@@ -122,10 +122,8 @@
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewRotationModel.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleControl.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleModel.cs" />
-    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\NameInputFieldScript.cs" />
-    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\NoboCamera.cs" />
-    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\NoboCharacterController.cs" />
-    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\TitleManager.cs" />
+    <Compile Include="Assets\Photon Unity Networking\Resources\Script\NPC\NpcAi.cs" />
+    <Compile Include="Assets\Photon Unity Networking\Resources\Script\NPC\NpcEvent.cs" />
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\ConnectAndJoinRandom.cs" />
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\CullArea.cs" />
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\InputToEvent.cs" />
@@ -164,14 +162,6 @@
     <Compile Include="Assets\PhotonChatApi\ChatState.cs" />
     <Compile Include="Assets\PhotonChatApi\ChatUserStatus.cs" />
     <Compile Include="Assets\PhotonChatApi\IChatClientListener.cs" />
-<<<<<<< HEAD
-    <Compile Include="Assets\Script\Nobo\NameInputFieldScript.cs" />
-    <Compile Include="Assets\Script\Nobo\NoboCharacterController.cs" />
-    <Compile Include="Assets\Script\Nobo\TitleManager.cs" />
-    <Compile Include="Assets\Script\NPC\NpcAi.cs" />
-    <Compile Include="Assets\Script\NPC\NpcEvent.cs" />
-=======
->>>>>>> 434bb10f4af0e0fd20a83441d7e500bacfc0c37b
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Photon Unity Networking\changelog.txt" />
