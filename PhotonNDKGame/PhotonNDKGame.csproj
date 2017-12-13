@@ -76,11 +76,11 @@
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
     </Reference>
-    <Reference Include="websocket-sharp">
-      <HintPath>Assets\Plugins\WebSocket\websocket-sharp.dll</HintPath>
-    </Reference>
     <Reference Include="Photon3Unity3D">
       <HintPath>Assets\Plugins\Photon3Unity3D.dll</HintPath>
+    </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>Assets\Plugins\WebSocket\websocket-sharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +163,8 @@
     <Compile Include="Assets\Script\Nobo\NameInputFieldScript.cs" />
     <Compile Include="Assets\Script\Nobo\NoboCharacterController.cs" />
     <Compile Include="Assets\Script\Nobo\TitleManager.cs" />
+    <Compile Include="Assets\Script\NPC\NpcAi.cs" />
+    <Compile Include="Assets\Script\NPC\NpcEvent.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Photon Unity Networking\changelog.txt" />
