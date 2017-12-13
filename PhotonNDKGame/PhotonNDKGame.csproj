@@ -122,6 +122,15 @@
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewRotationModel.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleControl.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleModel.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="Assets\Photon Unity Networking\Resources\Object\3D\Doi\Medieval_House\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
+    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\GameManager.cs" />
+    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\NameInputFieldScript.cs" />
+    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\NoboCamera.cs" />
+    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\NoboCharacterController.cs" />
+    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\TitleManager.cs" />
+>>>>>>> e1e79101499bbf26f0c9238d8260b70bded73290
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\NPC\NpcAi.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\NPC\NpcEvent.cs" />
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\ConnectAndJoinRandom.cs" />
@@ -164,6 +173,8 @@
     <Compile Include="Assets\PhotonChatApi\IChatClientListener.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Photon Unity Networking\Resources\Object\3D\Doi\Haruko\ReadMe.txt" />
+    <None Include="Assets\Photon Unity Networking\Resources\Object\3D\Doi\VertexColorFarmAnimals\Shaders\VertexColorUnlit.shader" />
     <None Include="Assets\Photon Unity Networking\changelog.txt" />
     <None Include="Assets\Photon Unity Networking\link.xml" />
     <None Include="Assets\Photon Unity Networking\readme.txt" />
