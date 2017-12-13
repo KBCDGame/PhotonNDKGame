@@ -76,11 +76,11 @@
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
     </Reference>
-    <Reference Include="websocket-sharp">
-      <HintPath>Assets\Plugins\WebSocket\websocket-sharp.dll</HintPath>
-    </Reference>
     <Reference Include="Photon3Unity3D">
       <HintPath>Assets\Plugins\Photon3Unity3D.dll</HintPath>
+    </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>Assets\Plugins\WebSocket\websocket-sharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +122,10 @@
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewRotationModel.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleControl.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleModel.cs" />
+    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\NameInputFieldScript.cs" />
+    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\NoboCamera.cs" />
+    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\NoboCharacterController.cs" />
+    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\TitleManager.cs" />
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\ConnectAndJoinRandom.cs" />
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\CullArea.cs" />
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\InputToEvent.cs" />
@@ -160,9 +164,6 @@
     <Compile Include="Assets\PhotonChatApi\ChatState.cs" />
     <Compile Include="Assets\PhotonChatApi\ChatUserStatus.cs" />
     <Compile Include="Assets\PhotonChatApi\IChatClientListener.cs" />
-    <Compile Include="Assets\Script\Nobo\NameInputFieldScript.cs" />
-    <Compile Include="Assets\Script\Nobo\NoboCharacterController.cs" />
-    <Compile Include="Assets\Script\Nobo\TitleManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Photon Unity Networking\changelog.txt" />
