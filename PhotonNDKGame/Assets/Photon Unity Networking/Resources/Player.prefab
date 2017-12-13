@@ -40,10 +40,10 @@ GameObject:
   - component: {fileID: 33541757051129762}
   - component: {fileID: 136760210887833920}
   - component: {fileID: 23470970068075992}
-  - component: {fileID: 114751824079148024}
   - component: {fileID: 143896046083321004}
-  - component: {fileID: 114235687820522084}
-  - component: {fileID: 114912369195500756}
+  - component: {fileID: 114134843107410664}
+  - component: {fileID: 114829100883234678}
+  - component: {fileID: 114723550358336404}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -168,33 +168,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114235687820522084
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1318550901126174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ownerId: 0
-  group: 0
-  OwnerShipWasTransfered: 0
-  prefixBackup: -1
-  synchronization: 0
-  onSerializeTransformOption: 3
-  onSerializeRigidBodyOption: 2
-  ownershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 0}
-  ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
-  currentMasterID: -1
-  isRuntimeInstantiated: 0
---- !u!114 &114751824079148024
+--- !u!114 &114134843107410664
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -206,13 +180,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharaCon: {fileID: 143896046083321004}
-  Speed: 3
+  Speed: 5
   JumpSpeed: 5
-  RotateSpeed: 10
-  Gravity: 20
-  MyPV: {fileID: 114235687820522084}
-  MyPTV: {fileID: 114912369195500756}
---- !u!114 &114912369195500756
+  RotateSpeed: 5
+  Gravity: 5
+  MyPV: {fileID: 114829100883234678}
+  MyPTV: {fileID: 114723550358336404}
+--- !u!114 &114723550358336404
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -277,6 +251,32 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &114829100883234678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1318550901126174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!136 &136760210887833920
 CapsuleCollider:
   m_ObjectHideFlags: 1
