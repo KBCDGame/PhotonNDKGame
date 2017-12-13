@@ -409,10 +409,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1987804304}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2764ac19a0b5d8442a463a9c612661a6, type: 3}
+  m_Script: {fileID: 11500000, guid: bb2cc2504c8af674785014544ebbae22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
+  Target: {fileID: 4654662814875054, guid: bc71ebb068b6e544b951e7a39f97c74e, type: 2}
   Offset: {x: 0, y: 0, z: 0}
   Distance: 10
   Distance_Min: 1
