@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : Photon.PunBehaviour {
 
     //誰かがログインする度に生成するプレイヤーPrefab。
-    public GameObject PlayerPrefab;
+    [SerializeField]
+    private GameObject PlayerPrefab;
     void Start()
     {
         if (!PhotonNetwork.connected)   //Phootnに接続されていなければ。
