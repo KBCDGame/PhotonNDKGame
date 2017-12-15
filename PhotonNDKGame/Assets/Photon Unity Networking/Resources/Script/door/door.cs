@@ -13,7 +13,6 @@ public class door : MonoBehaviour
             {
 
                 collider.gameObject.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
-                //SceneManager.LoadScene("DoiScene2");
             }
         }
     }
