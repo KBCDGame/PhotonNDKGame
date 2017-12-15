@@ -187,28 +187,68 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+<<<<<<< HEAD
+--- !u!1 &420023779
+=======
 --- !u!1 &269966613
+>>>>>>> dd568333a1ab3f774728ab3ab6922f03f984703f
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
+<<<<<<< HEAD
+  - component: {fileID: 420023782}
+  - component: {fileID: 420023781}
+  - component: {fileID: 420023780}
+  m_Layer: 0
+  m_Name: ChatManajer
+=======
   - component: {fileID: 269966616}
   - component: {fileID: 269966615}
   - component: {fileID: 269966614}
   m_Layer: 0
   m_Name: EventSystem
+>>>>>>> dd568333a1ab3f774728ab3ab6922f03f984703f
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
+--- !u!114 &420023780
+=======
 --- !u!114 &269966614
+>>>>>>> dd568333a1ab3f774728ab3ab6922f03f984703f
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
+<<<<<<< HEAD
+  m_GameObject: {fileID: 420023779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 1
+  instantiationId: 1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
+--- !u!114 &420023781
+=======
   m_GameObject: {fileID: 269966613}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -223,10 +263,31 @@ MonoBehaviour:
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
 --- !u!114 &269966615
+>>>>>>> dd568333a1ab3f774728ab3ab6922f03f984703f
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
+<<<<<<< HEAD
+  m_GameObject: {fileID: 420023779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6970d43bf1d5ebd4fbf7d37af4551579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GuiRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 250
+    height: 300
+  isVisible: 1
+  AlignBottom: 0
+  messages: []
+  chatkind: 
+  inputLine: 
+--- !u!4 &420023782
+=======
   m_GameObject: {fileID: 269966613}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -237,10 +298,20 @@ MonoBehaviour:
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!4 &269966616
+>>>>>>> dd568333a1ab3f774728ab3ab6922f03f984703f
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
+<<<<<<< HEAD
+  m_GameObject: {fileID: 420023779}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.487473, y: 4.5818214, z: 5.0914946}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+=======
   m_GameObject: {fileID: 269966613}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -248,6 +319,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+>>>>>>> dd568333a1ab3f774728ab3ab6922f03f984703f
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &687186462
 GameObject:
