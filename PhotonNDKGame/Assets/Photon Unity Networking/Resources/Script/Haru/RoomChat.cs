@@ -17,18 +17,26 @@ public class RoomChat : Photon.MonoBehaviour {
 
     public void Start()
     {
+       
+    }
+
+    public void Update()
+    {
         if (this.AlignBottom)
         {
             this.GuiRect.y = Screen.height - this.GuiRect.height;
+            //ChatUIの大きさ調整
+            GuiRect.width = Screen.width / 3;
+            GuiRect.height = Screen.height / 3;
         }
     }
-
     public void OnGUI()
     {
         if (!this.isVisible || !PhotonNetwork.inRoom)
         {
             return;
         }
+
         if (Event.current.type == EventType.keyDown && (Event.current.keyCode == KeyCode.KeypadEnter || Event.current.keyCode == KeyCode.Return))
         {
             if (!string.IsNullOrEmpty(this.inputLine))
