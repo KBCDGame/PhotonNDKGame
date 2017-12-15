@@ -161,7 +161,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 370609059}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 043bd8ce63fde7c41a9ee103809fa981, type: 3}
+  m_Script: {fileID: 11500000, guid: 6970d43bf1d5ebd4fbf7d37af4551579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   GuiRect:
@@ -170,9 +170,11 @@ MonoBehaviour:
     y: 0
     width: 250
     height: 300
-  IsVisible: 1
+  isVisible: 1
   AlignBottom: 0
   messages: []
+  chatkind: 
+  inputLine: 
 --- !u!114 &370609061
 MonoBehaviour:
   m_ObjectHideFlags: 0
