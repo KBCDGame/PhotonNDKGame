@@ -122,7 +122,8 @@
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewRotationModel.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleControl.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleModel.cs" />
-    <Compile Include="Assets\Photon Unity Networking\Resources\Script\door\door.cs" />
+    <Compile Include="Assets\Photon Unity Networking\Resources\Object\3D\Doi\Medieval_House\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
+    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Haru\RoomChat.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\GameManager.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\NameInputFieldScript.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\NoboCamera.cs" />

@@ -6,6 +6,7 @@ public class NpcAi : MonoBehaviour {
 
     CharacterController controller = null;
     new Transform transform;
+    Animation animation;
 
     bool change;
     public float range;
@@ -23,16 +24,12 @@ public class NpcAi : MonoBehaviour {
     //目標地点リスト
     public Transform[] waypoint = new Transform[4];
   　 int index;
-    
-    //巡回中の動き
-    bool walking, waiting, rotating;
-    bool isWaiting, isRotating; 
+    bool idle;
 
     void Start()
     {
-
-        walking = true; waiting = false; rotating = false;
-        isWaiting = false; isRotating = false;
+        
+        animation = GetComponent<Animation>();
         index = 0;
         controller = GetComponent<CharacterController>();
         transform = GetComponent<Transform>();
@@ -42,16 +39,18 @@ public class NpcAi : MonoBehaviour {
 
     void Update()
     {
-
+     
         if ((transform.position - waypoint[index].position).sqrMagnitude > range)
         {
             Move(waypoint[index]);
-           
+
         }
         else NextIndex();
 
     }
 
+   
+   
     //移動、回転関数
     void Move(Transform target)
     {
@@ -67,30 +66,6 @@ public class NpcAi : MonoBehaviour {
                 angles.z);
     }
 
-    void Walk()
-    {
-        if ((transform.position - waypoint[index].position).sqrMagnitude > range)
-        {
-            Move(waypoint[index]);
-        }else
-        {
-            switch (index)
-            {
-                case 0:
-                    walking = false;
-                    rotating = true;
-                    break;
-                case 1:
-                    walking = false;
-                    isWaiting = true;
-                    break;
-                default:
-                    NextIndex();
-                    break;
-                    
-            }
-        }
-    }
 
     void NextIndex()
     {
