@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 114134843107410664}
   - component: {fileID: 114829100883234678}
   - component: {fileID: 114723550358336404}
+  - component: {fileID: 114289233811206898}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -186,6 +187,19 @@ MonoBehaviour:
   Gravity: 5
   MyPV: {fileID: 114829100883234678}
   MyPTV: {fileID: 114723550358336404}
+--- !u!114 &114289233811206898
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1318550901126174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b8b2ff5c9599904e8c143eca650a781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerUIPrefab: {fileID: 1218546969427294, guid: e7253efefb365ff45a3f4d98b0d252d3,
+    type: 2}
 --- !u!114 &114723550358336404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -266,12 +280,12 @@ MonoBehaviour:
   group: 0
   OwnerShipWasTransfered: 0
   prefixBackup: -1
-  synchronization: 0
+  synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
   ObservedComponents:
-  - {fileID: 0}
+  - {fileID: 114723550358336404}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1

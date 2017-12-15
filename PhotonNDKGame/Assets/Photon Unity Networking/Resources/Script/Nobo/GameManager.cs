@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : Photon.PunBehaviour {
 
     //誰かがログインする度に生成するプレイヤーPrefab。
-    public GameObject PlayerPrefab;
+    [SerializeField]
+    private GameObject PlayerPrefab;
     void Start()
     {
         if (!PhotonNetwork.connected)   //Phootnに接続されていなければ。
@@ -15,7 +16,7 @@ public class GameManager : Photon.PunBehaviour {
             return;
         }
         //Photonに接続していれば自プレイヤーを生成。
-        PhotonNetwork.Instantiate(this.PlayerPrefab.name, new Vector3(0f, 0f, 0f), Quaternion.identity, 0);
+        PhotonNetwork.Instantiate(this.PlayerPrefab.name, new Vector3(0f, 10f, 0f), Quaternion.identity, 0);
     }
 
     // Update is called once per frame
