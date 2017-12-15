@@ -128,6 +128,8 @@
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\NameInputFieldScript.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\NoboCamera.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\NoboCharacterController.cs" />
+    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\PlayerManager.cs" />
+    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\PlayerNameUI.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\TitleManager.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\NPC\NpcAi.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\NPC\NpcEvent.cs" />

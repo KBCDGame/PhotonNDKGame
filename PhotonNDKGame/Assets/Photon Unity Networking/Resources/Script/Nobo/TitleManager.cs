@@ -4,19 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class TitleManager : Photon.PunBehaviour
 {
-
-    #region Public変数定義
-
-    //Public変数の定義はココで
-
-    #endregion
-
-    #region Private変数
-    //Private変数の定義はココで
     string _gameVersion = "test";   //ゲームのバージョン。仕様が異なるバージョンとなったときはバージョンを変更しないとエラーが発生する。
-    #endregion
 
-    #region Public Methods
     //ログインボタンを押したときに実行される
     public void Connect()
     {
@@ -26,9 +15,6 @@ public class TitleManager : Photon.PunBehaviour
             Debug.Log("Photonに接続しました。");
         }
     }
-    #endregion
-
-    #region Photonコールバック
 
     //Auto-JoinLobbyにチェックを入れているとPhotonに接続後OnJoinLobby()が呼ばれる。
     public override void OnJoinedLobby()
@@ -53,7 +39,4 @@ public class TitleManager : Photon.PunBehaviour
         //Gameシーンをロード。
         PhotonNetwork.LoadLevel("Game");
     }
-
-    #endregion
-
 }
