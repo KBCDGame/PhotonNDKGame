@@ -59,7 +59,7 @@ MonoBehaviour:
     width: 250
     height: 300
   isVisible: 1
-  AlignBottom: 0
+  AlignBottom: 1
   messages: []
   chatKind: 
   inputLine: 
