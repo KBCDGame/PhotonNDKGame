@@ -4,6 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(PhotonView))]
 public class RoomChat : Photon.MonoBehaviour {
+    #region 変数宣言
 
     GameObject[] players;   //全てのプレイヤーキャラ取得用a
     GameObject sender;      //送信キャラ取得用
@@ -14,16 +15,16 @@ public class RoomChat : Photon.MonoBehaviour {
     GUIStyle AllChatStyle = new GUIStyle(); //全体チャットStyle
     GUIStyleState AllChatStyleState = new GUIStyleState();
 
-    public Rect GuiRect = new Rect(0, 0, 250, 300);
+    public Rect GuiRect = new Rect(0, 0, 300, 200);
     public bool isVisible = true;
-    public bool AlignBottom = false;
+    public bool AlignBottom = true;
     public List<string> messages = new List<string>();
     public List<bool> chatKind = new List<bool>(); //チャットログの種類格納用(範囲チャor全チャ)
     public string inputLine = "";//入力文章格納用string
     private Vector2 scrollPos = Vector2.zero;//スクロールバー位置
+    #endregion
 
-    public static readonly string ChatRPC = "Chat";
-
+    #region Start関数　Upbeat関数
     public void Start()
     {
         //myPlayerオブジェクト取得(範囲チャット発言時にpositionとmyPM使う)
@@ -49,51 +50,24 @@ public class RoomChat : Photon.MonoBehaviour {
             GuiRect.height = Screen.height / 3;
         }
     }
+    #endregion
+
+    #region OnGUI関数
     public void OnGUI()
     {
-        if (!this.isVisible || !PhotonNetwork.inRoom)
+        if (!this.isVisible || !PhotonNetwork.inRoom)//表示フラグがOFF
         {
+            //UI非表示
             return;
         }
         //ChatUIの作成開始
         GUILayout.Window(0, GuiRect, ChatUIWindow, "");
+        //Enterを押すと
         if (Event.current.type == EventType.keyDown && (Event.current.keyCode == KeyCode.KeypadEnter || Event.current.keyCode == KeyCode.Return))
         {
-            if (!string.IsNullOrEmpty(this.inputLine))
-            {
-                this.photonView.RPC("Chat", PhotonTargets.All, this.inputLine);
-                this.inputLine = "";
-                GUI.FocusControl("");
-                return;
-            }
-            else
-            {
                 GUI.FocusControl("ChatInput");
-            }
         }
 
-        GUI.SetNextControlName("");
-        GUILayout.BeginArea(this.GuiRect);
-
-        scrollPos = GUILayout.BeginScrollView(scrollPos);
-        GUILayout.FlexibleSpace();
-        for(int i = messages.Count - 1; i >= 0; i--)
-        {
-            GUILayout.Label(messages[i]);
-        }
-        GUILayout.EndScrollView();
-
-        GUILayout.BeginHorizontal();
-        GUI.SetNextControlName("ChatInput");
-        inputLine = GUILayout.TextField(inputLine);
-        if (GUILayout.Button("Send", GUILayout.ExpandWidth(false)))
-        {
-            this.photonView.RPC("Chat", PhotonTargets.All, this.inputLine);
-            this.inputLine = "";
-            GUI.FocusControl("");
-        }
-        GUILayout.EndHorizontal();
-        GUILayout.EndArea();
     }
 
     void ChatUIWindow(int windowID)
@@ -157,7 +131,9 @@ public class RoomChat : Photon.MonoBehaviour {
         //垂直のコントロールグループ終了
         GUILayout.EndVertical();
     }
+    #endregion
 
+    #region Getmyplayer 自キャラのオブジェクトをmyPlayerに登録
     void GetmyPlayer()
     {
         //自キャラのID取得
@@ -177,6 +153,9 @@ public class RoomChat : Photon.MonoBehaviour {
         }
         return;
     }
+    #endregion
+
+    #region チャット送信関数
     void SendChat(bool isAll)
     {
         //chatRPC
@@ -186,6 +165,7 @@ public class RoomChat : Photon.MonoBehaviour {
         this.inputLine = "";
         scrollPos.y = Mathf.Infinity;
     }
+    #endregion
     [PunRPC]
     public void Chat(Vector3 senderposition, string newLine, bool isAll, PhotonMessageInfo mi)
     {
@@ -226,7 +206,7 @@ public class RoomChat : Photon.MonoBehaviour {
             }
             else
             {
-                senderName = "player " + _mi.sender.ID;
+                senderName = "Player " + _mi.sender.ID;
             }
         }
         //受信したチャットをログに追加
