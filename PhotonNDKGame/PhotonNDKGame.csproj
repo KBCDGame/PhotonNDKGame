@@ -122,6 +122,7 @@
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewRotationModel.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleControl.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleModel.cs" />
+    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Car\SimpleCarController.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\door\door.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Haru\RoomChat.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\GameManager.cs" />
@@ -134,9 +135,11 @@
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\PlayerManager.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\PlayerNameUI.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\RoomElement.cs" />
+    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\SearchTarget.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\TitleManager.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\NPC\NpcAi.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\NPC\NpcEvent.cs" />
+    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Time\GameTime.cs" />
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\ConnectAndJoinRandom.cs" />
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\CullArea.cs" />
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\InputToEvent.cs" />

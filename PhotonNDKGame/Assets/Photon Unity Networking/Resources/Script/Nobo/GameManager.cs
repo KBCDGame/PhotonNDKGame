@@ -8,6 +8,8 @@ public class GameManager : Photon.PunBehaviour {
     //誰かがログインする度に生成するプレイヤーPrefab。
     [SerializeField]
     private GameObject PlayerPrefab;
+    [SerializeField]
+    private GameObject DummyPlayerfab;  //ルーム存続のためだけに作るオブジェクト。
     void Start()
     {
         if (!PhotonNetwork.connected)   //Phootnに接続されていなければ。
@@ -17,6 +19,7 @@ public class GameManager : Photon.PunBehaviour {
         }
         //Photonに接続していれば自プレイヤーを生成。
         PhotonNetwork.Instantiate(this.PlayerPrefab.name, new Vector3(0f, 10f, 0f), Quaternion.identity, 0);
+
     }
 
     // Update is called once per frame
@@ -25,4 +28,14 @@ public class GameManager : Photon.PunBehaviour {
 
     }
 
+    //ルームに入室時の処理。
+    public override void OnJoinedRoom()
+    {
+        //今は特に無し。
+        //PhotonNetwork.Instantiate(this.DummyPlayerfab.name, new Vector3(0f, 10f, 0f), Quaternion.identity, 0);
+
+        PhotonPlayer pp = new PhotonPlayer(false, 999, "DummyPlayer");
+
+        OnMasterClientSwitched(pp);
+    }
 }

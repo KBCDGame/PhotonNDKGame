@@ -28,29 +28,41 @@ public class NoboCharacterController : MonoBehaviour {
     private Vector3 TargetDirection;        //移動する方向のベクトル。
     private Vector3 MoveDirection = Vector3.zero;
 
+    private bool SpeekFlag = false; //NPCと会話中かのフラグ。
+
 
     // Use this for initialization
     void Start () {
-        //自キャラであれば実行。
-        if (MyPV.isMine)    
+
+        if (MyPV == null)
         {
             //MainCameraのtargetにこのゲームオブジェクトを設定。
             MainCam = Camera.main;
             MainCam.GetComponent<NoboCamera>().Target = this.gameObject.transform;
         }
-
+        else
+        {
+            //自キャラであれば実行。
+            if (MyPV.isMine)
+            {
+                //MainCameraのtargetにこのゲームオブジェクトを設定。
+                MainCam = Camera.main;
+                MainCam.GetComponent<NoboCamera>().Target = this.gameObject.transform;
+            }
+        }
     }
 
     // Update is called once per frame
     void Update () {
-
-        //自キャラであれば実行。
-        if (!MyPV.isMine)
+        if (MyPV)
         {
-            return;
+            //自キャラであれば実行。
+            if (!MyPV.isMine)
+            {
+                return;
+            }
         }
-
-
+        
         MoveControl();  //移動用関数。
         RotationControl(); //旋回用関数。
 
@@ -58,10 +70,12 @@ public class NoboCharacterController : MonoBehaviour {
         //(これが無いとCharacterControllerに情報が送られないため、動けない)。
         CharaCon.Move(MoveDirection * Time.deltaTime);
 
-        //スムーズな同期のためにPhotonTransformViewに速度値を渡す。
-        Vector3 velocity = CharaCon.velocity;
-        MyPTV.SetSynchronizedValues(velocity, 0);
-
+        if (MyPTV)
+        {
+            //スムーズな同期のためにPhotonTransformViewに速度値を渡す。
+            Vector3 velocity = CharaCon.velocity;
+            MyPTV.SetSynchronizedValues(velocity, 0);
+        }
 
     }
 
@@ -80,7 +94,7 @@ public class NoboCharacterController : MonoBehaviour {
         TargetDirection = h * right + v * forward;
 
         //地上にいる場合の処理。
-        if (CharaCon.isGrounded)
+        if (CharaCon.isGrounded && SpeekFlag == false)
         {
             //移動のベクトルを計算。
             MoveDirection = TargetDirection * Speed;
