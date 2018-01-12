@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-//[System.Serializable]
+[System.Serializable]
 public class AxleInfo
 {
 
@@ -42,8 +42,8 @@ public class SimpleCarController : MonoBehaviour
         collider.GetWorldPose(out position, out rotation);
 
         visualWheel.transform.position = position;
-        visualWheel.transform.rotation = rotation;
-    }
+        visualWheel.transform.rotation = rotation * Quaternion.Euler(0f, 0f, 90f);
+}
     public void FixedUpdate()
     {
         clientCamera.depth = 1;
