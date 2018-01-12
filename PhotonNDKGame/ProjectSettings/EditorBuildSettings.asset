@@ -17,6 +17,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Photon Unity Networking/Resources/Scene/HaruScene.unity
     guid: 42b5549498b9a3047b45ff9a233dad94
-  - enabled: 1
+  - enabled: 0
     path: Assets/TimeAttack.unity
     guid: cfb11a88615e8ca46ad953a1aa458868

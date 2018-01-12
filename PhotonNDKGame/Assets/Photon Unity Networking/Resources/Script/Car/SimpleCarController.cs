@@ -16,17 +16,26 @@ public class AxleInfo
 
 public class SimpleCarController : MonoBehaviour
 {
-    public List<AxleInfo> axleInfos;
-    public float maxMotorTorque;
-    public float maxbrakeTorque;
-    public float maxSteeringAngle;
-    private Camera clientCamera;
+    [SerializeField]
+    private List<AxleInfo> axleInfos;
+    [SerializeField]
+    private float maxMotorTorque;
+    [SerializeField]
+    private float maxbrakeTorque;
+    [SerializeField]
+    private float maxSteeringAngle;
+    [SerializeField]
+    private Camera MainCam;
+    //private Camera clientCamera;
 
     // finds the corresponding visual wheel
     // correctly applies the transform
     void Start()
     {
-        clientCamera = this.GetComponentInChildren<Camera>();
+        //clientCamera = this.GetComponentInChildren<Camera>();
+        //MainCameraのtargetにこのゲームオブジェクトを設定。
+        MainCam = Camera.main;
+        MainCam.GetComponent<NoboCamera>().Target = this.gameObject.transform;
     }
     public void ApplyLocalPositionToVisuals(WheelCollider collider)
     {
@@ -42,12 +51,12 @@ public class SimpleCarController : MonoBehaviour
         collider.GetWorldPose(out position, out rotation);
 
         visualWheel.transform.position = position;
-        visualWheel.transform.rotation = rotation * Quaternion.Euler(0f, 0f, 90f);
+        visualWheel.transform.rotation = rotation;
 }
     public void FixedUpdate()
     {
-        clientCamera.depth = 1;
-        float motor = maxMotorTorque * Input.GetAxis("accel");
+        //clientCamera.depth = 1;
+        float motor = maxMotorTorque * Input.GetAxis("Accel");
         float brake = maxbrakeTorque * Input.GetAxis("Jump");
         float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
 
