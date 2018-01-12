@@ -95,8 +95,8 @@ public class NoboCharacterController : MonoBehaviour {
         {
             float tempy = MoveDirection.y;
             //(↓の２文の処理があると空中でも入力方向に動けるようになる)。
-            //moveDirection = Vector3.Scale(targetDirection, new Vector3(1, 0, 1)).normalized;
-            //moveDirection *= speed;
+            MoveDirection = Vector3.Scale(TargetDirection, new Vector3(1, 0, 1)).normalized;
+            MoveDirection *= Speed;
             MoveDirection.y = tempy - Gravity * Time.deltaTime;
         }
     }
