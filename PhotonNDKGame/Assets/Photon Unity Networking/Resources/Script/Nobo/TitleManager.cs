@@ -13,30 +13,31 @@ public class TitleManager : Photon.PunBehaviour
         {                         //Photonに接続できていなければ。
             PhotonNetwork.ConnectUsingSettings(_gameVersion);   //Photonに接続する。
             Debug.Log("Photonに接続しました。");
+            PhotonNetwork.LoadLevel("Lobby");//ロビーシーンをロード。
         }
     }
 
-    //Auto-JoinLobbyにチェックを入れているとPhotonに接続後OnJoinLobby()が呼ばれる。
-    public override void OnJoinedLobby()
-    {
-        Debug.Log("ロビーに入りました。");
-        //Randomで部屋を選び、部屋に入る（部屋が無ければOnPhotonRandomJoinFailedが呼ばれる）。
-        PhotonNetwork.JoinRandomRoom();
-    }
+    ////Auto-JoinLobbyにチェックを入れているとPhotonに接続後OnJoinLobby()が呼ばれる。
+    //public override void OnJoinedLobby()
+    //{
+    //    Debug.Log("ロビーに入りました。");
+    //    //Randomで部屋を選び、部屋に入る（部屋が無ければOnPhotonRandomJoinFailedが呼ばれる）。
+    //    PhotonNetwork.JoinRandomRoom();
+    //}
 
-    //JoinRandomRoomが失敗したときに呼ばれる。
-    public override void OnPhotonRandomJoinFailed(object[] codeAndMsg)
-    {
-        Debug.Log("ルームの入室に失敗しました。");
-        //TestRoomという名前の部屋を作成して、部屋に入る。
-        PhotonNetwork.CreateRoom("TestRoom");
-    }
+    ////JoinRandomRoomが失敗したときに呼ばれる。
+    //public override void OnPhotonRandomJoinFailed(object[] codeAndMsg)
+    //{
+    //    Debug.Log("ルームの入室に失敗しました。");
+    //    //TestRoomという名前の部屋を作成して、部屋に入る。
+    //    PhotonNetwork.CreateRoom("TestRoom");
+    //}
 
-    //部屋に入った時に呼ばれる。
-    public override void OnJoinedRoom()
-    {
-        Debug.Log("ルームに入りました。");
-        //Gameシーンをロード。
-        PhotonNetwork.LoadLevel("Game");
-    }
+    ////部屋に入った時に呼ばれる。
+    //public override void OnJoinedRoom()
+    //{
+    //    Debug.Log("ルームに入りました。");
+    //    //Gameシーンをロード。
+    //    PhotonNetwork.LoadLevel("Game");
+    //}
 }

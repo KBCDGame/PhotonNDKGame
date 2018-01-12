@@ -125,11 +125,14 @@
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\door\door.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Haru\RoomChat.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\GameManager.cs" />
+    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\LobbyManager.cs" />
+    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\LobbyUI.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\NameInputFieldScript.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\NoboCamera.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\NoboCharacterController.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\PlayerManager.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\PlayerNameUI.cs" />
+    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\RoomElement.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\TitleManager.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\NPC\NpcAi.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\NPC\NpcEvent.cs" />
