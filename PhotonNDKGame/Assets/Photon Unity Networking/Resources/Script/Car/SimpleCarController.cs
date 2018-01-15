@@ -24,6 +24,10 @@ public class SimpleCarController : MonoBehaviour
     private float maxbrakeTorque;
     [SerializeField]
     private float maxSteeringAngle;
+
+    //オンライン化に必要なコンポーネントを設定。
+    [SerializeField]
+    private PhotonView MyPV;
     [SerializeField]
     private Camera MainCam;
     //private Camera clientCamera;
@@ -32,10 +36,23 @@ public class SimpleCarController : MonoBehaviour
     // correctly applies the transform
     void Start()
     {
-        //clientCamera = this.GetComponentInChildren<Camera>();
-        //MainCameraのtargetにこのゲームオブジェクトを設定。
-        MainCam = Camera.main;
-        MainCam.GetComponent<NoboCamera>().Target = this.gameObject.transform;
+        if (MyPV == null)
+        {
+            //MainCameraのtargetにこのゲームオブジェクトを設定。
+            //MainCam = Camera.main;
+            //MainCam.GetComponent<NoboCamera>().Target = this.gameObject.transform;
+            Debug.Log("PhotonViewが付いてないです。");
+        }
+        else
+        {
+            //自キャラであれば実行。
+            if (MyPV.isMine)
+            {
+                //MainCameraのtargetにこのゲームオブジェクトを設定。
+                MainCam = Camera.main;
+                MainCam.GetComponent<NoboCamera>().Target = this.gameObject.transform;
+            }
+        }
     }
     public void ApplyLocalPositionToVisuals(WheelCollider collider)
     {

@@ -22,7 +22,7 @@ namespace MyGame
         void Awake()
         {
             //ルーム内のクライアントがMasterClientと同じシーンをロードするように設定。
-             PhotonNetwork.automaticallySyncScene = false;
+             PhotonNetwork.automaticallySyncScene = true;
         }
 
         void Start()

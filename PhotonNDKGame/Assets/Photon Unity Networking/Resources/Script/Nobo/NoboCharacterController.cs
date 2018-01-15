@@ -23,7 +23,7 @@ public class NoboCharacterController : MonoBehaviour {
     [SerializeField]
     private PhotonTransformView MyPTV;
 
-
+    [SerializeField]
     private Camera MainCam;
     private Vector3 TargetDirection;        //移動する方向のベクトル。
     private Vector3 MoveDirection = Vector3.zero;

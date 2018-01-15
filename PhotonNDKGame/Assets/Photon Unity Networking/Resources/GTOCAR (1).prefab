@@ -987,6 +987,7 @@ MonoBehaviour:
   maxMotorTorque: 1000
   maxbrakeTorque: 1000000
   maxSteeringAngle: 40
+  MyPV: {fileID: 114773548226863438}
   MainCam: {fileID: 0}
 --- !u!114 &114064900274128286
 MonoBehaviour:
