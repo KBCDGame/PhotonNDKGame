@@ -65,21 +65,22 @@ public class GameReservationPerson : Photon.MonoBehaviour {
 	}
 
     ////変数の同期。
-    //void OnPhotonSerializeView(PhotonStream stream, NetworkMessageInfo info)
-    //{
-    //    //データの送信。
-    //    if (stream.isWriting)
-    //    {
-    //        stream.SendNext(NowReservationNum);
-    //        stream.SendNext(ReservationPlayerList);
-    //    }
-    //    //データの受信。
-    //    else
-    //    {
-    //        NowReservationNum = (int)stream.ReceiveNext();
-    //        ReservationPlayerList = (List<PlayerInfo>)stream.ReceiveNext();
-    //    }
-    //}
+    void OnPhotonSerializeView(PhotonStream stream, NetworkMessageInfo info)
+    {
+        Debug.Log("OnPhotonSerializeView()");
+        //データの送信。
+        if (stream.isWriting)
+        {
+            stream.SendNext(NowReservationNum);
+            stream.SendNext(ReservationPlayerList);
+        }
+        //データの受信。
+        else
+        {
+            NowReservationNum = (int)stream.ReceiveNext();
+            ReservationPlayerList = (List<PlayerInfo>)stream.ReceiveNext();
+        }
+    }
 
     //予約を行った人をリストに追加。
     public bool AddList(int id,string name,GameObject player)
