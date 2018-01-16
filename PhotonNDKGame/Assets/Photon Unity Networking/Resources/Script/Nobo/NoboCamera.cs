@@ -56,24 +56,15 @@ public class NoboCamera : MonoBehaviour {
         {
             CurrentX += RotatoSpeedMoveX_QE;
         }
-
+        //回転。
         InputRotate();
+
+        //ズーム。
         CameraZoom();
     }
     void LateUpdate()
     {
-        if (Target != null)  //targetが指定されるまでのエラー回避。
-        {
-            LookAt = Target.position + Offset;  //注視座標はtarget位置+Offsetの座標。
-
-            //カメラ旋回処理
-            Vector3 dir = new Vector3(0, 0, -Distance);
-            Quaternion rotation = Quaternion.Euler(-CurrentY, CurrentX, 0);
-
-            transform.position = LookAt + rotation * dir;   //カメラの位置を変更。
-            transform.LookAt(LookAt);   //カメラをLookAtの方向に向けさせる。
-        }
-
+        CameraTargetUpdate();
     }
 
     //回転処理。
@@ -119,5 +110,31 @@ public class NoboCamera : MonoBehaviour {
 
 
         Distance = Mathf.Clamp(Distance - value * speed, Distance_Min, Distance_Max);
+    }
+
+    //カメラのターゲット切り替え。
+    public void ChangeTarget(Transform trans)
+    {
+        Target = trans;
+
+        CameraTargetUpdate();
+    }
+
+    private void CameraTargetUpdate()
+    {
+        //nullエラー回避。
+        if (Target == null)
+        {
+            Debug.Log("MainCameraのTargetがnullでした。");
+            return;
+        }
+        LookAt = Target.position + Offset;  //注視座標はtarget位置+Offsetの座標。
+
+        //カメラ旋回処理
+        Vector3 dir = new Vector3(0, 0, -Distance);
+        Quaternion rotation = Quaternion.Euler(-CurrentY, CurrentX, 0);
+
+        transform.position = LookAt + rotation * dir;   //カメラの位置を変更。
+        transform.LookAt(LookAt);   //カメラをLookAtの方向に向けさせる。
     }
 }
