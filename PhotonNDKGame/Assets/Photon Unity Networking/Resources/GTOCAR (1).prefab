@@ -362,10 +362,10 @@ GameObject:
   - component: {fileID: 54339414289452038}
   - component: {fileID: 114056233029085398}
   - component: {fileID: 114773548226863438}
-  - component: {fileID: 114064900274128286}
+  - component: {fileID: 114470835222676998}
   m_Layer: 0
   m_Name: GTOCAR (1)
-  m_TagString: Car
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -472,7 +472,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1444844412896584}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.4, y: -0.04, z: 0.1}
+  m_LocalPosition: {x: -0.4, y: -0.15, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4277285879806778}
@@ -517,7 +517,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1498707296742498}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.4, y: -0.06, z: 0.1}
+  m_LocalPosition: {x: 0.4, y: -0.15, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4277285879806778}
@@ -1181,19 +1181,23 @@ MonoBehaviour:
     brake: 1
     steering: 0
   SeatInfoList:
-  - SeatTransform: {fileID: 4521076676193164}
+  - Passengers: {fileID: 0}
+    SeatTransform: {fileID: 4521076676193164}
     OutTransform: {fileID: 4680983508206174}
     PlayerID: -1
     DriverSeat: 1
-  - SeatTransform: {fileID: 4345648244922324}
+  - Passengers: {fileID: 0}
+    SeatTransform: {fileID: 4345648244922324}
     OutTransform: {fileID: 0}
     PlayerID: -1
     DriverSeat: 0
-  - SeatTransform: {fileID: 4105391184332546}
+  - Passengers: {fileID: 0}
+    SeatTransform: {fileID: 4105391184332546}
     OutTransform: {fileID: 0}
     PlayerID: -1
     DriverSeat: 0
-  - SeatTransform: {fileID: 4861669235213208}
+  - Passengers: {fileID: 0}
+    SeatTransform: {fileID: 4861669235213208}
     OutTransform: {fileID: 0}
     PlayerID: -1
     DriverSeat: 0
@@ -1201,19 +1205,8 @@ MonoBehaviour:
   maxbrakeTorque: 1000000
   maxSteeringAngle: 40
   MyPV: {fileID: 114773548226863438}
---- !u!114 &114064900274128286
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1911009313488788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 1
+  MyPTV: {fileID: 114470835222676998}
+  RigidBody: {fileID: 54339414289452038}
 --- !u!114 &114374827118622338
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1225,6 +1218,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6364467af9d412469d2e6fc3997afc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114470835222676998
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1911009313488788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PositionModel:
+    SynchronizeEnabled: 1
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 3
+    InterpolateOption: 3
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 1
+    InterpolateMoveTowardsAcceleration: 2
+    InterpolateMoveTowardsDeceleration: 2
+    InterpolateSpeedCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: -1
+        value: 0
+        inSlope: 0
+        outSlope: Infinity
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 1
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 4
+        value: 4
+        inSlope: 1
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ExtrapolateOption: 0
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+    DrawErrorGizmo: 1
+  m_RotationModel:
+    SynchronizeEnabled: 1
+    InterpolateOption: 2
+    InterpolateRotateTowardsSpeed: 180
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0
 --- !u!114 &114773548226863438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1245,8 +1303,7 @@ MonoBehaviour:
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
   ObservedComponents:
-  - {fileID: 114064900274128286}
-  - {fileID: 114056233029085398}
+  - {fileID: 114470835222676998}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
