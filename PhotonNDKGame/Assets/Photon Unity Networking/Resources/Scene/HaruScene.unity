@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -270,13 +270,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 800413598}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.760223, y: -0.1596657, z: 0.2037011, w: 0.5958806}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 103.82001, y: -30, z: 0}
 --- !u!114 &800413601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,6 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerPrefab: {fileID: 0}
+  CarPrefab: {fileID: 0}
 --- !u!1001 &1275456977
 Prefab:
   m_ObjectHideFlags: 0
@@ -298,15 +299,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4277285879806778, guid: 60c4707c45b77e24ab1777bad3b78844, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 216.3
+      value: 2682.5
       objectReference: {fileID: 0}
     - target: {fileID: 4277285879806778, guid: 60c4707c45b77e24ab1777bad3b78844, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.56
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 4277285879806778, guid: 60c4707c45b77e24ab1777bad3b78844, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 426.17
+      value: 3568.5
       objectReference: {fileID: 0}
     - target: {fileID: 4277285879806778, guid: 60c4707c45b77e24ab1777bad3b78844, type: 2}
       propertyPath: m_LocalRotation.x
