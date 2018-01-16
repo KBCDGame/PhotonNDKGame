@@ -13,9 +13,9 @@ public class LobbyUI : MonoBehaviour {
     [SerializeField]
     private Text RoomNameText;           //作成する部屋名。
     [SerializeField]
-    private Slider PlayerNumSlider;   //最大入室可能人数用Slider。
+    private Slider PlayerNumSlider;      //最大入室可能人数用Slider。
     [SerializeField]
-    private Text PlayerNumText;       //最大入室可能人数表示用Text。
+    private Text PlayerNumText;          //最大入室可能人数表示用Text。
     [SerializeField]
     private Button CreateRoomButton;     //部屋作成ボタン。
 
