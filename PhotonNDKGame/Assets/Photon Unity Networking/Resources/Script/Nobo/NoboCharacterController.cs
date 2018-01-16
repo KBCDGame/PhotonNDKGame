@@ -28,8 +28,8 @@ public class NoboCharacterController : MonoBehaviour {
     private Vector3 TargetDirection;        //移動する方向のベクトル。
     private Vector3 MoveDirection = Vector3.zero;
 
-    private bool SpeekFlag = false; //NPCと会話中かのフラグ。
-
+    [SerializeField]
+    public bool DriveFlag = false; //何かしらの乗り物に乗っているフラグ。
 
     // Use this for initialization
     void Start () {
@@ -62,6 +62,11 @@ public class NoboCharacterController : MonoBehaviour {
                 return;
             }
         }
+
+        if (this.transform.parent != null)
+        {
+            return;
+        }
         
         MoveControl();  //移動用関数。
         RotationControl(); //旋回用関数。
@@ -76,7 +81,6 @@ public class NoboCharacterController : MonoBehaviour {
             Vector3 velocity = CharaCon.velocity;
             MyPTV.SetSynchronizedValues(velocity, 0);
         }
-
     }
 
     private void MoveControl()
@@ -94,7 +98,7 @@ public class NoboCharacterController : MonoBehaviour {
         TargetDirection = h * right + v * forward;
 
         //地上にいる場合の処理。
-        if (CharaCon.isGrounded && SpeekFlag == false)
+        if (CharaCon.isGrounded)
         {
             //移動のベクトルを計算。
             MoveDirection = TargetDirection * Speed;
@@ -108,9 +112,10 @@ public class NoboCharacterController : MonoBehaviour {
         else        //空中操作の処理（重力加速度等）。
         {
             float tempy = MoveDirection.y;
-            //(↓の２文の処理があると空中でも入力方向に動けるようになる)。
+            //↓の２文の処理があると空中でも入力方向に動けるようになる)。
             MoveDirection = Vector3.Scale(TargetDirection, new Vector3(1, 0, 1)).normalized;
             MoveDirection *= Speed;
+
             MoveDirection.y = tempy - Gravity * Time.deltaTime;
         }
     }

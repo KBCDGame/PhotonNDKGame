@@ -42,7 +42,7 @@ public class NoboCamera : MonoBehaviour {
 
     void Start()
     {
-
+       
     }
 
     void Update()
@@ -90,8 +90,8 @@ public class NoboCamera : MonoBehaviour {
         else
         {
 
-            CurrentX = Input.GetAxis("Horizontal2") * PadRotatoSpeedMoveX;
-            CurrentY = Input.GetAxis("Vertical2") * PadRotatoSpeedMoveY;
+            CurrentX += Input.GetAxis("Horizontal2") * PadRotatoSpeedMoveX;
+            CurrentY -= Input.GetAxis("Vertical2") * PadRotatoSpeedMoveY;
         }
 
         //補正。
