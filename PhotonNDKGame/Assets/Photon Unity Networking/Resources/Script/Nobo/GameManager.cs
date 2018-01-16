@@ -8,9 +8,6 @@ public class GameManager : Photon.PunBehaviour {
     //誰かがログインする度に生成するプレイヤーPrefab。
     [SerializeField]
     private GameObject PlayerPrefab;
-    //とりあえず車を生成。
-    [SerializeField]
-    private GameObject CarPrefab;
     void Start()
     {
         if (!PhotonNetwork.connected)   //Phootnに接続されていなければ。
