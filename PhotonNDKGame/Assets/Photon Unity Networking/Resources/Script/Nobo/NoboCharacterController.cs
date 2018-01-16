@@ -36,9 +36,7 @@ public class NoboCharacterController : MonoBehaviour {
 
         if (MyPV == null)
         {
-            //MainCameraのtargetにこのゲームオブジェクトを設定。
-            MainCam = Camera.main;
-            MainCam.GetComponent<NoboCamera>().Target = this.gameObject.transform;
+            Debug.Log(this.gameObject.name+"PhotonViewがアタッチされていません。");
         }
         else
         {

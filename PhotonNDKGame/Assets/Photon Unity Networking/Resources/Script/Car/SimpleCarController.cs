@@ -79,24 +79,6 @@ public class SimpleCarController : Photon.MonoBehaviour
             }
         }
 
-        ////運転手が乗っているかの判定。
-        //foreach (SeatInfo seat in SeatInfoList)
-        //{
-        //    if (seat.DriverSeat == true)
-        //    {
-        //        //運転席に誰も座っていない。
-        //        if (seat.PlayerID == -1)
-        //        {
-        //            return;
-        //        }
-        //        //運転手以外は運転出来ない。
-        //        else if (seat.PlayerID != PhotonNetwork.player.ID)
-        //        {
-        //            return;
-        //        }
-        //    }
-        //}
-
         float motor = maxMotorTorque * Input.GetAxis("Accel");
         float brake = maxbrakeTorque * Input.GetAxis("Jump");
         float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
@@ -127,10 +109,6 @@ public class SimpleCarController : Photon.MonoBehaviour
             //スムーズな同期のためにPhotonTransformViewに速度値を渡す。
             Vector3 velocity = RigidBody.velocity;
             MyPTV.SetSynchronizedValues(velocity, 0);
-        }
-        else
-        {
-            Debug.Log(this.gameObject.name + "にPhotonTransformViewがアタッチされていません。");
         }
     }
 }
