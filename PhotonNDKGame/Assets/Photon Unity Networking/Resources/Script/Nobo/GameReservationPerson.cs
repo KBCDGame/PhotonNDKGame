@@ -47,12 +47,7 @@ public class GameReservationPerson : Photon.MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
       
-        //人数は揃っていないが遊べる最低人数は集まった。
-        if (GameStartNum== NowReservationNum)
-        {
-            Debug.Log("人は集まっていないがゲームを始める。");
-        }
-
+        
         //予約人数が最大予約人数と同じになった。
         if (MaxReservationNum== NowReservationNum)
         {
@@ -104,6 +99,12 @@ public class GameReservationPerson : Photon.MonoBehaviour {
         ReservationPlayerList.Add(info);
         //人数加算。
         NowReservationNum++;
+
+        foreach (PlayerInfo list in ReservationPlayerList)
+        {
+            Debug.Log("PlayerID:"+list.PlayerID);
+            Debug.Log("PlayerName:" + list.PlayerName);
+        }
 
         return true;
     }

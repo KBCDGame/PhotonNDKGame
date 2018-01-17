@@ -32,40 +32,26 @@ public class NoboCharacterController : MonoBehaviour {
     public bool DriveFlag = false; //何かしらの乗り物に乗っているフラグ。
 
     // Use this for initialization
-    void Start () {
-
-        if (MyPV == null)
+    void Start()
+    {
+        //自キャラであれば実行。
+        if (MyPV.isMine)
         {
-            Debug.Log(this.gameObject.name+"PhotonViewがアタッチされていません。");
-        }
-        else
-        {
-            //自キャラであれば実行。
-            if (MyPV.isMine)
-            {
-                //MainCameraのtargetにこのゲームオブジェクトを設定。
-                MainCam = Camera.main;
-                MainCam.GetComponent<NoboCamera>().Target = this.gameObject.transform;
-            }
+            //MainCameraのtargetにこのゲームオブジェクトを設定。
+            MainCam = Camera.main;
+            MainCam.GetComponent<NoboCamera>().Target = this.gameObject.transform;
         }
     }
 
     // Update is called once per frame
-    void Update () {
-        if (MyPV)
-        {
-            //自キャラであれば実行。
-            if (!MyPV.isMine)
-            {
-                return;
-            }
-        }
-
-        if (this.transform.parent != null)
+    void Update()
+    {
+        //自キャラじゃなければ実行。
+        if (!MyPV.isMine)
         {
             return;
         }
-        
+
         MoveControl();  //移動用関数。
         RotationControl(); //旋回用関数。
 
@@ -73,12 +59,11 @@ public class NoboCharacterController : MonoBehaviour {
         //(これが無いとCharacterControllerに情報が送られないため、動けない)。
         CharaCon.Move(MoveDirection * Time.deltaTime);
 
-        if (MyPTV)
-        {
-            //スムーズな同期のためにPhotonTransformViewに速度値を渡す。
-            Vector3 velocity = CharaCon.velocity;
-            MyPTV.SetSynchronizedValues(velocity, 0);
-        }
+
+        //スムーズな同期のためにPhotonTransformViewに速度値を渡す。
+        Vector3 velocity = CharaCon.velocity;
+        MyPTV.SetSynchronizedValues(velocity, 0);
+
     }
 
     private void MoveControl()
