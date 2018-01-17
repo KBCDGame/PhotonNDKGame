@@ -94,6 +94,7 @@ namespace MyGame
         {
             //今は特に無し。
         }
+
         //ルーム作成時の処理(作成者しか実行されない)。
         public override void OnCreatedRoom()
         {
