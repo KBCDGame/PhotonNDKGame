@@ -2,32 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class PlayerInfo
+{
+    public int PlayerID;       //プレイヤーのID。
+    public string PlayerName;  //プレイヤーの名前。
+    public GameObject Player;  //プレイヤーオブジェクト。
+}
+
 //Gameの予約を受け付け人数が揃ったらシーンを切り替えるキャラクター。
-public class GameReservationPerson : MonoBehaviour {
+public class GameReservationPerson : Photon.MonoBehaviour {
     [SerializeField]
     private GameObject ReservationPanel;  //予約ウィンドウ。
     [SerializeField]
-    private int MaxReservationNum = 4;   //最大予約人数。
+    private int MaxReservationNum = 0;    //最大予約人数。
     [SerializeField]
-    private int NowReservationNum = 0;   //現在予約されている人数。
+    private int NowReservationNum = 0;    //現在予約されている人数。
     [SerializeField]
-    private int GameStartNum;        //ゲームを始められる人数。
+    private int GameStartNum;             //ゲームを始められる人数。
     [SerializeField]
-    private string PlayGameName = "";//遊ぶゲームのシーン名。
-
-    //予約を行ったプレイヤーの情報をまとめたもの。
-    struct PlayerInfo
-    {
-       public int PlayerID;       //プレイヤーのID。
-        public string PlayerName;  //プレイヤーの名前。
-
-        //予約したプレイヤーの情報を設定。
-        public PlayerInfo(int id, string name)
-        {
-            this.PlayerID = id;
-            this.PlayerName = name;
-        }
-    }
+    private string PlayGameName = "";     //このキャラが受け付けるコースを設定。
+    [SerializeField]
+    private bool CanPlayFlag;             //コースを遊べるかのフラグ。  
+    [SerializeField]
+    private Rigidbody Rb;                 //Rigidbodyコンポーネント。
+    [SerializeField]
+    private PhotonTransformView MyPTV;
     [SerializeField]
     private　List<PlayerInfo> ReservationPlayerList;//予約したプレイヤーのリスト。
     
@@ -35,6 +35,13 @@ public class GameReservationPerson : MonoBehaviour {
     // Use this for initialization
     void Start () {
         ReservationPanel.SetActive(false);
+        if (MaxReservationNum <= 0)
+        {
+            Debug.Log("最大予約人数が0以下だったので1を設定します。");
+            MaxReservationNum = 1;
+        }
+
+        ReservationPlayerList = new List<PlayerInfo>();
     }
 	
 	// Update is called once per frame
@@ -51,35 +58,60 @@ public class GameReservationPerson : MonoBehaviour {
         {
             Debug.Log("人が集まりました。");
         }
+
+        Vector3 velocity = Rb.velocity;
+        MyPTV.SetSynchronizedValues(velocity, 0.0f);
+
 	}
 
-    //予約を行った人をリストに追加。
-    public void AddList(int id,string name)
+    ////変数の同期。
+    void OnPhotonSerializeView(PhotonStream stream, NetworkMessageInfo info)
     {
-        PlayerInfo info = new PlayerInfo(id,name);
+        Debug.Log("OnPhotonSerializeView()");
+        //データの送信。
+        if (stream.isWriting)
+        {
+            stream.SendNext(NowReservationNum);
+            stream.SendNext(ReservationPlayerList);
+        }
+        //データの受信。
+        else
+        {
+            NowReservationNum = (int)stream.ReceiveNext();
+            ReservationPlayerList = (List<PlayerInfo>)stream.ReceiveNext();
+        }
+    }
+
+    //予約を行った人をリストに追加。
+    public bool AddList(int id,string name,GameObject player)
+    {
+        foreach (PlayerInfo list in ReservationPlayerList)
+        {
+            //すでに同じIDがあるなら追加を行わない。
+            if (list.PlayerID == id)
+            {
+                return false;
+            }
+        }
+
+        //情報設定。
+        PlayerInfo info = new PlayerInfo();
+        info.PlayerID = id;
+        info.PlayerName = name;
+        info.Player = player;
+
         //リストに追加。
         ReservationPlayerList.Add(info);
         //人数加算。
         NowReservationNum++;
+
+        return true;
     }
 
     //予約を行った人がキャンセルもしくは通信が切れたらリストから削除。
     public void SubList(int id)
     {
-        //昇順にソート。
-        ReservationPlayerList.Sort();
-
-        //削除する要素を検索。
-        foreach (var list in ReservationPlayerList)
-        {
-            //一致。   
-            if (list.PlayerID == id)
-            {
-                ReservationPlayerList.Remove(list);
-            }
-        }
-        //人数減算。
-        NowReservationNum--;
+       
     }
 
     //予約ウィンドウを閉じる。
@@ -92,5 +124,5 @@ public class GameReservationPerson : MonoBehaviour {
     public void OpenReservationPanel()
     {
         ReservationPanel.SetActive(true);
-    }
+    }  
 }
