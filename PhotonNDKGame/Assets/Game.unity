@@ -649,8 +649,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c26399a90633fb4a95645b4ba2c45f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IfPos: {x: 1300, y: 10, z: 650}
-  PlayerPrefab: {fileID: 1911009313488788, guid: 60c4707c45b77e24ab1777bad3b78844,
+  IfPos: {x: 2000, y: 10, z: 2100}
+  PlayerPrefab: {fileID: 1870297287247680, guid: daa84a23d813c93419a56fc8024e89ac,
     type: 2}
 --- !u!4 &891160277
 Transform:
@@ -1875,7 +1875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2cc2504c8af674785014544ebbae22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 4277285879806778, guid: 60c4707c45b77e24ab1777bad3b78844, type: 2}
+  Target: {fileID: 4682407545110068, guid: daa84a23d813c93419a56fc8024e89ac, type: 2}
   Offset: {x: 0, y: 0, z: 0}
   Distance: 10
   Distance_Min: 1
