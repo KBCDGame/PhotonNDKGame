@@ -52,6 +52,8 @@ public class NoboCharacterController : MonoBehaviour {
             return;
         }
 
+        
+
         MoveControl();  //移動用関数。
         RotationControl(); //旋回用関数。
 

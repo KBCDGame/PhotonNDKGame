@@ -30,6 +30,10 @@ public class GameReservationPerson : Photon.MonoBehaviour {
     private PhotonTransformView MyPTV;
     [SerializeField]
     private　List<PlayerInfo> ReservationPlayerList;//予約したプレイヤーのリスト。
+    [SerializeField]
+    private Transform StartTransform;
+    [SerializeField]
+    private GameObject LaceCar;            //このレースで使用する車。
     
 
     // Use this for initialization
@@ -59,24 +63,6 @@ public class GameReservationPerson : Photon.MonoBehaviour {
 
 	}
 
-    ////変数の同期。
-    void OnPhotonSerializeView(PhotonStream stream, NetworkMessageInfo info)
-    {
-        Debug.Log("OnPhotonSerializeView()");
-        //データの送信。
-        if (stream.isWriting)
-        {
-            stream.SendNext(NowReservationNum);
-            stream.SendNext(ReservationPlayerList);
-        }
-        //データの受信。
-        else
-        {
-            NowReservationNum = (int)stream.ReceiveNext();
-            ReservationPlayerList = (List<PlayerInfo>)stream.ReceiveNext();
-        }
-    }
-
     //予約を行った人をリストに追加。
     public bool AddList(int id,string name,GameObject player)
     {
@@ -100,12 +86,6 @@ public class GameReservationPerson : Photon.MonoBehaviour {
         //人数加算。
         NowReservationNum++;
 
-        foreach (PlayerInfo list in ReservationPlayerList)
-        {
-            Debug.Log("PlayerID:"+list.PlayerID);
-            Debug.Log("PlayerName:" + list.PlayerName);
-        }
-
         return true;
     }
 
@@ -126,4 +106,27 @@ public class GameReservationPerson : Photon.MonoBehaviour {
     {
         ReservationPanel.SetActive(true);
     }  
+
+    private Transform GetStartTransform()
+    {
+        return StartTransform;
+    }
+
+    public void RideCarMoveStartPos(GameObject player)
+    {
+        Vector3 StartPos = new Vector3(GetStartTransform().position.x,
+            GetStartTransform().position.y, GetStartTransform().position.z);
+
+        Quaternion StartRotation = GetStartTransform().transform.rotation;
+
+        //Photonに接続していれば自プレイヤーを生成。
+        //この関数で生成したオブジェクトは生成したプレイヤーがルームから消えると一緒に消される。
+        GameObject Car = PhotonNetwork.Instantiate(this.LaceCar.name,
+           StartPos,
+            StartRotation, 0);
+
+        player.transform.SetPositionAndRotation(StartPos, StartRotation);
+        player.GetComponent<CapsuleCollider>().enabled = false;
+        player.transform.parent = Car.transform;
+    }
 }

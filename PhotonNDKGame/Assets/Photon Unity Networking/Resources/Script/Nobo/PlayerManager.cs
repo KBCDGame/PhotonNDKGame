@@ -12,6 +12,7 @@ public class PlayerManager : Photon.PunBehaviour
     [SerializeField]
     private GameObject PlayerUIPrefab;
 
+    [SerializeField]
     //ローカルのプレイヤーを設定。
     private static GameObject LocalPlayerInstance;
 

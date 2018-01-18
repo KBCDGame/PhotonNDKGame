@@ -33,11 +33,13 @@ public class GameManager : Photon.PunBehaviour {
             return;
         }
 
-        //foreach (GameObject obj in OneGeneratedObjectPrefabList)
-        //{
-        //    PhotonNetwork.InstantiateSceneObject(obj.name, new Vector3(IfPos.x, IfPos.y, IfPos.z), Quaternion.identity, 0, obj);
-        //}
-        
+        foreach (GameObject obj in OneGeneratedObjectPrefabList)
+        {
+            float x = Random.Range(100.0f, 200.0f);
+            float z = Random.Range(100.0f, 200.0f);
+            PhotonNetwork.InstantiateSceneObject(obj.name, new Vector3(x, IfPos.y, z), Quaternion.identity, 0, null);
+        }
+
     }
 
     // Update is called once per frame

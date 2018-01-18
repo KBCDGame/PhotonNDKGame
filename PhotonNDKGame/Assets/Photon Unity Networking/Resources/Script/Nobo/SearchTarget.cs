@@ -9,16 +9,19 @@ public class SearchTarget : MonoBehaviour {
     private GameReservationPerson ReservationPerson;
     private void OnTriggerStay(Collider other)
     {
-        //範囲内にPlayerがいた。
-        if (other.gameObject.tag == "Player")
+        if (Input.GetKey(KeyCode.Joystick1Button3))
         {
-            if (Input.GetKey(KeyCode.Joystick1Button0))
+            //範囲内にPlayerがいた。
+            if (other.gameObject.tag == "Player")
             {
-                if (ReservationPerson != null)
+                if (Input.GetKey(KeyCode.Joystick1Button3))
                 {
-                    ReservationPerson.AddList(PhotonNetwork.player.ID, other.gameObject.name, other.gameObject);
+                    if (ReservationPerson != null)
+                    {
+                        ReservationPerson.RideCarMoveStartPos(other.gameObject);
+                    }
                 }
             }
-        }
+        } 
     }
 }
