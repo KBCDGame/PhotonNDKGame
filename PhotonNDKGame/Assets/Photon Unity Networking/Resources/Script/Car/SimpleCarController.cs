@@ -32,6 +32,8 @@ public class SimpleCarController : Photon.MonoBehaviour
     private Rigidbody RigidBody;
     [SerializeField]
     private Camera MainCam;
+    [SerializeField]
+    public Transform CameraPos;
     // finds the corresponding visual wheel
     // correctly applies the transform
     void Start()

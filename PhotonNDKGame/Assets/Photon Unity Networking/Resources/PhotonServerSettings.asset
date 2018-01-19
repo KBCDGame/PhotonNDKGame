@@ -37,4 +37,6 @@ MonoBehaviour:
   - RequestForPickupItems
   - RequestForPickupTimes
   - Change1
+  - Change2
+  - RPCAddList
   DisableAutoOpenWizard: 1

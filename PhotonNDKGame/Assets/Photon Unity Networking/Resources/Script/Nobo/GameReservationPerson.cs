@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 [System.Serializable]
 public class PlayerInfo
 {
-    public int PlayerID;       //プレイヤーのID。
-    public string PlayerName;  //プレイヤーの名前。
-    public GameObject Player;  //プレイヤーオブジェクト。
+    public int PlayerID;
+    public string PlayerName;
+    public GameObject Player;
 }
 
 //Gameの予約を受け付け人数が揃ったらシーンを切り替えるキャラクター。
@@ -27,15 +26,17 @@ public class GameReservationPerson : Photon.MonoBehaviour {
     [SerializeField]
     private Rigidbody Rb;                 //Rigidbodyコンポーネント。
     [SerializeField]
-    private PhotonTransformView MyPTV;
+    private PhotonTransformView MyPTV;    //PhotonTransformViewコンポーネント。
     [SerializeField]
-    private　List<PlayerInfo> ReservationPlayerList;//予約したプレイヤーのリスト。
+    private PhotonView MyPV;              //PhotonViewコンポーネント。     
+    [SerializeField]
+    private　int[] ReservationPlayerList;//予約出来るプレイヤーのリスト。
+    [SerializeField]
+    private List<PlayerInfo> PlayerList;//予約出来るプレイヤーのリスト。
     [SerializeField]
     private Transform StartTransform;
     [SerializeField]
     private GameObject LaceCar;            //このレースで使用する車。
-    [SerializeField]
-    private Camera MainCamera;
     
 
     // Use this for initialization
@@ -47,7 +48,12 @@ public class GameReservationPerson : Photon.MonoBehaviour {
             MaxReservationNum = 1;
         }
 
-        ReservationPlayerList = new List<PlayerInfo>();
+        //配列の初期化。
+        ReservationPlayerList = new int[MaxReservationNum];
+        for (int i = 0; i < ReservationPlayerList.Length;i++)
+        {
+            ReservationPlayerList[i] = -1;
+        }
     }
 	
 	// Update is called once per frame
@@ -66,28 +72,37 @@ public class GameReservationPerson : Photon.MonoBehaviour {
 	}
 
     //予約を行った人をリストに追加。
-    public bool AddList(int id,string name,GameObject player)
+    public void  AddList(int id,string name,GameObject player)
     {
-        foreach (PlayerInfo list in ReservationPlayerList)
+        //foreach (int PlayerID in ReservationPlayerList)
+        //{
+        //    if (PlayerID == id)
+        //    {
+        //        return;
+        //    }
+        //}
+
+        foreach (PlayerInfo list in PlayerList)
         {
-            //すでに同じIDがあるなら追加を行わない。
             if (list.PlayerID == id)
             {
-                return false;
+                return;
             }
         }
 
-        //情報設定。
         PlayerInfo info = new PlayerInfo();
         info.PlayerID = id;
         info.PlayerName = name;
         info.Player = player;
 
-        //リストに追加。
-        ReservationPlayerList.Add(info);
+        PlayerList.Add(info);
 
-        Vector3 StartPos = new Vector3(GetStartTransform().position.x,
-           GetStartTransform().position.y, GetStartTransform().position.z);
+        //MyPV.RPC(" RPCAddList", PhotonTargets.All, id);
+
+        Vector3 StartPos = new Vector3(
+           GetStartTransform().position.x,
+           GetStartTransform().position.y,
+           GetStartTransform().position.z);
 
         Quaternion StartRotation = GetStartTransform().transform.rotation;
 
@@ -100,11 +115,6 @@ public class GameReservationPerson : Photon.MonoBehaviour {
         player.GetComponent<MeshRenderer>().enabled = false;
         player.transform.parent = Car.transform;
         player.transform.position = Car.transform.position;
-
-        //人数加算。
-        NowReservationNum++;
-
-        return true;
     }
 
     //予約を行った人がキャンセルもしくは通信が切れたらリストから削除。
@@ -130,4 +140,17 @@ public class GameReservationPerson : Photon.MonoBehaviour {
         return StartTransform;
     }
 
+    [PunRPC]
+    private void RPCAddList(int id)
+    {
+        for (int i = 0; i < ReservationPlayerList.Length; i++)
+        {
+            if (ReservationPlayerList[i] == id)
+            {
+                ReservationPlayerList[i] = id;
+                //人数加算。
+                NowReservationNum++;
+            }
+        }
+    }
 }
