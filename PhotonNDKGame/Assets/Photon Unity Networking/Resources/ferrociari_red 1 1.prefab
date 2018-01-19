@@ -789,6 +789,7 @@ MonoBehaviour:
   MyPTV: {fileID: 114710865973181368}
   RigidBody: {fileID: 54677724811485780}
   MainCam: {fileID: 0}
+  CameraPos: {fileID: 0}
 --- !u!146 &146158954764261944
 WheelCollider:
   m_ObjectHideFlags: 1
@@ -807,9 +808,9 @@ WheelCollider:
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 1.2
-    m_ExtremumValue: 1.2
+    m_ExtremumValue: 2
     m_AsymptoteSlip: 1.2
-    m_AsymptoteValue: 1.2
+    m_AsymptoteValue: 2
     m_Stiffness: 1.2
   m_SidewaysFriction:
     m_ExtremumSlip: 3
@@ -836,9 +837,9 @@ WheelCollider:
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 1.2
-    m_ExtremumValue: 1.2
+    m_ExtremumValue: 2
     m_AsymptoteSlip: 1.2
-    m_AsymptoteValue: 1.2
+    m_AsymptoteValue: 2
     m_Stiffness: 1.2
   m_SidewaysFriction:
     m_ExtremumSlip: 3
@@ -865,9 +866,9 @@ WheelCollider:
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 1.2
-    m_ExtremumValue: 1.2
+    m_ExtremumValue: 2
     m_AsymptoteSlip: 1.2
-    m_AsymptoteValue: 1.2
+    m_AsymptoteValue: 2
     m_Stiffness: 1.2
   m_SidewaysFriction:
     m_ExtremumSlip: 3
@@ -894,9 +895,9 @@ WheelCollider:
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 1.2
-    m_ExtremumValue: 1.2
+    m_ExtremumValue: 2
     m_AsymptoteSlip: 1.2
-    m_AsymptoteValue: 1.2
+    m_AsymptoteValue: 2
     m_Stiffness: 1.2
   m_SidewaysFriction:
     m_ExtremumSlip: 3
