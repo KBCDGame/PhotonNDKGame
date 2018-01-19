@@ -97,13 +97,9 @@ public class GameReservationPerson : Photon.MonoBehaviour {
            StartPos,
             StartRotation, 0);
 
+        player.GetComponent<MeshRenderer>().enabled = false;
         player.transform.parent = Car.transform;
-        player.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-
-        player.GetComponent<CapsuleCollider>().gameObject.SetActive(false);
-        player.GetComponent<MeshRenderer>().gameObject.SetActive(false);
-
-        MainCamera.GetComponent<NoboCamera>().ChangeTarget(Car.transform);
+        player.transform.position = Car.transform.position;
 
         //人数加算。
         NowReservationNum++;
