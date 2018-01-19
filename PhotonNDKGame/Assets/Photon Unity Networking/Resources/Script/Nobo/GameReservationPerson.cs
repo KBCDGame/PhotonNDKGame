@@ -30,9 +30,7 @@ public class GameReservationPerson : Photon.MonoBehaviour {
     [SerializeField]
     private PhotonView MyPV;              //PhotonViewコンポーネント。     
     [SerializeField]
-    private　int[] ReservationPlayerList;//予約出来るプレイヤーのリスト。
-    [SerializeField]
-    private List<PlayerInfo> PlayerList;//予約出来るプレイヤーのリスト。
+    private List<PlayerInfo> ReservationPlayerList;//予約したプレイヤーリスト。
     [SerializeField]
     private Transform StartTransform;
     [SerializeField]
@@ -46,13 +44,6 @@ public class GameReservationPerson : Photon.MonoBehaviour {
         {
             Debug.Log("最大予約人数が0以下だったので1を設定します。");
             MaxReservationNum = 1;
-        }
-
-        //配列の初期化。
-        ReservationPlayerList = new int[MaxReservationNum];
-        for (int i = 0; i < ReservationPlayerList.Length;i++)
-        {
-            ReservationPlayerList[i] = -1;
         }
     }
 	
@@ -74,15 +65,9 @@ public class GameReservationPerson : Photon.MonoBehaviour {
     //予約を行った人をリストに追加。
     public void  AddList(int id,string name,GameObject player)
     {
-        //foreach (int PlayerID in ReservationPlayerList)
-        //{
-        //    if (PlayerID == id)
-        //    {
-        //        return;
-        //    }
-        //}
-
-        foreach (PlayerInfo list in PlayerList)
+       
+        //予約リストに同じIDがないかチェック。
+        foreach (PlayerInfo list in ReservationPlayerList)
         {
             if (list.PlayerID == id)
             {
@@ -95,9 +80,9 @@ public class GameReservationPerson : Photon.MonoBehaviour {
         info.PlayerName = name;
         info.Player = player;
 
-        PlayerList.Add(info);
+        ReservationPlayerList.Add(info);
 
-        //MyPV.RPC(" RPCAddList", PhotonTargets.All, id);
+        //MyPV.RPC(" RPCAddList", PhotonTargets.All, id, name);
 
         Vector3 StartPos = new Vector3(
            GetStartTransform().position.x,
@@ -141,16 +126,12 @@ public class GameReservationPerson : Photon.MonoBehaviour {
     }
 
     [PunRPC]
-    private void RPCAddList(int id)
+    private void RPCAddList(int id,string name)
     {
-        for (int i = 0; i < ReservationPlayerList.Length; i++)
-        {
-            if (ReservationPlayerList[i] == id)
-            {
-                ReservationPlayerList[i] = id;
-                //人数加算。
-                NowReservationNum++;
-            }
-        }
+        PlayerInfo info = new PlayerInfo();
+        info.PlayerID = id;
+        info.PlayerName = name;
+
+        ReservationPlayerList.Add(info);
     }
 }
