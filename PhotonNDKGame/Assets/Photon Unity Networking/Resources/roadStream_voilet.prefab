@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 54682240779037598}
   - component: {fileID: 114980512483790734}
   - component: {fileID: 114156251602293520}
+  - component: {fileID: 114201428592465786}
   m_Layer: 0
   m_Name: roadStream_voilet
   m_TagString: Player
@@ -734,6 +735,19 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &114201428592465786
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1442005964593058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b8b2ff5c9599904e8c143eca650a781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerUIPrefab: {fileID: 1218546969427294, guid: e7253efefb365ff45a3f4d98b0d252d3,
+    type: 2}
 --- !u!114 &114545067096665470
 MonoBehaviour:
   m_ObjectHideFlags: 1

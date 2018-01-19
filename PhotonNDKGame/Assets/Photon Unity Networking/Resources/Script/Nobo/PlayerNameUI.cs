@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerNameUI : MonoBehaviour {
+public class PlayerNameUI : MonoBehaviour
+{
     [SerializeField]
     //キャラの頭上に乗るように調整するためのOffset。
     private Vector3 ScreenOffset = new Vector3(0f, 30f, 0f);
@@ -16,6 +17,9 @@ public class PlayerNameUI : MonoBehaviour {
     private PlayerManager Target;
     //キャラクターの高さ。
     private float CharConHeight;
+    [SerializeField]
+    //車用の高さ。
+    private float CarHeight;
     //TargetのTransform。
     private Transform TargetTransform;
     //Targetの座標。
@@ -29,7 +33,8 @@ public class PlayerNameUI : MonoBehaviour {
 
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         //もしPlayerがいなくなったらこのオブジェクトも削除。
         if (Target == null)
         {
@@ -72,12 +77,14 @@ public class PlayerNameUI : MonoBehaviour {
         {
             CharConHeight = _characterController.height;
         }
+        else
+        {
+            CharConHeight = CarHeight;
+        }
 
         if (PlayerNameText != null)
         {
             PlayerNameText.text = Target.photonView.owner.NickName;
         }
-       
     }
-
 }

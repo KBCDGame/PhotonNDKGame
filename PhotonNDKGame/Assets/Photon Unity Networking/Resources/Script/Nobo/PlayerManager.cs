@@ -40,6 +40,15 @@ public class PlayerManager : Photon.PunBehaviour
         {
             return;
         }
+    }
 
+    public void Enable()
+    {
+        _UIGO.gameObject.SetActive(false);
+    }
+
+    public void AnEnable()
+    {
+        _UIGO.SetActive(true);
     }
 }

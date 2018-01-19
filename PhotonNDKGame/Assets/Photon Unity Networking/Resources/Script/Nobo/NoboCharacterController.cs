@@ -52,6 +52,10 @@ public class NoboCharacterController : MonoBehaviour {
             return;
         }
 
+        if (transform.parent != null)
+        {
+            return;
+        }
         
 
         MoveControl();  //移動用関数。

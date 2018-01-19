@@ -105,6 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScreenOffset: {x: 0, y: 10, z: 0}
   PlayerNameText: {fileID: 114599952950383956}
+  CarHeight: 2
 --- !u!222 &222219228882888680
 CanvasRenderer:
   m_ObjectHideFlags: 1

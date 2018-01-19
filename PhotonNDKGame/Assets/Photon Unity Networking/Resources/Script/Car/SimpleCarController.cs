@@ -111,4 +111,33 @@ public class SimpleCarController : Photon.MonoBehaviour
             MyPTV.SetSynchronizedValues(velocity, 0);
         }
     }
+
+    public void Update()
+    {
+        //自キャラかどうかの判定。
+        if (MyPV)
+        {
+            //自キャラであれば実行。
+            if (!MyPV.isMine)
+            {
+                return;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Joystick1Button6))
+        {
+            CarRest();
+        }
+    }
+
+    //車が倒れた時に使うリセット処理。
+    private void CarRest()
+    {
+        //回転用に座標を調整。
+        transform.position = new Vector3(transform.position.x, transform.position.y + 5.0f, transform.position.z);
+        //通常の車の向きに回転を初期化。
+        transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 1.0f);
+        //速度を0にする。
+        RigidBody.velocity = Vector3.zero;
+    }
 }

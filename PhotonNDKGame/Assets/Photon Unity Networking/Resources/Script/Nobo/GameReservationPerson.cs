@@ -34,6 +34,8 @@ public class GameReservationPerson : Photon.MonoBehaviour {
     private Transform StartTransform;
     [SerializeField]
     private GameObject LaceCar;            //このレースで使用する車。
+    [SerializeField]
+    private Camera MainCamera;
     
 
     // Use this for initialization
@@ -83,6 +85,26 @@ public class GameReservationPerson : Photon.MonoBehaviour {
 
         //リストに追加。
         ReservationPlayerList.Add(info);
+
+        Vector3 StartPos = new Vector3(GetStartTransform().position.x,
+           GetStartTransform().position.y, GetStartTransform().position.z);
+
+        Quaternion StartRotation = GetStartTransform().transform.rotation;
+
+        //Photonに接続していれば自プレイヤーを生成。
+        //この関数で生成したオブジェクトは生成したプレイヤーがルームから消えると一緒に消される。
+        GameObject Car = PhotonNetwork.Instantiate(this.LaceCar.name,
+           StartPos,
+            StartRotation, 0);
+
+        player.transform.parent = Car.transform;
+        player.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+
+        player.GetComponent<CapsuleCollider>().gameObject.SetActive(false);
+        player.GetComponent<MeshRenderer>().gameObject.SetActive(false);
+
+        MainCamera.GetComponent<NoboCamera>().ChangeTarget(Car.transform);
+
         //人数加算。
         NowReservationNum++;
 
@@ -112,21 +134,4 @@ public class GameReservationPerson : Photon.MonoBehaviour {
         return StartTransform;
     }
 
-    public void RideCarMoveStartPos(GameObject player)
-    {
-        Vector3 StartPos = new Vector3(GetStartTransform().position.x,
-            GetStartTransform().position.y, GetStartTransform().position.z);
-
-        Quaternion StartRotation = GetStartTransform().transform.rotation;
-
-        //Photonに接続していれば自プレイヤーを生成。
-        //この関数で生成したオブジェクトは生成したプレイヤーがルームから消えると一緒に消される。
-        GameObject Car = PhotonNetwork.Instantiate(this.LaceCar.name,
-           StartPos,
-            StartRotation, 0);
-
-        player.transform.SetPositionAndRotation(StartPos, StartRotation);
-        player.GetComponent<CapsuleCollider>().enabled = false;
-        player.transform.parent = Car.transform;
-    }
 }
