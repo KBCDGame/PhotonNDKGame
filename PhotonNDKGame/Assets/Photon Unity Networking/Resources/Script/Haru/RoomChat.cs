@@ -9,6 +9,7 @@ public class RoomChat : Photon.MonoBehaviour {
     GameObject[] players;   //全てのプレイヤーキャラ取得用a
     GameObject sender;      //送信キャラ取得用
     GameObject myPlayer;    //自分のキャラ取得用
+    GameObject player;
 
     GUIStyle ChatStyle = new GUIStyle();    //範囲チャットStyle
     GUIStyleState ChatStyleState = new GUIStyleState();
@@ -30,12 +31,12 @@ public class RoomChat : Photon.MonoBehaviour {
         //myPlayerオブジェクト取得(範囲チャット発言時にpositionとmyPM使う)
         GetmyPlayer();
 
-        //範囲チャットの場合は白文字にし、文字がＵＩからあふれた場合は折り返す設定
-        ChatStyleState.textColor = Color.white;
-        ChatStyle.normal = ChatStyleState;
-        ChatStyle.wordWrap = true;
+        ////範囲チャットの場合は白文字にし、文字がＵＩからあふれた場合は折り返す設定
+        //ChatStyleState.textColor = Color.white;
+        //ChatStyle.normal = ChatStyleState;
+        //ChatStyle.wordWrap = true;
         //全体チャットの場合は赤文字にし、文字がＵＩからあふれた場合は折り返す設定
-        AllChatStyleState.textColor = Color.red;
+        AllChatStyleState.textColor = Color.white;
         AllChatStyle.normal = AllChatStyleState;
         AllChatStyle.wordWrap = true;
     }
@@ -65,7 +66,7 @@ public class RoomChat : Photon.MonoBehaviour {
         //Enterを押すと
         if (Event.current.type == EventType.keyDown && (Event.current.keyCode == KeyCode.KeypadEnter || Event.current.keyCode == KeyCode.Return))
         {
-                GUI.FocusControl("ChatInput");
+            GUI.FocusControl("ChatInput");
         }
 
     }
@@ -78,7 +79,7 @@ public class RoomChat : Photon.MonoBehaviour {
             if (!string.IsNullOrEmpty(this.inputLine))  //チャット入力欄がNullやEmptyでない場合
             {
                 //範囲チャット送信関数実行
-                SendChat(false);
+                SendChat(true);
 
                 return;
             }
@@ -112,15 +113,8 @@ public class RoomChat : Photon.MonoBehaviour {
         GUI.SetNextControlName("ChatInput");
         inputLine = GUILayout.TextField(inputLine, 200);
 
-        //「Send」ボタンを生成かつ押したときには範囲チャット送信
+        //Sendボタンを生成かつ押したときに送信
         if (GUILayout.Button("Send", GUILayout.ExpandWidth(false)))
-        {
-            //範囲チャット送信関数実行
-            SendChat(false);
-        }
-
-        //Allボタンを生成かつ押したときには全体チャット送信
-        if (GUILayout.Button("All", GUILayout.ExpandWidth(false)))
         {
             //全体チャット送信関数実行
             SendChat(true);
@@ -159,7 +153,7 @@ public class RoomChat : Photon.MonoBehaviour {
     void SendChat(bool isAll)
     {
         //chatRPC
-        this.photonView.RPC("Chat", PhotonTargets.All, myPlayer.transform.position, this.inputLine, isAll);
+        this.photonView.RPC("Chat", PhotonTargets.All, player, this.inputLine, isAll);
 
         //送信後、入力欄を空にし、スクロール最下位置に移動
         this.inputLine = "";
@@ -175,16 +169,8 @@ public class RoomChat : Photon.MonoBehaviour {
             chatKind.Clear();               //全てのチャットの種類情報削除
         }
 
-        if (!isAll) //範囲チャとして受信
-        {
-            //myPlayerとsenderの距離から受信するか判断
-            if (Vector3.Distance(myPlayer.transform.position, senderposition) < 10)
-            {
-                //chat受信
-                ReceiveChat(newLine, isAll, mi);
-            }
-        }
-        else if (isAll) //全チャとして受信
+
+        if (isAll) //全チャとして受信
         {
             //chat受信
             ReceiveChat(newLine, isAll, mi);
