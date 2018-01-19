@@ -3130,11 +3130,10 @@ MonoBehaviour:
   CanPlayFlag: 0
   Rb: {fileID: 1081474393}
   MyPTV: {fileID: 1081474394}
-  MyPV: {fileID: 0}
-  ReservationPlayerList: 
-  PlayerList: []
+  MyPV: {fileID: 1081474395}
+  ReservationPlayerList: []
   StartTransform: {fileID: 1970706157}
-  LaceCar: {fileID: 1870297287247680, guid: daa84a23d813c93419a56fc8024e89ac, type: 2}
+  LaceCar: {fileID: 1442005964593058, guid: 68b57d339a9f4da4990bd12c2a90db53, type: 2}
 --- !u!23 &1081474389
 MeshRenderer:
   m_ObjectHideFlags: 0
