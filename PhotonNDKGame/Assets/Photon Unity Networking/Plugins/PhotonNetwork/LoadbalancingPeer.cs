@@ -775,7 +775,7 @@ using ExitGames.Client.Photon;
 
             return this.OpCustom((byte) OperationCode.RaiseEvent, this.opParameters, sendReliable, raiseEventOptions.SequenceChannel, raiseEventOptions.Encrypt);
         }
-
+    
 
         /// <summary>
         /// Internally used operation to set some "per server" settings. This is for the Master Server.
