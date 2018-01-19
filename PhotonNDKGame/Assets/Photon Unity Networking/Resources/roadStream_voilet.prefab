@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4315449022566108}
   - component: {fileID: 146562394271929234}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: rearRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4868490347620740}
   - component: {fileID: 33567533894463266}
   - component: {fileID: 23689571364524166}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: w3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 4796472078420168}
   - component: {fileID: 33795891584491254}
   - component: {fileID: 23402361763858198}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: w4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4330545428798882}
   - component: {fileID: 146935166234309606}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: rearLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 4728004424157216}
   - component: {fileID: 33086230371470950}
   - component: {fileID: 23548721576869488}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: car_body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,10 +106,9 @@ GameObject:
   - component: {fileID: 54682240779037598}
   - component: {fileID: 114980512483790734}
   - component: {fileID: 114156251602293520}
-  - component: {fileID: 114201428592465786}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: roadStream_voilet
-  m_TagString: Player
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,7 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4018693973255596}
   - component: {fileID: 146579988514699646}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: frontRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +139,7 @@ GameObject:
   - component: {fileID: 4391017220761130}
   - component: {fileID: 33106586115998694}
   - component: {fileID: 23517312100272454}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: w1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +156,7 @@ GameObject:
   - component: {fileID: 4132712956066728}
   - component: {fileID: 33192036207844138}
   - component: {fileID: 23604532664028466}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: mirror
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +173,7 @@ GameObject:
   - component: {fileID: 4723009885224988}
   - component: {fileID: 33336169211636864}
   - component: {fileID: 23437811261650562}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: w2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4822586481817566}
   - component: {fileID: 65555670240273894}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4336644709991684}
   - component: {fileID: 146968274028661490}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: frontLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +220,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4106800995801216}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -735,19 +734,6 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
---- !u!114 &114201428592465786
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1442005964593058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b8b2ff5c9599904e8c143eca650a781, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerUIPrefab: {fileID: 1218546969427294, guid: e7253efefb365ff45a3f4d98b0d252d3,
-    type: 2}
 --- !u!114 &114545067096665470
 MonoBehaviour:
   m_ObjectHideFlags: 1

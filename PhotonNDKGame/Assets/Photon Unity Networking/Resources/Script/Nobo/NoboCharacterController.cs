@@ -52,11 +52,16 @@ public class NoboCharacterController : MonoBehaviour {
             return;
         }
 
-        if (transform.parent != null)
+        if (transform.parent!=null)
         {
+
+            MyPTV.SetSynchronizedValues(transform.parent.position, 0);
             return;
         }
-        
+        else
+        {
+            
+        }
 
         MoveControl();  //移動用関数。
         RotationControl(); //旋回用関数。
