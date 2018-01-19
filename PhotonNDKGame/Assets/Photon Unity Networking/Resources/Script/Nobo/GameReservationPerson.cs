@@ -6,6 +6,7 @@ public class PlayerInfo
 {
     public int PlayerID;
     public string PlayerName;
+    public GameObject Player;
 }
 
 //Gameの予約を受け付け人数が揃ったらシーンを切り替えるキャラクター。
@@ -74,7 +75,14 @@ public class GameReservationPerson : Photon.MonoBehaviour {
             }
         }
 
-        MyPV.RPC(" RPCAddList", PhotonTargets.All, id, name);
+        PlayerInfo info = new PlayerInfo();
+        info.PlayerID = id;
+        info.PlayerName = name;
+        info.Player = player;
+
+        ReservationPlayerList.Add(info);
+
+        //MyPV.RPC(" RPCAddList", PhotonTargets.All, id, name);
 
         Vector3 StartPos = new Vector3(
            GetStartTransform().position.x,
