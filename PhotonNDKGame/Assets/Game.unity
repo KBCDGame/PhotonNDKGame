@@ -1050,7 +1050,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4990558989176182, guid: a3e6104e7dab08e46a3bd4ac61aada5a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.45
+      value: -0.45
       objectReference: {fileID: 0}
     - target: {fileID: 4990558989176182, guid: a3e6104e7dab08e46a3bd4ac61aada5a, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3078,10 +3078,11 @@ MonoBehaviour:
   CanPlayFlag: 0
   Rb: {fileID: 1081474393}
   MyPTV: {fileID: 1081474394}
-  ReservationPlayerList: []
+  MyPV: {fileID: 0}
+  ReservationPlayerList: 
+  PlayerList: []
   StartTransform: {fileID: 1970706157}
   LaceCar: {fileID: 1442005964593058, guid: 68b57d339a9f4da4990bd12c2a90db53, type: 2}
-  MainCamera: {fileID: 2090447324}
 --- !u!23 &1081474389
 MeshRenderer:
   m_ObjectHideFlags: 0

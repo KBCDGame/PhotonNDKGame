@@ -789,6 +789,7 @@ MonoBehaviour:
   MyPTV: {fileID: 114710865973181368}
   RigidBody: {fileID: 54677724811485780}
   MainCam: {fileID: 0}
+  CameraPos: {fileID: 0}
 --- !u!146 &146158954764261944
 WheelCollider:
   m_ObjectHideFlags: 1
