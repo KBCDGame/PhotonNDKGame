@@ -6,6 +6,7 @@ TagManager:
   tags:
   - NPC
   - Car
+  - MinCamera
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - 
   - Player
   - Car
-  - 
+  - Terrain
   - 
   - 
   - 

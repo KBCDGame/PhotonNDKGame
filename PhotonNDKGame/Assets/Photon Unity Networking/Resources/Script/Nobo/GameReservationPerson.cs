@@ -82,7 +82,7 @@ public class GameReservationPerson : Photon.MonoBehaviour {
 
         ReservationPlayerList.Add(info);
 
-        //MyPV.RPC(" RPCAddList", PhotonTargets.All, id, name);
+        //MyPV.RPC(" RPCAddList", PhotonTargets.AllBuffered, id, name);
 
         Vector3 StartPos = new Vector3(
            GetStartTransform().position.x,
@@ -97,7 +97,7 @@ public class GameReservationPerson : Photon.MonoBehaviour {
            StartPos,
             StartRotation, 0);
 
-        player.GetComponent<MeshRenderer>().enabled = false;
+        //player.GetComponent<MeshRenderer>().enabled = false;
         player.transform.parent = Car.transform;
         player.transform.position = Car.transform.position;
     }

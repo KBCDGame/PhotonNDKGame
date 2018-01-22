@@ -188,7 +188,8 @@ MonoBehaviour:
   MyPV: {fileID: 114829100883234678}
   MyPTV: {fileID: 114723550358336404}
   MainCam: {fileID: 0}
-  DriveFlag: 0
+  MinCam: {fileID: 0}
+  PlayerAnimator: {fileID: 0}
 --- !u!114 &114289233811206898
 MonoBehaviour:
   m_ObjectHideFlags: 1
