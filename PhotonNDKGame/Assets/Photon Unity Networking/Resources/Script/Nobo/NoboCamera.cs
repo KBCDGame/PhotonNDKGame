@@ -12,6 +12,7 @@ public class NoboCamera : MonoBehaviour {
 
     public Transform Target;    //追跡するオブジェクトのtransform。
     public Vector3 Offset;      //追跡対象の中心位置調整用オフセット。
+    [SerializeField]
     private Vector3 LookAt;     //targetとOffsetによる注視する座標。
 
     [SerializeField]
