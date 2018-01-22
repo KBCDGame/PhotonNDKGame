@@ -25,11 +25,16 @@ public class NoboCharacterController : MonoBehaviour {
 
     [SerializeField]
     public Camera MainCam;
+    [SerializeField]
+    public GameObject MinCam;
     private Vector3 TargetDirection;        //移動する方向のベクトル。
     private Vector3 MoveDirection = Vector3.zero;
 
-   [SerializeField]
-    private Animator PlayerAnimator;
+    [SerializeField]
+    public bool DriveFlag = false; //何かしらの乗り物に乗っているフラグ。
+
+    [SerializeField]
+    private Animator animator; //アニメーション
 
     // Use this for initialization
     void Start()
@@ -41,8 +46,11 @@ public class NoboCharacterController : MonoBehaviour {
         {
             //MainCameraのtargetにこのゲームオブジェクトを設定。
             MainCam = Camera.main;
-            MainCam.GetComponent<NoboCamera>().Target = this.gameObject.transform;
-            PlayerAnimator = GetComponent<Animator>();
+            MainCam.GetComponent<NoboCamera>().ChangeTarget(this.gameObject.transform);
+            animator = GetComponent<Animator>();
+            MinCam = GameObject.FindGameObjectWithTag("MinCamera");
+            MinCam.GetComponent<MiniMap>().Target = this.gameObject.transform;
+            
         }
     }
 
@@ -65,32 +73,6 @@ public class NoboCharacterController : MonoBehaviour {
         {
             
         }
-
-        //地上にいる場合の処理。
-        if (CharaCon.isGrounded)
-        {
-            PlayerAnimator.SetBool("is_jump", false);
-            //移動のベクトルを計算。
-            MoveDirection = TargetDirection * Speed;
-            //Jumpボタンでジャンプ処理。
-            if (Input.GetButton("Jump"))
-            {
-                MoveDirection.y = JumpSpeed;
-                PlayerAnimator.SetBool("is_jump", true);
-            }
-        }
-        else        //空中操作の処理（重力加速度等）。
-        {
-            float tempy = MoveDirection.y;
-            //↓の２文の処理があると空中でも入力方向に動けるようになる)。
-            MoveDirection = Vector3.Scale(TargetDirection, new Vector3(1, 0, 1)).normalized;
-            MoveDirection *= Speed;
-
-            MoveDirection.y = tempy - Gravity * Time.deltaTime;
-
-            PlayerAnimator.SetBool("is_jump", false);
-        }
-
 
         MoveControl();  //移動用関数。
         RotationControl(); //旋回用関数。
@@ -120,13 +102,26 @@ public class NoboCharacterController : MonoBehaviour {
         //カメラの方向を考慮したキャラの進行方向を計算。
         TargetDirection = h * right + v * forward;
 
-        if (MoveDirection.magnitude > 0.1f)
+        //地上にいる場合の処理。
+        if (CharaCon.isGrounded)
         {
-            PlayerAnimator.SetFloat("Speed", MoveDirection.magnitude);
+            //移動のベクトルを計算。
+            MoveDirection = TargetDirection * Speed;
+            //Jumpボタンでジャンプ処理。
+            if (Input.GetButton("Jump"))
+            {
+                MoveDirection.y = JumpSpeed;
+                animator.SetTrigger("is_jump");
+            }
         }
-        else
+        else        //空中操作の処理（重力加速度等）。
         {
-            PlayerAnimator.SetFloat("Speed", 0.0f);
+            float tempy = MoveDirection.y;
+            //↓の２文の処理があると空中でも入力方向に動けるようになる)。
+            MoveDirection = Vector3.Scale(TargetDirection, new Vector3(1, 0, 1)).normalized;
+            MoveDirection *= Speed;
+
+            MoveDirection.y = tempy - Gravity * Time.deltaTime;
         }
     }
 
