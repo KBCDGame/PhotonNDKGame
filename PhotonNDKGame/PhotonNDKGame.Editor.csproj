@@ -124,6 +124,9 @@
     <Reference Include="websocket-sharp">
       <HintPath>Assets\Plugins\WebSocket\websocket-sharp.dll</HintPath>
     </Reference>
+    <Reference Include="Assembly-UnityScript">
+      <HintPath>Library\ScriptAssemblies\Assembly-UnityScript.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="PhotonNDKGame.csproj">
@@ -157,6 +160,16 @@
   <ItemGroup>
     <None Include="Assets\Photon Unity Networking\Resources\Object\3D\Doi\Haruko\ReadMe.txt" />
     <None Include="Assets\Photon Unity Networking\Resources\Object\3D\Doi\VertexColorFarmAnimals\Shaders\VertexColorUnlit.shader" />
+    <None Include="Assets\Photon Unity Networking\Resources\Object\3D\Haru\Aoi Character Pack\Readme.txt" />
+    <None Include="Assets\Photon Unity Networking\Resources\Object\3D\Haru\Aoi Character Pack\Releasenote.txt" />
+    <None Include="Assets\Photon Unity Networking\Resources\Object\3D\Haru\Aoi Character Pack\Shaders\toon_cutoff.shader" />
+    <None Include="Assets\Photon Unity Networking\Resources\Object\3D\Haru\Aoi Character Pack\Shaders\toon_hair.shader" />
+    <None Include="Assets\Photon Unity Networking\Resources\Object\3D\Haru\Aoi Character Pack\Viewer\Resources\Aoi\Viewer Settings\animation_list.txt" />
+    <None Include="Assets\Photon Unity Networking\Resources\Object\3D\Haru\Aoi Character Pack\Viewer\Resources\Aoi\Viewer Settings\background_list.txt" />
+    <None Include="Assets\Photon Unity Networking\Resources\Object\3D\Haru\Aoi Character Pack\Viewer\Resources\Aoi\Viewer Settings\fbx_ctrl.xml" />
+    <None Include="Assets\Photon Unity Networking\Resources\Object\3D\Haru\Aoi Character Pack\Viewer\Resources\Aoi\Viewer Settings\fbx_list.txt" />
+    <None Include="Assets\Photon Unity Networking\Resources\Object\3D\Haru\Aoi Character Pack\Viewer\Resources\Aoi\Viewer Settings\stage_texture_list.txt" />
+    <None Include="Assets\Photon Unity Networking\Resources\Object\3D\Haru\Aoi Character Pack\Viewer\Resources\Aoi\Viewer Settings\title_text.txt" />
     <None Include="Assets\Photon Unity Networking\changelog.txt" />
     <None Include="Assets\Photon Unity Networking\link.xml" />
     <None Include="Assets\Photon Unity Networking\readme.txt" />
