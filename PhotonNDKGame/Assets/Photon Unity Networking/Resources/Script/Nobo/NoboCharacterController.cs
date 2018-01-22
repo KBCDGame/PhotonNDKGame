@@ -31,10 +31,7 @@ public class NoboCharacterController : MonoBehaviour {
     private Vector3 MoveDirection = Vector3.zero;
 
     [SerializeField]
-    public bool DriveFlag = false; //何かしらの乗り物に乗っているフラグ。
-
-    [SerializeField]
-    private Animator animator; //アニメーション
+    private Animator PlayerAnimator; //アニメーション
 
     // Use this for initialization
     void Start()
@@ -47,10 +44,12 @@ public class NoboCharacterController : MonoBehaviour {
             //MainCameraのtargetにこのゲームオブジェクトを設定。
             MainCam = Camera.main;
             MainCam.GetComponent<NoboCamera>().ChangeTarget(this.gameObject.transform);
-            animator = GetComponent<Animator>();
-            MinCam = GameObject.FindGameObjectWithTag("MinCamera");
-            MinCam.GetComponent<MiniMap>().Target = this.gameObject.transform;
             
+            //ミニマップカメラにこのゲームオブジェクトを設定。
+            MinCam = GameObject.FindGameObjectWithTag("MinCamera");
+            MinCam.GetComponent<MiniMap>().ChangeTarget(this.gameObject.transform);
+
+            PlayerAnimator = GetComponent<Animator>();
         }
     }
 
@@ -86,6 +85,18 @@ public class NoboCharacterController : MonoBehaviour {
         Vector3 velocity = CharaCon.velocity;
         MyPTV.SetSynchronizedValues(velocity, 0);
 
+        if (PlayerAnimator != null)
+        {
+            Vector2 xz = new Vector2(MoveDirection.x, MoveDirection.z);
+            if (xz.magnitude > 0.1f)
+            {
+                PlayerAnimator.SetFloat("Speed", MoveDirection.magnitude);
+            }
+            else
+            {
+                PlayerAnimator.SetFloat("Speed", 0.0f);
+            }
+        }
     }
 
     private void MoveControl()
@@ -111,7 +122,7 @@ public class NoboCharacterController : MonoBehaviour {
             if (Input.GetButton("Jump"))
             {
                 MoveDirection.y = JumpSpeed;
-                animator.SetTrigger("is_jump");
+                //PlayerAnimator.SetBool("is_jump", true);
             }
         }
         else        //空中操作の処理（重力加速度等）。

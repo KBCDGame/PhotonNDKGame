@@ -1286,7 +1286,6 @@ GameObject:
   - component: {fileID: 462991624}
   - component: {fileID: 462991623}
   - component: {fileID: 462991622}
-  - component: {fileID: 462991621}
   - component: {fileID: 462991626}
   m_Layer: 0
   m_Name: MinCamera
@@ -1295,13 +1294,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &462991621
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 462991620}
-  m_Enabled: 1
 --- !u!92 &462991622
 Behaviour:
   m_ObjectHideFlags: 0
@@ -6261,7 +6253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2cc2504c8af674785014544ebbae22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 4658884580833372, guid: 1dba949e65734244282d0d80db17f888, type: 2}
+  Target: {fileID: 4654662814875054, guid: bc71ebb068b6e544b951e7a39f97c74e, type: 2}
   Offset: {x: 0, y: 1.5, z: 0}
   LookAt: {x: 0, y: 0, z: 0}
   Distance: 10
