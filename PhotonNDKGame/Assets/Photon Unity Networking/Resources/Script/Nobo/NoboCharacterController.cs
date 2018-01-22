@@ -31,15 +31,21 @@ public class NoboCharacterController : MonoBehaviour {
     [SerializeField]
     public bool DriveFlag = false; //何かしらの乗り物に乗っているフラグ。
 
+    [SerializeField]
+    private Animator animator; //アニメーション
+
     // Use this for initialization
     void Start()
     {
+       
+
         //自キャラであれば実行。
         if (MyPV.isMine)
         {
             //MainCameraのtargetにこのゲームオブジェクトを設定。
             MainCam = Camera.main;
             MainCam.GetComponent<NoboCamera>().Target = this.gameObject.transform;
+            animator = GetComponent<Animator>();
         }
     }
 
@@ -83,11 +89,11 @@ public class NoboCharacterController : MonoBehaviour {
         //キーボード入力を取得。
         float v = Input.GetAxisRaw("Vertical");         //InputManagerの↑↓の入力。    
         float h = Input.GetAxisRaw("Horizontal");       //InputManagerの←→の入力。
-
         //カメラの正面方向ベクトルからY成分を除き、正規化してキャラが走る方向を取得。
         Vector3 forward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
         Vector3 right = Camera.main.transform.right; //カメラの右方向を取得。
-
+        
+        
         //カメラの方向を考慮したキャラの進行方向を計算。
         TargetDirection = h * right + v * forward;
 
@@ -96,11 +102,11 @@ public class NoboCharacterController : MonoBehaviour {
         {
             //移動のベクトルを計算。
             MoveDirection = TargetDirection * Speed;
-
             //Jumpボタンでジャンプ処理。
             if (Input.GetButton("Jump"))
             {
                 MoveDirection.y = JumpSpeed;
+                animator.SetTrigger("is_jump");
             }
         }
         else        //空中操作の処理（重力加速度等）。
@@ -126,6 +132,7 @@ public class NoboCharacterController : MonoBehaviour {
             float step = RotateSpeed * Time.deltaTime;
             Vector3 newDir = Vector3.Slerp(transform.forward, rotateDirection, step);
             transform.rotation = Quaternion.LookRotation(newDir);
+            
         }
     }
 

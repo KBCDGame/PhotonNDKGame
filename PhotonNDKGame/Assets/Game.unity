@@ -2289,7 +2289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IfPos: {x: 1012, y: 2.8, z: 774}
-  PlayerPrefab: {fileID: 1318550901126174, guid: bc71ebb068b6e544b951e7a39f97c74e,
+  PlayerPrefab: {fileID: 1508788585902566, guid: 1dba949e65734244282d0d80db17f888,
     type: 2}
   OneGeneratedObjectPrefabList: []
 --- !u!4 &891160277
