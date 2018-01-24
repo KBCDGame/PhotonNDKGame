@@ -109,8 +109,8 @@ public class SimpleCarController : Photon.MonoBehaviour
         if (MyPTV)
         {
             //スムーズな同期のためにPhotonTransformViewに速度値を渡す。
-            // Vector3 velocity = RigidBody.velocity;
-            MyPTV.SetSynchronizedValues(transform.position, 0);
+            Vector3 velocity = RigidBody.velocity;
+            MyPTV.SetSynchronizedValues(velocity, 0);
         }
     }
 
