@@ -786,7 +786,7 @@ MonoBehaviour:
     motor: 0
     brake: 0
     steering: 1
-  maxMotorTorque: 2000
+  maxMotorTorque: 3000
   maxbrakeTorque: 1000000
   maxSteeringAngle: 25
   MyPV: {fileID: 114980512483790734}
@@ -852,9 +852,9 @@ WheelCollider:
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 1.2
-    m_ExtremumValue: 20
+    m_ExtremumValue: 30
     m_AsymptoteSlip: 1.2
-    m_AsymptoteValue: 20
+    m_AsymptoteValue: 30
     m_Stiffness: 1.2
   m_SidewaysFriction:
     m_ExtremumSlip: 1.2
@@ -881,9 +881,9 @@ WheelCollider:
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 1.2
-    m_ExtremumValue: 20
+    m_ExtremumValue: 30
     m_AsymptoteSlip: 1.2
-    m_AsymptoteValue: 20
+    m_AsymptoteValue: 30
     m_Stiffness: 1.2
   m_SidewaysFriction:
     m_ExtremumSlip: 1.2
@@ -910,9 +910,9 @@ WheelCollider:
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 1.2
-    m_ExtremumValue: 20
+    m_ExtremumValue: 30
     m_AsymptoteSlip: 1.2
-    m_AsymptoteValue: 20
+    m_AsymptoteValue: 30
     m_Stiffness: 1.2
   m_SidewaysFriction:
     m_ExtremumSlip: 1.2
@@ -939,9 +939,9 @@ WheelCollider:
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 1.2
-    m_ExtremumValue: 20
+    m_ExtremumValue: 30
     m_AsymptoteSlip: 1.2
-    m_AsymptoteValue: 20
+    m_AsymptoteValue: 30
     m_Stiffness: 1.2
   m_SidewaysFriction:
     m_ExtremumSlip: 1.2

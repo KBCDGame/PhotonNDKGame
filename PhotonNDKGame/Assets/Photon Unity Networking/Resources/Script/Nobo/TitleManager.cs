@@ -6,6 +6,11 @@ public class TitleManager : Photon.PunBehaviour
 {
     string _gameVersion = "test";   //ゲームのバージョン。仕様が異なるバージョンとなったときはバージョンを変更しないとエラーが発生する。
 
+    private void Awake()
+    {
+        Application.targetFrameRate = 30;
+    }
+
     //ログインボタンを押したときに実行される
     public void Connect()
     {
