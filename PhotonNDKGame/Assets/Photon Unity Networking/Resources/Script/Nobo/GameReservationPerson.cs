@@ -6,7 +6,6 @@ public class PlayerInfo
 {
     public int PlayerID;
     public string PlayerName;
-    public GameObject Player;
 }
 
 //Gameの予約を受け付け人数が揃ったらシーンを切り替えるキャラクター。
@@ -20,9 +19,7 @@ public class GameReservationPerson : Photon.MonoBehaviour {
     [SerializeField]
     private int GameStartNum;             //ゲームを始められる人数。
     [SerializeField]
-    private string PlayGameName = "";     //このキャラが受け付けるコースを設定。
-    [SerializeField]
-    private bool CanPlayFlag;             //コースを遊べるかのフラグ。  
+    private bool CanPlayFlag = true;     //コースを遊べるかのフラグ。  
     [SerializeField]
     private Rigidbody Rb;                 //Rigidbodyコンポーネント。
     [SerializeField]
@@ -35,6 +32,17 @@ public class GameReservationPerson : Photon.MonoBehaviour {
     private Transform StartTransform;
     [SerializeField]
     private GameObject LaceCar;            //このレースで使用する車。
+    [SerializeField]
+    private Transform[] StartPos = new Transform[4];    //レース開始位置。
+
+    private enum LaceCourse
+    {
+        Course1,
+        Course2,
+        Course3,
+        Course4,
+        Course5
+    }
     
 
     // Use this for initialization
@@ -49,17 +57,22 @@ public class GameReservationPerson : Photon.MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-      
-        
-        //予約人数が最大予約人数と同じになった。
-        if (MaxReservationNum== NowReservationNum)
-        {
-            Debug.Log("人が集まりました。");
-        }
 
         Vector3 velocity = Rb.velocity;
         MyPTV.SetSynchronizedValues(velocity, 0.0f);
 
+        if (CanPlayFlag == false)
+        {
+            return;
+        }
+
+        //予約人数が最大予約人数と同じになった。
+        if (MaxReservationNum == NowReservationNum)
+        {
+            //Debug.Log("人が集まりました。");
+            //SetStartPos();
+            //CanPlayFlag = false;
+        }
 	}
 
     //予約を行った人をリストに追加。
@@ -75,14 +88,8 @@ public class GameReservationPerson : Photon.MonoBehaviour {
             }
         }
 
-        PlayerInfo info = new PlayerInfo();
-        info.PlayerID = id;
-        info.PlayerName = name;
-        info.Player = player;
-
-        ReservationPlayerList.Add(info);
-
-        //MyPV.RPC(" RPCAddList", PhotonTargets.AllBuffered, id, name);
+        //追加処理。
+        MyPV.RPC("RPCAddList", PhotonTargets.AllBuffered, id, name);
 
         Vector3 StartPos = new Vector3(
            GetStartTransform().position.x,
@@ -97,9 +104,10 @@ public class GameReservationPerson : Photon.MonoBehaviour {
            StartPos,
             StartRotation, 0);
 
-        //player.GetComponent<MeshRenderer>().enabled = false;
         player.transform.parent = Car.transform;
         player.transform.position = Car.transform.position;
+        //プレイヤーを消す。
+        player.gameObject.SetActive(false);
     }
 
     //予約を行った人がキャンセルもしくは通信が切れたらリストから削除。
@@ -125,13 +133,32 @@ public class GameReservationPerson : Photon.MonoBehaviour {
         return StartTransform;
     }
 
+    //追加の処理を全プレイヤーに通知。
     [PunRPC]
-    private void RPCAddList(int id,string name)
+    public void RPCAddList(int id,string name)
     {
         PlayerInfo info = new PlayerInfo();
         info.PlayerID = id;
         info.PlayerName = name;
-
         ReservationPlayerList.Add(info);
+
+        NowReservationNum++;
+    }
+
+    //ゲーム上のPlayer用のオブジェクトの中から予約をしたプレイヤーをIDから探し位置設定。
+    private void SetStartPos()
+    {    
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        for (int i = 0; i < MaxReservationNum; i++)
+        {
+            foreach (GameObject player in players)
+            {
+                if (ReservationPlayerList[i].PlayerID == player.GetComponent<PhotonView>().ownerId)
+                {
+                    player.transform.position = StartPos[i].position;
+                }
+            }     
+        }   
     }
 }
