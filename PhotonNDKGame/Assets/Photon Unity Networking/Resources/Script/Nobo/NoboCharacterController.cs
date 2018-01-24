@@ -36,8 +36,6 @@ public class NoboCharacterController : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-       
-
         //自キャラであれば実行。
         if (MyPV.isMine)
         {
