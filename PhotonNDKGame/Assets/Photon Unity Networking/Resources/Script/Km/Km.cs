@@ -6,16 +6,26 @@ public class Km : MonoBehaviour
 {
     Rigidbody rigid;
     float speed;
+    [SerializeField]
+    private GameObject Car;
+    [SerializeField]
+    private Text CarSpeedText;
+    [SerializeField]
+    private PhotonView MyPV;
     // Use this for initialization
     void Start()
     {
-        rigid = GameObject.Find("ferrociari_red 1 1(Clone)").GetComponent<Rigidbody>();
+        CarSpeedText = GameObject.Find("CarSpeedText").GetComponent<Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        speed = rigid.velocity.magnitude*2.0f;
-        GetComponent<Text>().text = speed.ToString("F0");
+        if (!MyPV.isMine)
+        {
+            return;
+        }
+        speed = Car.GetComponent<SimpleCarController>().GetVelocity().magnitude * 2.0f;
+        CarSpeedText.text = speed.ToString("F0");
     }
 }
