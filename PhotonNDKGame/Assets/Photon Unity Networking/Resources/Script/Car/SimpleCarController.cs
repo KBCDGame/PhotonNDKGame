@@ -34,6 +34,10 @@ public class SimpleCarController : Photon.MonoBehaviour
     private Camera MainCam;
     [SerializeField]
     public Transform CameraPos;
+    [SerializeField]
+    private Vector3 Velocity;
+    [SerializeField]
+    private 
     // finds the corresponding visual wheel
     // correctly applies the transform
     void Start()
@@ -109,8 +113,8 @@ public class SimpleCarController : Photon.MonoBehaviour
         if (MyPTV)
         {
             //スムーズな同期のためにPhotonTransformViewに速度値を渡す。
-            // Vector3 velocity = RigidBody.velocity;
-            MyPTV.SetSynchronizedValues(transform.position, 0);
+            Velocity = RigidBody.velocity;
+            MyPTV.SetSynchronizedValues(Velocity, 0);
         }
     }
 
@@ -141,5 +145,10 @@ public class SimpleCarController : Photon.MonoBehaviour
         transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 1.0f);
         //速度を0にする。
         RigidBody.velocity = Vector3.zero;
+    }
+
+    public Vector3 GetVelocity()
+    {
+        return Velocity;
     }
 }

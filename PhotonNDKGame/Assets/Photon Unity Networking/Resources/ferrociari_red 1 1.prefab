@@ -709,7 +709,7 @@ MonoBehaviour:
   m_PositionModel:
     SynchronizeEnabled: 1
     TeleportEnabled: 1
-    TeleportIfDistanceGreaterThan: 1
+    TeleportIfDistanceGreaterThan: 10
     InterpolateOption: 3
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 1
@@ -754,7 +754,7 @@ MonoBehaviour:
     SynchronizeEnabled: 1
     InterpolateOption: 2
     InterpolateRotateTowardsSpeed: 180
-    InterpolateLerpSpeed: 1
+    InterpolateLerpSpeed: 10
   m_ScaleModel:
     SynchronizeEnabled: 0
     InterpolateOption: 0
@@ -790,6 +790,7 @@ MonoBehaviour:
   RigidBody: {fileID: 54677724811485780}
   MainCam: {fileID: 0}
   CameraPos: {fileID: 0}
+  Velocity: {x: 0, y: 0, z: 0}
 --- !u!146 &146158954764261944
 WheelCollider:
   m_ObjectHideFlags: 1
