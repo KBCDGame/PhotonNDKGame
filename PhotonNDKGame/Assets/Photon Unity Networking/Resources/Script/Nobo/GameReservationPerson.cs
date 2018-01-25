@@ -1,12 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[System.Serializable]
-public class PlayerInfo
-{
-    public int PlayerID;
-    public string PlayerName;
-}
 
 //Gameの予約を受け付け人数が揃ったらシーンを切り替えるキャラクター。
 public class GameReservationPerson : Photon.MonoBehaviour {
@@ -14,10 +8,6 @@ public class GameReservationPerson : Photon.MonoBehaviour {
     private GameObject ReservationPanel;  //予約ウィンドウ。
     [SerializeField]
     private int MaxReservationNum = 0;    //最大予約人数。
-    [SerializeField]
-    private int NowReservationNum = 0;    //現在予約されている人数。
-    [SerializeField]
-    private int GameStartNum;             //ゲームを始められる人数。
     [SerializeField]
     private bool CanPlayFlag = true;     //コースを遊べるかのフラグ。  
     [SerializeField]
@@ -27,13 +17,13 @@ public class GameReservationPerson : Photon.MonoBehaviour {
     [SerializeField]
     private PhotonView MyPV;              //PhotonViewコンポーネント。     
     [SerializeField]
-    private List<PlayerInfo> ReservationPlayerList;//予約したプレイヤーリスト。
+    private List<int> ReservationPlayerList;//予約したプレイヤーのIDリスト。
+    //[SerializeField]
+    //private Transform StartTransform;
+    //[SerializeField]
+    //private GameObject LaceCar;            //このレースで使用する車。  
     [SerializeField]
-    private Transform StartTransform;
-    [SerializeField]
-    private GameObject LaceCar;            //このレースで使用する車。
-    [SerializeField]
-    private Transform[] StartPos = new Transform[4];    //レース開始位置。
+    private GameObject LaceManager;         //このオブジェクトが担当するレースのマネージャー。
 
     private enum LaceCourse
     {
@@ -53,11 +43,12 @@ public class GameReservationPerson : Photon.MonoBehaviour {
             Debug.Log("最大予約人数が0以下だったので1を設定します。");
             MaxReservationNum = 1;
         }
+
+        ReservationPlayerList = new List<int>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-
         Vector3 velocity = Rb.velocity;
         MyPTV.SetSynchronizedValues(velocity, 0.0f);
 
@@ -66,48 +57,53 @@ public class GameReservationPerson : Photon.MonoBehaviour {
             return;
         }
 
-        //予約人数が最大予約人数と同じになった。
-        if (MaxReservationNum == NowReservationNum)
+        //現在の予約人数が最大予約人数と同じになった。
+        if (MaxReservationNum == ReservationPlayerList.Count)
         {
-            //Debug.Log("人が集まりました。");
-            //SetStartPos();
-            //CanPlayFlag = false;
+            Debug.Log("人が集まりました。");
+            LaceManagerSetId();
+            CanPlayFlag = false;
         }
 	}
 
     //予約を行った人をリストに追加。
-    public void  AddList(int id,string name,GameObject player)
+    public void AddList(int id)
     {
-       
-        //予約リストに同じIDがないかチェック。
-        foreach (PlayerInfo list in ReservationPlayerList)
+
+        if (CanPlayFlag == false)
         {
-            if (list.PlayerID == id)
+            return;
+        }
+
+        //予約リストに同じIDがないかチェック。
+        for (int i = 0; i < ReservationPlayerList.Count; i++)
+        {
+            if (ReservationPlayerList[i] == id)
             {
                 return;
             }
         }
 
         //追加処理。
-        MyPV.RPC("RPCAddList", PhotonTargets.AllBuffered, id, name);
+        MyPV.RPC("RPCAddList", PhotonTargets.AllBuffered, id);
 
-        Vector3 StartPos = new Vector3(
-           GetStartTransform().position.x,
-           GetStartTransform().position.y,
-           GetStartTransform().position.z);
+        //Vector3 StartPos = new Vector3(
+        //   GetStartTransform().position.x,
+        //   GetStartTransform().position.y,
+        //   GetStartTransform().position.z);
 
-        Quaternion StartRotation = GetStartTransform().transform.rotation;
+        //Quaternion StartRotation = GetStartTransform().transform.rotation;
 
-        //Photonに接続していれば自プレイヤーを生成。
-        //この関数で生成したオブジェクトは生成したプレイヤーがルームから消えると一緒に消される。
-        GameObject Car = PhotonNetwork.Instantiate(this.LaceCar.name,
-           StartPos,
-            StartRotation, 0);
+        ////Photonに接続していれば自プレイヤーを生成。
+        ////この関数で生成したオブジェクトは生成したプレイヤーがルームから消えると一緒に消される。
+        //GameObject Car = PhotonNetwork.Instantiate(this.LaceCar.name,
+        //   StartPos,
+        //    StartRotation, 0);
 
-        player.transform.parent = Car.transform;
-        player.transform.position = Car.transform.position;
-        //プレイヤーを消す。
-        player.gameObject.SetActive(false);
+        //player.transform.parent = Car.transform;
+        //player.transform.position = Car.transform.position;
+        ////プレイヤーを消す。
+        //player.gameObject.SetActive(false);
     }
 
     //予約を行った人がキャンセルもしくは通信が切れたらリストから削除。
@@ -128,37 +124,25 @@ public class GameReservationPerson : Photon.MonoBehaviour {
         ReservationPanel.SetActive(true);
     }  
 
-    private Transform GetStartTransform()
-    {
-        return StartTransform;
-    }
+    //private Transform GetStartTransform()
+    //{
+    //    return StartTransform;
+    //}
 
     //追加の処理を全プレイヤーに通知。
     [PunRPC]
-    public void RPCAddList(int id,string name)
+    public void RPCAddList(int id)
     {
-        PlayerInfo info = new PlayerInfo();
-        info.PlayerID = id;
-        info.PlayerName = name;
-        ReservationPlayerList.Add(info);
-
-        NowReservationNum++;
+        ReservationPlayerList.Add(id);
     }
 
-    //ゲーム上のPlayer用のオブジェクトの中から予約をしたプレイヤーをIDから探し位置設定。
-    private void SetStartPos()
-    {    
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-
-        for (int i = 0; i < MaxReservationNum; i++)
+    //レースマネージャーにレースをするプレイヤーのIDを設定。
+    private void LaceManagerSetId()
+    {
+        LaceManager LM = LaceManager.GetComponent<LaceManager>();
+        for (int i = 0; i < ReservationPlayerList.Count; i++)
         {
-            foreach (GameObject player in players)
-            {
-                if (ReservationPlayerList[i].PlayerID == player.GetComponent<PhotonView>().ownerId)
-                {
-                    player.transform.position = StartPos[i].position;
-                }
-            }     
-        }   
+            LM.AddLacePlyerIdList(ReservationPlayerList[i]);
+        }
     }
 }

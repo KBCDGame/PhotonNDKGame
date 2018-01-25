@@ -36,8 +36,6 @@ public class SimpleCarController : Photon.MonoBehaviour
     public Transform CameraPos;
     [SerializeField]
     private Vector3 Velocity;
-    [SerializeField]
-    private 
     // finds the corresponding visual wheel
     // correctly applies the transform
     void Start()
@@ -48,8 +46,8 @@ public class SimpleCarController : Photon.MonoBehaviour
             if (MyPV.isMine)
             {
                 //MainCameraのtargetにこのゲームオブジェクトを設定。
-                MainCam = Camera.main;
-                MainCam.GetComponent<NoboCamera>().Target = this.gameObject.transform;
+                //MainCam = Camera.main;
+                //MainCam.GetComponent<NoboCamera>().Target = this.gameObject.transform;
             }
         }
         else

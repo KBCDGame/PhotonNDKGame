@@ -40,6 +40,8 @@ public class NoboCamera : MonoBehaviour {
     [SerializeField]
     private float PadRotatoSpeedMoveY = 2.0f;     //パッドによるカメラY方向回転係数。
     private float RotatoSpeedMoveX_QE = 2.0f;  //QEキーによるカメラX方向回転係数。
+    [SerializeField]
+    private bool IsZoomFlag;                    //ズームフラグ。
 
     void Start()
     {
@@ -57,11 +59,15 @@ public class NoboCamera : MonoBehaviour {
         {
             CurrentX += RotatoSpeedMoveX_QE;
         }
-        //回転。
-        InputRotate();
-
+        IsZoomFlag = false;
         //ズーム。
         CameraZoom();
+
+        if (IsZoomFlag == false)
+        {
+            //回転。
+            InputRotate();
+        }
     }
     void LateUpdate()
     {
@@ -101,6 +107,7 @@ public class NoboCamera : MonoBehaviour {
         {
             value = Input.GetAxis("Vertical2");
             speed = PadZoomSpeed;
+            IsZoomFlag = true;
         }
         //ホイールを使ったカメラのズームスピード設定。
         else

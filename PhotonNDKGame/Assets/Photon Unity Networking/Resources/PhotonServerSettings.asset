@@ -39,4 +39,5 @@ MonoBehaviour:
   - Change1
   - Change2
   - RPCAddList
+  - RPCAddLacePlyerIdList
   DisableAutoOpenWizard: 1

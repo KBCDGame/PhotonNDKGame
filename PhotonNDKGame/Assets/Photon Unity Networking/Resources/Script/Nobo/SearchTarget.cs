@@ -9,7 +9,6 @@ public class SearchTarget : MonoBehaviour
     private GameReservationPerson ReservationPerson;
     private void OnTriggerStay(Collider other)
     {
-
         //範囲内にPlayerがいた。
         if (other.gameObject.tag == "Player")
         {
@@ -17,7 +16,7 @@ public class SearchTarget : MonoBehaviour
             {
                 if (ReservationPerson != null)
                 {
-                    ReservationPerson.AddList(PhotonNetwork.player.ID,PhotonNetwork.playerName,other.gameObject);
+                    ReservationPerson.AddList(PhotonNetwork.player.ID);
                 }
             }
         }
