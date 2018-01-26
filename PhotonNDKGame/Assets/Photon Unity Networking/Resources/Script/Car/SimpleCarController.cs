@@ -23,37 +23,24 @@ public class SimpleCarController : Photon.MonoBehaviour
     private float maxbrakeTorque;
     [SerializeField]
     private float maxSteeringAngle;
+    
+    [SerializeField]
+    private Rigidbody RigidBody;   //RigidBodyのコンポーネント。
+    [SerializeField]
+    private Vector3 Velocity;      //RigidBodyのVelocity保存用。
+    [SerializeField]
+    private bool IsRunFlag;        //走っていいかどうかのフラグ。
+
     //オンライン化に必要なコンポーネントを設定。
     [SerializeField]
     private PhotonView MyPV;
     [SerializeField]
     private PhotonTransformView MyPTV;
-    [SerializeField]
-    private Rigidbody RigidBody;
-    [SerializeField]
-    private Camera MainCam;
-    [SerializeField]
-    public Transform CameraPos;
-    [SerializeField]
-    private Vector3 Velocity;
     // finds the corresponding visual wheel
     // correctly applies the transform
     void Start()
     {
-        if (MyPV)
-        {
-            //自キャラであれば実行。
-            if (MyPV.isMine)
-            {
-                //MainCameraのtargetにこのゲームオブジェクトを設定。
-                //MainCam = Camera.main;
-                //MainCam.GetComponent<NoboCamera>().Target = this.gameObject.transform;
-            }
-        }
-        else
-        {
-            Debug.Log(this.gameObject.name + "にPhotonViewがアタッチされていません。");
-        }    
+        IsRunFlag = false;
     }
     public void ApplyLocalPositionToVisuals(WheelCollider collider)
     {
@@ -74,18 +61,20 @@ public class SimpleCarController : Photon.MonoBehaviour
     public void FixedUpdate()
     {
         //自キャラかどうかの判定。
-        if (MyPV)
+        //自キャラであれば実行。
+        if (!MyPV.isMine)
         {
-            //自キャラであれば実行。
-            if (!MyPV.isMine)
-            {
-                return;
-            }
+            return;
         }
 
         float motor = maxMotorTorque * Input.GetAxis("Accel");
         float brake = maxbrakeTorque * Input.GetAxis("Jump");
         float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
+
+        if (IsRunFlag == false)
+        {
+            brake = 1.0f;
+        }
 
         foreach (AxleInfo axleInfo in axleInfos)
         {
@@ -108,12 +97,9 @@ public class SimpleCarController : Photon.MonoBehaviour
             ApplyLocalPositionToVisuals(axleInfo.rightWheel);
         }
 
-        if (MyPTV)
-        {
-            //スムーズな同期のためにPhotonTransformViewに速度値を渡す。
-            Velocity = RigidBody.velocity;
-            MyPTV.SetSynchronizedValues(Velocity, 0);
-        }
+        //スムーズな同期のためにPhotonTransformViewに速度値を渡す。
+        Velocity = RigidBody.velocity;
+        MyPTV.SetSynchronizedValues(Velocity, 0);
     }
 
     public void Update()
@@ -139,14 +125,26 @@ public class SimpleCarController : Photon.MonoBehaviour
     {
         //回転用に座標を調整。
         transform.position = new Vector3(transform.position.x, transform.position.y + 5.0f, transform.position.z);
-        //通常の車の向きに回転を初期化。
-        transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 1.0f);
+    
         //速度を0にする。
         RigidBody.velocity = Vector3.zero;
+        
+        //リジットボディで使われている回転を初期化。
+        RigidBody.angularVelocity = Vector3.zero;
     }
 
     public Vector3 GetVelocity()
     {
         return Velocity;
+    }
+
+    public void RunFlagChangeToTrue()
+    {
+        IsRunFlag = true;
+    }
+
+    public void RunFlagChangeToFalse()
+    {
+        IsRunFlag = false;
     }
 }

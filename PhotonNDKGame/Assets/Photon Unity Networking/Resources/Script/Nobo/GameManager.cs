@@ -28,17 +28,17 @@ public class GameManager : Photon.PunBehaviour {
         PhotonNetwork.Instantiate(this.PlayerPrefab.name, new Vector3(IfPos.x, IfPos.y, IfPos.z), Quaternion.identity, 0);
         //PhotonNetwork.Instantiate(this.CarPrefab.name, new Vector3(0f, 10f, 0f), Quaternion.identity, 0);
 
-        if (!PhotonNetwork.isMasterClient)
-        {
-            return;
-        }
+        //if (!PhotonNetwork.isMasterClient)
+        //{
+        //    return;
+        //}
 
-        foreach (GameObject obj in OneGeneratedObjectPrefabList)
-        {
-            float x = Random.Range(100.0f, 200.0f);
-            float z = Random.Range(100.0f, 200.0f);
-            PhotonNetwork.InstantiateSceneObject(obj.name, new Vector3(x, IfPos.y, z), Quaternion.identity, 0, null);
-        }
+        //foreach (GameObject obj in OneGeneratedObjectPrefabList)
+        //{
+        //    float x = Random.Range(100.0f, 200.0f);
+        //    float z = Random.Range(100.0f, 200.0f);
+        //    PhotonNetwork.InstantiateSceneObject(obj.name, new Vector3(x, IfPos.y, z), Quaternion.identity, 0, null);
+        //}
 
     }
 

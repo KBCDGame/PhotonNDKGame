@@ -1023,7 +1023,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &280630437
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1093,8 +1093,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Seconds: 3
-  CountDownTimeText: {fileID: 0}
-  IsCountDown: 1
+  CountDownTimeText: {fileID: 280630438}
+  IsCountDownEnd: 1
 --- !u!1 &289281985
 GameObject:
   m_ObjectHideFlags: 0
@@ -1269,6 +1269,8 @@ GameObject:
   - component: {fileID: 446413071}
   - component: {fileID: 446413073}
   - component: {fileID: 446413072}
+  - component: {fileID: 446413075}
+  - component: {fileID: 446413074}
   m_Layer: 5
   m_Name: Km/hText
   m_TagString: Untagged
@@ -1333,6 +1335,46 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 446413070}
+--- !u!114 &446413074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 446413070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 4
+  instantiationId: 4
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
+--- !u!114 &446413075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 446413070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93ab6885b03e4cf41baf79a434af8b63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Car: {fileID: 1442005964593058, guid: 68b57d339a9f4da4990bd12c2a90db53, type: 2}
+  CarSpeedText: {fileID: 1096732078}
+  MyPV: {fileID: 446413074}
 --- !u!1 &454415063
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,7 +1486,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &462991626
 MonoBehaviour:
@@ -2135,19 +2177,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2b546cbc502da489a870805428f15a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LaceCar: {fileID: 0}
+  LaceCarPrefab: {fileID: 1442005964593058, guid: 68b57d339a9f4da4990bd12c2a90db53,
+    type: 2}
   StartPos:
   - {fileID: 1970706157}
   - {fileID: 2071973541}
   - {fileID: 629751812}
   - {fileID: 1837141077}
-  LacePlyerIdList: 
   MyPV: {fileID: 722944056}
-  CountDownTimeText: {fileID: 0}
+  CountDownTimeText: {fileID: 280630438}
   LaceTimeText: {fileID: 0}
   IsStartFlag: 0
   LacePlayStartNum: 2
+  CountDownTime: 3
   PlayerList: []
+  UseLaceCar: {fileID: 0}
   NowLacePhase: 0
 --- !u!4 &722944058
 Transform:
@@ -2160,7 +2204,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &747798545
 GameObject:
@@ -2421,7 +2465,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4143830137015608, guid: 246ab47006e0b0848821958217e05fa8, type: 2}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 114479248851183566, guid: 246ab47006e0b0848821958217e05fa8,
         type: 2}
@@ -2580,7 +2624,7 @@ Transform:
   m_Children:
   - {fileID: 1746760409}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &891160272
 GameObject:
@@ -3198,7 +3242,7 @@ Transform:
   m_Children:
   - {fileID: 1282390951}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1019876896
 GameObject:
@@ -3473,8 +3517,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ReservationPanel: {fileID: 245544491}
-  MaxReservationNum: 1
-  CanPlayFlag: 0
+  MaxReservationNum: 2
+  CanPlayFlag: 1
   Rb: {fileID: 1081474393}
   MyPTV: {fileID: 1081474394}
   MyPV: {fileID: 1081474395}
@@ -5584,7 +5628,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bd4f069b411874643b1e20742bc2fe36, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0

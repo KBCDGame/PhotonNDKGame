@@ -86,24 +86,6 @@ public class GameReservationPerson : Photon.MonoBehaviour {
 
         //追加処理。
         MyPV.RPC("RPCAddList", PhotonTargets.AllBuffered, id);
-
-        //Vector3 StartPos = new Vector3(
-        //   GetStartTransform().position.x,
-        //   GetStartTransform().position.y,
-        //   GetStartTransform().position.z);
-
-        //Quaternion StartRotation = GetStartTransform().transform.rotation;
-
-        ////Photonに接続していれば自プレイヤーを生成。
-        ////この関数で生成したオブジェクトは生成したプレイヤーがルームから消えると一緒に消される。
-        //GameObject Car = PhotonNetwork.Instantiate(this.LaceCar.name,
-        //   StartPos,
-        //    StartRotation, 0);
-
-        //player.transform.parent = Car.transform;
-        //player.transform.position = Car.transform.position;
-        ////プレイヤーを消す。
-        //player.gameObject.SetActive(false);
     }
 
     //予約を行った人がキャンセルもしくは通信が切れたらリストから削除。

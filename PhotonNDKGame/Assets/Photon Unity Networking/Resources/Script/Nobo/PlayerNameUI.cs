@@ -17,9 +17,6 @@ public class PlayerNameUI : MonoBehaviour
     private PlayerManager Target;
     //キャラクターの高さ。
     private float CharConHeight;
-    [SerializeField]
-    //車用の高さ。
-    private float CarHeight;
     //TargetのTransform。
     private Transform TargetTransform;
     //Targetの座標。
@@ -79,9 +76,8 @@ public class PlayerNameUI : MonoBehaviour
         }
         else
         {
-            CharConHeight = CarHeight;
+            CharConHeight = 2.0f;
         }
-
         if (PlayerNameText != null)
         {
             PlayerNameText.text = Target.photonView.owner.NickName;

@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 114156251602293520}
   - component: {fileID: 114848201322404126}
   - component: {fileID: 114864251296862786}
+  - component: {fileID: 114698492203943608}
   m_Layer: 9
   m_Name: roadStream_voilet
   m_TagString: Car
@@ -681,13 +682,13 @@ Rigidbody:
   m_GameObject: {fileID: 1442005964593058}
   serializedVersion: 2
   m_Mass: 3000
-  m_Drag: 0
+  m_Drag: 0.05
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!65 &65555670240273894
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -790,12 +791,24 @@ MonoBehaviour:
   maxMotorTorque: 3000
   maxbrakeTorque: 1000000
   maxSteeringAngle: 25
+  RigidBody: {fileID: 54682240779037598}
+  Velocity: {x: 0, y: 0, z: 0}
+  IsRunFlag: 1
   MyPV: {fileID: 114980512483790734}
   MyPTV: {fileID: 114156251602293520}
-  RigidBody: {fileID: 54682240779037598}
-  MainCam: {fileID: 0}
-  CameraPos: {fileID: 4616805409359938}
-  Velocity: {x: 0, y: 0, z: 0}
+--- !u!114 &114698492203943608
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1442005964593058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b8b2ff5c9599904e8c143eca650a781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerUIPrefab: {fileID: 1218546969427294, guid: e7253efefb365ff45a3f4d98b0d252d3,
+    type: 2}
 --- !u!114 &114848201322404126
 MonoBehaviour:
   m_ObjectHideFlags: 1
