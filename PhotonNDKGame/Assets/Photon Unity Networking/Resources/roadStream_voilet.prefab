@@ -1295,10 +1295,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ownerId: 1
+  ownerId: 0
   group: 0
   OwnerShipWasTransfered: 0
-  prefixBackup: 0
+  prefixBackup: -1
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
@@ -1307,8 +1307,8 @@ MonoBehaviour:
   - {fileID: 114960197849740026}
   - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 1004
-  instantiationId: 1002
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 1
 --- !u!114 &114324891137352388
@@ -1473,10 +1473,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ownerId: 1
+  ownerId: 0
   group: 0
   OwnerShipWasTransfered: 0
-  prefixBackup: 0
+  prefixBackup: -1
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
@@ -1485,8 +1485,8 @@ MonoBehaviour:
   - {fileID: 114324891137352388}
   - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 1003
-  instantiationId: 1002
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 1
 --- !u!114 &114545067096665470
@@ -1514,12 +1514,11 @@ MonoBehaviour:
   maxMotorTorque: 1400
   maxbrakeTorque: 1000000
   maxSteeringAngle: 25
+  RigidBody: {fileID: 54682240779037598}
+  Velocity: {x: 0.00036757864, y: 0.00035904464, z: -0.00033351552}
+  IsRunFlag: 0
   MyPV: {fileID: 114980512483790734}
   MyPTV: {fileID: 114156251602293520}
-  RigidBody: {fileID: 54682240779037598}
-  MainCam: {fileID: 0}
-  CameraPos: {fileID: 4616805409359938}
-  Velocity: {x: 0.00036757864, y: 0.00035904464, z: -0.00033351552}
 --- !u!114 &114591090131707924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1597,10 +1596,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ownerId: 1
+  ownerId: 0
   group: 0
   OwnerShipWasTransfered: 0
-  prefixBackup: 0
+  prefixBackup: -1
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
@@ -1609,8 +1608,8 @@ MonoBehaviour:
   - {fileID: 114366472678926874}
   - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 1001
-  instantiationId: 1001
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 1
 --- !u!114 &114960197849740026
@@ -1689,10 +1688,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ownerId: 1
+  ownerId: 0
   group: 0
   OwnerShipWasTransfered: 0
-  prefixBackup: 0
+  prefixBackup: -1
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
@@ -1701,8 +1700,8 @@ MonoBehaviour:
   - {fileID: 114156251602293520}
   - {fileID: 114848201322404126}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 1002
-  instantiationId: 1002
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 1
 --- !u!136 &136120320278764412

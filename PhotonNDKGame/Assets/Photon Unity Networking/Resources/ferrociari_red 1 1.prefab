@@ -186,6 +186,8 @@ GameObject:
   - component: {fileID: 114893712407078964}
   - component: {fileID: 114040997898197766}
   - component: {fileID: 114710865973181368}
+  - component: {fileID: 114292872194998972}
+  - component: {fileID: 114974495915552696}
   m_Layer: 0
   m_Name: ferrociari_red 1 1
   m_TagString: Car
@@ -695,6 +697,20 @@ MonoBehaviour:
   instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
+--- !u!114 &114292872194998972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870297287247680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93ab6885b03e4cf41baf79a434af8b63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Car: {fileID: 1870297287247680}
+  CarSpeedText: {fileID: 0}
+  MyPV: {fileID: 114040997898197766}
 --- !u!114 &114710865973181368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -785,12 +801,24 @@ MonoBehaviour:
   maxMotorTorque: 2000
   maxbrakeTorque: 10000
   maxSteeringAngle: 45
+  RigidBody: {fileID: 54677724811485780}
+  Velocity: {x: 0.000000555968, y: 0.0000067800283, z: -0.0000007878911}
+  IsRunFlag: 0
   MyPV: {fileID: 114040997898197766}
   MyPTV: {fileID: 114710865973181368}
-  RigidBody: {fileID: 54677724811485780}
-  MainCam: {fileID: 0}
-  CameraPos: {fileID: 0}
-  Velocity: {x: 0.000000555968, y: 0.0000067800283, z: -0.0000007878911}
+--- !u!114 &114974495915552696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870297287247680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b8b2ff5c9599904e8c143eca650a781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerUIPrefab: {fileID: 1218546969427294, guid: e7253efefb365ff45a3f4d98b0d252d3,
+    type: 2}
 --- !u!146 &146158954764261944
 WheelCollider:
   m_ObjectHideFlags: 1
