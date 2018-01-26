@@ -126,6 +126,7 @@
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\door\door.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\ExampleClass.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\gool\gool.cs" />
+    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Haru\BGM.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Haru\RoomChat.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Km\Km.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\MiniMap\MiniMap.cs" />
