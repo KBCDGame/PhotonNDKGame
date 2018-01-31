@@ -15,7 +15,7 @@ public class Km : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        CarSpeedText = GameObject.Find("CarSpeedText").GetComponent<Text>();
+        
     }
 
     // Update is called once per frame
@@ -25,7 +25,16 @@ public class Km : MonoBehaviour
         {
             return;
         }
-        speed = Car.GetComponent<SimpleCarController>().GetVelocity().magnitude * 2.0f;
-        CarSpeedText.text = speed.ToString("F0");
+
+        if (CarSpeedText!=null)
+        {
+            speed = Car.GetComponent<SimpleCarController>().GetVelocity().magnitude * 2.0f;
+            CarSpeedText.text = speed.ToString("F0");
+        }
+    }
+
+    public void SetCarSpeedText(Text text)
+    {
+        CarSpeedText = text;
     }
 }

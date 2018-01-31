@@ -30,6 +30,8 @@ public class SimpleCarController : Photon.MonoBehaviour
     private Vector3 Velocity;      //RigidBodyのVelocity保存用。
     [SerializeField]
     private bool IsRunFlag;        //走っていいかどうかのフラグ。
+    [SerializeField]
+    private Vector3 Acceleration;//加速度
 
     //オンライン化に必要なコンポーネントを設定。
     [SerializeField]
@@ -98,6 +100,7 @@ public class SimpleCarController : Photon.MonoBehaviour
         }
 
         //スムーズな同期のためにPhotonTransformViewに速度値を渡す。
+        //RigidBody.transform.position -= Acceleration;
         Velocity = RigidBody.velocity;
         MyPTV.SetSynchronizedValues(Velocity, 0);
     }

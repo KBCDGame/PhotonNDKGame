@@ -22,6 +22,8 @@ public class LaceManager : Photon.MonoBehaviour
     [SerializeField]
     private Text CountDownTimeText;                     //カウントダウン用のテキスト。
     [SerializeField]
+    private Text CarSpeedText;                          //速度表示用のテキスト。
+    [SerializeField]
     private Text LaceTimeText;                          //レース中の時間。
     [SerializeField]
     private bool IsStartFlag = false;                   //レースをスタートできるかどうかのフラグ。
@@ -33,8 +35,8 @@ public class LaceManager : Photon.MonoBehaviour
     [SerializeField]
     private List<LacePlayerInfo> PlayerList;
     [SerializeField]
-    private GameObject UseLaceCar;       //レースで実際に使った車。
-    private enum LacePhase                   //レースの段階。
+    private GameObject UseLaceCar;                      //レースで実際に使った車。
+    private enum LacePhase                              //レースの段階。
     {
         None,               //なにもしない時。
         Ready,              //準備。                            
@@ -44,12 +46,14 @@ public class LaceManager : Photon.MonoBehaviour
     }
 
     [SerializeField]
-    private LacePhase NowLacePhase;           //現在のレースの段階。                       
+    private LacePhase NowLacePhase;                     //現在のレースの段階。                       
     // Use this for initialization
     void Start()
     {
-        //CountDownTimeText.GetComponent<CountDownTime>().SetCountTime(CountDownTime);
-        //CountDownTimeText.gameObject.SetActive(false);
+        //カウントダウンテキストと速度表示テキストとレース時間テキストを非表示。
+        CountDownTimeText.gameObject.SetActive(false);
+        CarSpeedText.gameObject.SetActive(false);
+        LaceTimeText.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -63,16 +67,21 @@ public class LaceManager : Photon.MonoBehaviour
                 LaceReady();
                 break;
             case LacePhase.Start:
-                //CountDownTimeText.gameObject.SetActive(true);
-                //if (CountDownTimeText.GetComponent<CountDownTime>().GetCountDownEnd() == true)
-                //{
-                //    UseLaceCar.GetComponent<SimpleCarController>().RunFlagChangeToTrue();
-                   
-                //}
-                Debug.Log(NowLacePhase);
-                NowLacePhase = LacePhase.Game;
+                //カウントダウンが終わったら。
+                if (CountDownTimeText.GetComponent<CountDownTime>().CountDownEnd()==true)
+                {
+                    //車のハンドブレーキを降ろす。
+                    UseLaceCar.GetComponent<SimpleCarController>().RunFlagChangeToTrue();
+                    //レース開始。
+                    NowLacePhase = LacePhase.Game;
+
+                    //カウントダウンテキストを非表示。
+                    CountDownTimeText.gameObject.SetActive(false);
+                }
                 break;
             case LacePhase.Game:
+              
+                Debug.Log(NowLacePhase);
                 break;
             case LacePhase.End:
                 break;
@@ -139,11 +148,10 @@ public class LaceManager : Photon.MonoBehaviour
         {
             //プレイヤーを見えない所に移動。
             PlayerList[i].Player.transform.position = Vector3.zero;
-            //プレイヤーを非アクティブ化。
+            //プレイヤー名を非アクティブ化。
             PlayerList[i].Player.GetComponent<PlayerManager>().Enable();
             //プレイヤーを非アクティブ化。
             PlayerList[i].Player.SetActive(false);
-
             if (PlayerList[i].ID == PhotonNetwork.player.ID)
             {
                 //自キャラでのみ車を作成。
@@ -152,9 +160,22 @@ public class LaceManager : Photon.MonoBehaviour
                 StartPos[i].rotation,
                 0);
 
+                //車のハンドブレーキを引く。
                 UseLaceCar.GetComponent<SimpleCarController>().RunFlagChangeToFalse();       
                 //プレイヤーの親に車を設定。
                 PlayerList[i].Player.transform.parent = UseLaceCar.transform;
+
+                //速度表示テキストを表示。
+                UseLaceCar.GetComponent<Km>().SetCarSpeedText(CarSpeedText);
+
+                //速度テキストを表示。
+                CarSpeedText.gameObject.SetActive(false);
+
+                //カウントダウンテキストを表示
+                CountDownTimeText.gameObject.SetActive(true);
+
+                //カウントダウン開始。
+                CountDownTimeText.GetComponent<CountDownTime>().CountDownStart(3.0f);
             }
            
             //プレイヤーを開始位置に移動。

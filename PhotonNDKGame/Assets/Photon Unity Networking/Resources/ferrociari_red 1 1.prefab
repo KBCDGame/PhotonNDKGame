@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 114040997898197766}
   - component: {fileID: 114710865973181368}
   - component: {fileID: 114292872194998972}
-  - component: {fileID: 114974495915552696}
+  - component: {fileID: 114104211365407176}
   m_Layer: 0
   m_Name: ferrociari_red 1 1
   m_TagString: Car
@@ -345,7 +345,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1870297287247680}
   m_LocalRotation: {x: -0.007854791, y: 0.29706278, z: 0.0024458086, w: 0.95482254}
-  m_LocalPosition: {x: 722.1089, y: 0.12667537, z: 2336.5652}
+  m_LocalPosition: {x: 710.40936, y: 0.002372101, z: 2326.5718}
   m_LocalScale: {x: 14.5, y: 14.5, z: 14.5}
   m_Children:
   - {fileID: 4146015751066450}
@@ -697,6 +697,19 @@ MonoBehaviour:
   instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
+--- !u!114 &114104211365407176
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870297287247680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b8b2ff5c9599904e8c143eca650a781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerUIPrefab: {fileID: 1218546969427294, guid: e7253efefb365ff45a3f4d98b0d252d3,
+    type: 2}
 --- !u!114 &114292872194998972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -804,21 +817,9 @@ MonoBehaviour:
   RigidBody: {fileID: 54677724811485780}
   Velocity: {x: 0.000000555968, y: 0.0000067800283, z: -0.0000007878911}
   IsRunFlag: 0
+  Acceleration: {x: 0, y: 2, z: 0}
   MyPV: {fileID: 114040997898197766}
   MyPTV: {fileID: 114710865973181368}
---- !u!114 &114974495915552696
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1870297287247680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b8b2ff5c9599904e8c143eca650a781, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerUIPrefab: {fileID: 1218546969427294, guid: e7253efefb365ff45a3f4d98b0d252d3,
-    type: 2}
 --- !u!146 &146158954764261944
 WheelCollider:
   m_ObjectHideFlags: 1
