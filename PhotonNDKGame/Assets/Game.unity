@@ -3443,7 +3443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ReservationPanel: {fileID: 245544491}
-  MaxReservationNum: 3
+  MaxReservationNum: 1
   CanPlayFlag: 1
   Rb: {fileID: 1081474393}
   MyPTV: {fileID: 1081474394}
@@ -5239,7 +5239,7 @@ MonoBehaviour:
   CarSpeedText: {fileID: 1096732078}
   LaceTimeText: {fileID: 0}
   IsStartFlag: 0
-  LacePlayStartNum: 3
+  LacePlayStartNum: 1
   CountDownTime: 0
   PlayerList: []
   UseLaceCar: {fileID: 0}

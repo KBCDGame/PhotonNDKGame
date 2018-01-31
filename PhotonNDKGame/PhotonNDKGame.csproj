@@ -131,6 +131,7 @@
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Haru\SoundManager.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Km\Km.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\MiniMap\MiniMap.cs" />
+    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\Cube.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\GameManager.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\GameReservationPerson.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\LaceManager.cs" />
