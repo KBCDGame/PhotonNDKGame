@@ -1010,6 +1010,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 114264761901708732, guid: 654487a06246bb4479e6701302274155,
         type: 2}
+      propertyPath: BGM.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114264761901708732, guid: 654487a06246bb4479e6701302274155,
+        type: 2}
       propertyPath: Voice.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1055,6 +1060,16 @@ Prefab:
       propertyPath: Voice.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 828045edff7816d488d16f481f1a5945, type: 3}
+    - target: {fileID: 114264761901708732, guid: 654487a06246bb4479e6701302274155,
+        type: 2}
+      propertyPath: BGM.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9cd7c3945c2d5934b8bb905222576ba3, type: 3}
+    - target: {fileID: 114264761901708732, guid: 654487a06246bb4479e6701302274155,
+        type: 2}
+      propertyPath: BGM.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 04eb098c60ac18748bcca366121532fd, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 654487a06246bb4479e6701302274155, type: 2}
   m_IsPrefabParent: 0
