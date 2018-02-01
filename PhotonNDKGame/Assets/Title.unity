@@ -1001,6 +1001,63 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 059659377357c7f4da639e9b3ab32204, type: 3}
   m_IsPrefabParent: 0
+--- !u!1001 &1577942507
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 114264761901708732, guid: 654487a06246bb4479e6701302274155,
+        type: 2}
+      propertyPath: Voice.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958746685250336, guid: 654487a06246bb4479e6701302274155, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2886.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958746685250336, guid: 654487a06246bb4479e6701302274155, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958746685250336, guid: 654487a06246bb4479e6701302274155, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 2724
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958746685250336, guid: 654487a06246bb4479e6701302274155, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958746685250336, guid: 654487a06246bb4479e6701302274155, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958746685250336, guid: 654487a06246bb4479e6701302274155, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958746685250336, guid: 654487a06246bb4479e6701302274155, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958746685250336, guid: 654487a06246bb4479e6701302274155, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114264761901708732, guid: 654487a06246bb4479e6701302274155,
+        type: 2}
+      propertyPath: volume.BGM
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114264761901708732, guid: 654487a06246bb4479e6701302274155,
+        type: 2}
+      propertyPath: Voice.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 828045edff7816d488d16f481f1a5945, type: 3}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 654487a06246bb4479e6701302274155, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1726736420
 GameObject:
   m_ObjectHideFlags: 0
