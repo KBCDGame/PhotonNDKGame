@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//プレイヤー周辺にNPCがいないかチェック。
+//プレイヤー周辺にプレイヤーがいないかチェック。
 public class SearchTarget : MonoBehaviour
 {
     [SerializeField]

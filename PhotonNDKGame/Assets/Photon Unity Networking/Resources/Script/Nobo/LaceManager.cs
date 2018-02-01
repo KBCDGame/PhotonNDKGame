@@ -77,6 +77,9 @@ public class LaceManager : Photon.MonoBehaviour
 
                     //カウントダウンテキストを非表示。
                     CountDownTimeText.gameObject.SetActive(false);
+
+                    //レース時間テキストを表示。
+                    LaceTimeText.gameObject.SetActive(true);
                 }
                 break;
             case LacePhase.Game:
@@ -169,7 +172,7 @@ public class LaceManager : Photon.MonoBehaviour
                 UseLaceCar.GetComponent<Km>().SetCarSpeedText(CarSpeedText);
 
                 //速度テキストを表示。
-                CarSpeedText.gameObject.SetActive(false);
+                CarSpeedText.gameObject.SetActive(true);
 
                 //カウントダウンテキストを表示
                 CountDownTimeText.gameObject.SetActive(true);

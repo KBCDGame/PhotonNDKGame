@@ -128,7 +128,10 @@ public class SimpleCarController : Photon.MonoBehaviour
     {
         //回転用に座標を調整。
         transform.position = new Vector3(transform.position.x, transform.position.y + 5.0f, transform.position.z);
-    
+
+        //回転用を調整。
+        transform.rotation = new Quaternion(transform.rotation.x, 0.0f, 0.0f, 1.0f);
+
         //速度を0にする。
         RigidBody.velocity = Vector3.zero;
         
