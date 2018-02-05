@@ -53,7 +53,7 @@ public class LaceManager : Photon.MonoBehaviour
         //カウントダウンテキストと速度表示テキストとレース時間テキストを非表示。
         CountDownTimeText.gameObject.SetActive(false);
         CarSpeedText.gameObject.SetActive(false);
-        LaceTimeText.gameObject.SetActive(false);
+       // LaceTimeText.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
