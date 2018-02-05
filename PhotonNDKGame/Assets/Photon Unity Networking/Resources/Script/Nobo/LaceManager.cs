@@ -34,7 +34,7 @@ public class LaceManager : Photon.MonoBehaviour
     [SerializeField]
     private float CountDownTime;                        //カウントダウンの時間。  
     [SerializeField]
-    private int[] LaceRanking;                         //順位リスト。
+    private int[] LaceRanking;                          //順位リスト。
     [SerializeField]
     private int GoalPlyerNum = 0;                       //ゴールした人数。
 
@@ -119,6 +119,14 @@ public class LaceManager : Photon.MonoBehaviour
                 }
                 break;
             case LacePhase.Goal:
+                if (GoalPlyerNum== LacePlayStartNum)
+                {
+                    NowLacePhase = LacePhase.Result;
+                }
+                if (CountDownTimeText.GetComponent<CountDownTime>().CountDown() == true)
+                {
+                    NowLacePhase = LacePhase.Result;
+                }
                 break;
             case LacePhase.Result:
                 Debug.Log(NowLacePhase);

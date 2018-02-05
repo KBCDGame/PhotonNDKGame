@@ -200,7 +200,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4146015751066450}
-  - component: {fileID: 65061795102451668}
   m_Layer: 0
   m_Name: body
   m_TagString: Untagged
@@ -256,9 +255,10 @@ GameObject:
   - component: {fileID: 4173420320557094}
   - component: {fileID: 33659181492448140}
   - component: {fileID: 23943066728281546}
+  - component: {fileID: 64805280772572872}
   m_Layer: 0
   m_Name: car_body
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -393,7 +393,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1870297287247680}
   m_LocalRotation: {x: -0.007854791, y: 0.29706278, z: 0.0024458086, w: 0.95482254}
-  m_LocalPosition: {x: 602.17, y: -0.01, z: 3922.05}
+  m_LocalPosition: {x: 2866.9714, y: 0.0023721159, z: 2802.5728}
   m_LocalScale: {x: 14.5, y: 14.5, z: 14.5}
   m_Children:
   - {fileID: 4146015751066450}
@@ -721,18 +721,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!65 &65061795102451668
-BoxCollider:
+--- !u!64 &64805280772572872
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1841107455426160}
+  m_GameObject: {fileID: 1935308764052018}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.12, y: 0.05, z: 0.28}
-  m_Center: {x: 0, y: 0.04, z: -0.027}
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 4dcaecfa6fbbcff44abb52a84e2d0616, type: 3}
 --- !u!114 &114040997898197766
 MonoBehaviour:
   m_ObjectHideFlags: 1
