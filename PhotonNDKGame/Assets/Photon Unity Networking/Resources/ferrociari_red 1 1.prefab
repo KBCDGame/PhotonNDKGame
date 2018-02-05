@@ -166,7 +166,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4146015751066450}
-  - component: {fileID: 65061795102451668}
   m_Layer: 0
   m_Name: body
   m_TagString: Untagged
@@ -188,6 +187,7 @@ GameObject:
   - component: {fileID: 114710865973181368}
   - component: {fileID: 114292872194998972}
   - component: {fileID: 114104211365407176}
+  - component: {fileID: 65438474365402550}
   m_Layer: 0
   m_Name: ferrociari_red 1 1
   m_TagString: Car
@@ -346,7 +346,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1870297287247680}
   m_LocalRotation: {x: -0.007854791, y: 0.29706278, z: 0.0024458086, w: 0.95482254}
-  m_LocalPosition: {x: 2704.8755, y: 0.0023415834, z: 2795.2224}
+  m_LocalPosition: {x: 2873.8, y: -0, z: 2663.36}
   m_LocalScale: {x: 14.5, y: 14.5, z: 14.5}
   m_Children:
   - {fileID: 4146015751066450}
@@ -674,18 +674,18 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 4dcaecfa6fbbcff44abb52a84e2d0616, type: 3}
---- !u!65 &65061795102451668
+--- !u!65 &65438474365402550
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1841107455426160}
+  m_GameObject: {fileID: 1870297287247680}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.12, y: 0.05, z: 0.28}
-  m_Center: {x: 0, y: 0.04, z: -0.027}
+  m_Size: {x: 0.1, y: 0.1, z: 0.3}
+  m_Center: {x: 0, y: 0.05, z: -0.02}
 --- !u!114 &114040997898197766
 MonoBehaviour:
   m_ObjectHideFlags: 1

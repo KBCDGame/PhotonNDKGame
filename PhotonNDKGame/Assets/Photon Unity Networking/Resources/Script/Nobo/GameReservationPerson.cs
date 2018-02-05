@@ -7,9 +7,7 @@ public class GameReservationPerson : Photon.MonoBehaviour {
     [SerializeField]
     private GameObject ReservationPanel;  //予約ウィンドウ。
     [SerializeField]
-    private int MaxReservationNum = 0;    //最大予約人数。
-    [SerializeField]
-    private bool CanPlayFlag = true;     //コースを遊べるかのフラグ。  
+    private bool CanPlayFlag;             //コースを遊べるかのフラグ。  
     [SerializeField]
     private Rigidbody Rb;                 //Rigidbodyコンポーネント。
     [SerializeField]
@@ -18,33 +16,16 @@ public class GameReservationPerson : Photon.MonoBehaviour {
     private PhotonView MyPV;              //PhotonViewコンポーネント。     
     [SerializeField]
     private List<int> ReservationPlayerList;//予約したプレイヤーのIDリスト。
-    //[SerializeField]
-    //private Transform StartTransform;
-    //[SerializeField]
-    //private GameObject LaceCar;            //このレースで使用する車。  
     [SerializeField]
     private GameObject LaceManager;         //このオブジェクトが担当するレースのマネージャー。
-
-    private enum LaceCourse
-    {
-        Course1,
-        Course2,
-        Course3,
-        Course4,
-        Course5
-    }
-    
 
     // Use this for initialization
     void Start () {
         ReservationPanel.SetActive(false);
-        if (MaxReservationNum <= 0)
-        {
-            Debug.Log("最大予約人数が0以下だったので1を設定します。");
-            MaxReservationNum = 1;
-        }
-
+     
         ReservationPlayerList = new List<int>();
+
+        CanPlayFlag = true;
     }
 	
 	// Update is called once per frame
@@ -57,8 +38,8 @@ public class GameReservationPerson : Photon.MonoBehaviour {
             return;
         }
 
-        //現在の予約人数が最大予約人数と同じになった。
-        if (MaxReservationNum == ReservationPlayerList.Count)
+        //現在の予約人数がレースを始めれる人数と同じになった。
+        if (LaceManager.GetComponent<LaceManager>().GetLacePlayStartNum() == ReservationPlayerList.Count)
         {
             Debug.Log("人が集まりました。");
             LaceManagerSetId();
@@ -106,11 +87,6 @@ public class GameReservationPerson : Photon.MonoBehaviour {
         ReservationPanel.SetActive(true);
     }  
 
-    //private Transform GetStartTransform()
-    //{
-    //    return StartTransform;
-    //}
-
     //追加の処理を全プレイヤーに通知。
     [PunRPC]
     public void RPCAddList(int id)
@@ -126,5 +102,12 @@ public class GameReservationPerson : Photon.MonoBehaviour {
         {
             LM.AddLacePlyerIdList(ReservationPlayerList[i]);
         }
+    }
+
+    //遊べるフラグをtrue->false、false->からtureにする。
+    [PunRPC]
+    public void ChangeCanPlayFlag()
+    {
+        CanPlayFlag = !CanPlayFlag;
     }
 }

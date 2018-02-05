@@ -25,8 +25,6 @@ public class NoboCharacterController : MonoBehaviour {
 
     [SerializeField]
     public Camera MainCam;
-    [SerializeField]
-    public GameObject MinCam;
     private Vector3 TargetDirection;        //移動する方向のベクトル。
     private Vector3 MoveDirection = Vector3.zero;
 
@@ -42,10 +40,6 @@ public class NoboCharacterController : MonoBehaviour {
             //MainCameraのtargetにこのゲームオブジェクトを設定。
             MainCam = Camera.main;
             MainCam.GetComponent<NoboCamera>().ChangeTarget(this.gameObject.transform);
-            
-            //ミニマップカメラにこのゲームオブジェクトを設定。
-            MinCam = GameObject.FindGameObjectWithTag("MinCamera");
-            MinCam.GetComponent<MiniMap>().ChangeTarget(this.gameObject.transform);
 
             PlayerAnimator = GetComponent<Animator>();
         }
@@ -66,9 +60,10 @@ public class NoboCharacterController : MonoBehaviour {
             MyPTV.SetSynchronizedValues(transform.parent.position, 0);
             return;
         }
-        else
+
+        if (Input.GetKey(KeyCode.Joystick1Button0))
         {
-            
+            Debug.Log("Button A Push");
         }
 
         MoveControl();  //移動用関数。
