@@ -289,8 +289,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1269107031923494}
-  m_LocalRotation: {x: 0.0077810744, y: 0.3251085, z: 0.0026748881, w: -0.945641}
-  m_LocalPosition: {x: 760.2266, y: 0.12667572, z: 2255.5874}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 14.5, y: 14.5, z: 14.5}
   m_Children:
   - {fileID: 4629912648737666}
@@ -759,12 +759,12 @@ MonoBehaviour:
   maxMotorTorque: 1300
   maxbrakeTorque: 10000
   maxSteeringAngle: 45
+  RigidBody: {fileID: 54576811724170692}
+  Velocity: {x: 0.00000037178347, y: -0.000008100644, z: 0.000000690644}
+  IsRunFlag: 0
+  Acceleration: {x: 0, y: 0, z: 0}
   MyPV: {fileID: 114941323265784686}
   MyPTV: {fileID: 114153350696872542}
-  RigidBody: {fileID: 54576811724170692}
-  MainCam: {fileID: 0}
-  CameraPos: {fileID: 0}
-  Velocity: {x: 0.00000037178347, y: -0.000008100644, z: 0.000000690644}
 --- !u!114 &114941323265784686
 MonoBehaviour:
   m_ObjectHideFlags: 1
