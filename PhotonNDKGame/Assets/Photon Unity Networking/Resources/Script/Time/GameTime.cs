@@ -16,9 +16,7 @@ public class GameTime : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Minute = 0;
-        Seconds = 0f;
-        OldSeconds = 0f;
+        ResetGameTime();
     }
     // Update is called once per frame  
     void Update()
@@ -41,5 +39,13 @@ public class GameTime : MonoBehaviour
         TimerText.text = Minute.ToString("0") + ":" + Seconds.ToString("F2");
 
         OldSeconds = Seconds;
+    }
+
+    //各数値の初期化。
+    public void ResetGameTime()
+    {
+        Minute = 0;
+        Seconds = 0f;
+        OldSeconds = 0f;
     }
 }
