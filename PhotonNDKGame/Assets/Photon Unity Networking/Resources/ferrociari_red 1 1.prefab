@@ -905,13 +905,13 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 6
-    m_Stiffness: 2
+    m_Stiffness: 2.5
   m_SidewaysFriction:
     m_ExtremumSlip: 1.2
     m_ExtremumValue: 1
     m_AsymptoteSlip: 800
     m_AsymptoteValue: 7.5
-    m_Stiffness: 1
+    m_Stiffness: 1.5
   m_Enabled: 1
 --- !u!146 &146333502400713142
 WheelCollider:
@@ -934,13 +934,13 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 6
-    m_Stiffness: 2
+    m_Stiffness: 2.5
   m_SidewaysFriction:
     m_ExtremumSlip: 1.2
     m_ExtremumValue: 1
     m_AsymptoteSlip: 800
     m_AsymptoteValue: 7.5
-    m_Stiffness: 1
+    m_Stiffness: 1.5
   m_Enabled: 1
 --- !u!146 &146511421947338350
 WheelCollider:
@@ -963,13 +963,13 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 6
-    m_Stiffness: 2
+    m_Stiffness: 2.5
   m_SidewaysFriction:
     m_ExtremumSlip: 1.2
     m_ExtremumValue: 1
     m_AsymptoteSlip: 800
     m_AsymptoteValue: 7.5
-    m_Stiffness: 1
+    m_Stiffness: 1.5
   m_Enabled: 1
 --- !u!146 &146900730553074622
 WheelCollider:
@@ -992,13 +992,13 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 6
-    m_Stiffness: 2
+    m_Stiffness: 2.5
   m_SidewaysFriction:
     m_ExtremumSlip: 1.2
     m_ExtremumValue: 1
     m_AsymptoteSlip: 800
     m_AsymptoteValue: 7.5
-    m_Stiffness: 1
+    m_Stiffness: 1.5
   m_Enabled: 1
 --- !u!198 &198491331247381218
 ParticleSystem:
