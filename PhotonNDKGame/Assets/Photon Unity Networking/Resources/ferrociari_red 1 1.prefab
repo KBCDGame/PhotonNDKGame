@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 114710865973181368}
   - component: {fileID: 114292872194998972}
   - component: {fileID: 114104211365407176}
+  - component: {fileID: 65816372831226122}
   m_Layer: 0
   m_Name: ferrociari_red 1 1
   m_TagString: Car
@@ -258,7 +259,7 @@ GameObject:
   - component: {fileID: 64805280772572872}
   m_Layer: 0
   m_Name: car_body
-  m_TagString: Car
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -393,7 +394,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1870297287247680}
   m_LocalRotation: {x: -0.007854791, y: 0.29706278, z: 0.0024458086, w: 0.95482254}
-  m_LocalPosition: {x: 2866.9714, y: 0.0023721159, z: 2802.5728}
+  m_LocalPosition: {x: 2848.0217, y: 0.0023721159, z: 2704.0574}
   m_LocalScale: {x: 14.5, y: 14.5, z: 14.5}
   m_Children:
   - {fileID: 4146015751066450}
@@ -735,6 +736,18 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 4dcaecfa6fbbcff44abb52a84e2d0616, type: 3}
+--- !u!65 &65816372831226122
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870297287247680}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 0.01, z: 0.01}
+  m_Center: {x: 0, y: 0.02, z: -0.17}
 --- !u!114 &114040997898197766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -757,8 +770,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114710865973181368}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
+  viewIdField: 4
+  instantiationId: 4
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114104211365407176
@@ -7550,7 +7563,7 @@ ParticleSystemRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedEditorRenderState: 1
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89

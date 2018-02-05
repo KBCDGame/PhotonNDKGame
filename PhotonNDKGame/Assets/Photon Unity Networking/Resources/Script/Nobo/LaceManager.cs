@@ -130,9 +130,10 @@ public class LaceManager : Photon.MonoBehaviour
                 break;
             case LacePhase.Result:
                 Debug.Log(NowLacePhase);
+                NowLacePhase = LacePhase.End;
                 break;
             case LacePhase.End:
-                Debug.Log(NowLacePhase);
+                
                 break;
             default:
                 break;
