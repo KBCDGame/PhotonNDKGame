@@ -288,6 +288,8 @@ GameObject:
   - component: {fileID: 114056233029085398}
   - component: {fileID: 114773548226863438}
   - component: {fileID: 114470835222676998}
+  - component: {fileID: 114856609843398896}
+  - component: {fileID: 114225939429949940}
   m_Layer: 0
   m_Name: GTOCAR (1)
   m_TagString: Player
@@ -332,7 +334,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1911009313488788}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.56, z: 0}
+  m_LocalPosition: {x: 2869.9062, y: 73.026955, z: 2716.7893}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4512651101440978}
@@ -987,10 +989,25 @@ MonoBehaviour:
   maxMotorTorque: 1000
   maxbrakeTorque: 1000000
   maxSteeringAngle: 40
+  RigidBody: {fileID: 54339414289452038}
+  Velocity: {x: 0, y: 0, z: 0}
+  IsRunFlag: 0
+  Acceleration: {x: 0, y: 0, z: 0}
   MyPV: {fileID: 114773548226863438}
   MyPTV: {fileID: 114470835222676998}
-  RigidBody: {fileID: 54339414289452038}
-  MainCam: {fileID: 0}
+--- !u!114 &114225939429949940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1911009313488788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b8b2ff5c9599904e8c143eca650a781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerUIPrefab: {fileID: 1218546969427294, guid: e7253efefb365ff45a3f4d98b0d252d3,
+    type: 2}
 --- !u!114 &114470835222676998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1082,6 +1099,20 @@ MonoBehaviour:
   instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
+--- !u!114 &114856609843398896
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1911009313488788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93ab6885b03e4cf41baf79a434af8b63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Car: {fileID: 1911009313488788}
+  CarSpeedText: {fileID: 0}
+  MyPV: {fileID: 114773548226863438}
 --- !u!146 &146016609350493870
 WheelCollider:
   m_ObjectHideFlags: 1
