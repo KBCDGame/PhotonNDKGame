@@ -248,6 +248,7 @@
     <None Include="Assets\Photon Unity Networking\Resources\Object\3D\Haru\Aoi Character Pack\Viewer\Resources\Aoi\Viewer Settings\fbx_list.txt" />
     <None Include="Assets\Photon Unity Networking\Resources\Object\3D\Haru\Aoi Character Pack\Viewer\Resources\Aoi\Viewer Settings\stage_texture_list.txt" />
     <None Include="Assets\Photon Unity Networking\Resources\Object\3D\Haru\Aoi Character Pack\Viewer\Resources\Aoi\Viewer Settings\title_text.txt" />
+    <None Include="Assets\Photon Unity Networking\Resources\Shader\TranslucenceSurfaceShader.shader" />
     <None Include="Assets\Photon Unity Networking\changelog.txt" />
     <None Include="Assets\Photon Unity Networking\link.xml" />
     <None Include="Assets\Photon Unity Networking\readme.txt" />

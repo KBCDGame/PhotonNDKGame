@@ -35,6 +35,7 @@ public class SimpleCarController : Photon.MonoBehaviour
     private float Motor;
     private float Braek;
 
+    public ParticleSystem particlsystem;
     //オンライン化に必要なコンポーネントを設定。
     [SerializeField]
     private PhotonView MyPV;
@@ -45,6 +46,7 @@ public class SimpleCarController : Photon.MonoBehaviour
     void Start()
     {
         IsRunFlag = false;
+        particlsystem = GetComponent<ParticleSystem>();
     }
     public void ApplyLocalPositionToVisuals(WheelCollider collider)
     {
@@ -91,6 +93,7 @@ public class SimpleCarController : Photon.MonoBehaviour
             {
                 axleInfo.leftWheel.motorTorque = Motor;
                 axleInfo.rightWheel.motorTorque = Motor;
+                
             }
             if (axleInfo.brake)
             {
@@ -155,5 +158,10 @@ public class SimpleCarController : Photon.MonoBehaviour
     public Vector3 GetVelocity()
     {
         return Velocity;
+    }
+
+    public void  SetVelocity(Vector3 vec)
+    {
+        RigidBody.velocity = vec;
     }
 }

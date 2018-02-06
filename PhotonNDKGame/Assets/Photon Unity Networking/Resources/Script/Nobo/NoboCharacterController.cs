@@ -61,11 +61,6 @@ public class NoboCharacterController : MonoBehaviour {
             return;
         }
 
-        if (Input.GetKey(KeyCode.Joystick1Button0))
-        {
-            Debug.Log("Button A Push");
-        }
-
         MoveControl();  //移動用関数。
         RotationControl(); //旋回用関数。
 

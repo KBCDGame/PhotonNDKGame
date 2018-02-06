@@ -18,6 +18,8 @@ public class LaceManager : Photon.MonoBehaviour
     [SerializeField]
     private Transform[] StartPos =new Transform[4];     //レース開始位置。
     [SerializeField]
+    private Transform[] PodiumPos = new Transform[4];   //表彰体の位置。
+    [SerializeField]
     private PhotonView MyPV;
     [SerializeField]
     private Text CountDownTimeText;                     //カウントダウン用のテキスト。
@@ -42,6 +44,8 @@ public class LaceManager : Photon.MonoBehaviour
     private List<LacePlayerInfo> PlayerList;
     [SerializeField]
     private GameObject UseLaceCar;                      //レースで実際に使った車。
+    [SerializeField]
+    private GameObject Anim;                             //カウントダウンアニメーション。
     private enum LacePhase                              //レースの段階。
     {
         None,               //なにもしない時。
@@ -67,7 +71,7 @@ public class LaceManager : Photon.MonoBehaviour
         LaceRanking = new int[LacePlayStartNum];
         IsLaceFlag = false;
         MiniMap.SetActive(false);
-
+        Anim.SetActive(false);
     }
 
     // Update is called once per frame
@@ -84,6 +88,7 @@ public class LaceManager : Photon.MonoBehaviour
                 //カウントダウンが終わったら。
                 if (CountDownTimeText.GetComponent<CountDownTime>().CountDown()==true)
                 {
+                    Anim.SetActive(false);
                     //車のハンドブレーキを降ろす。
                     UseLaceCar.GetComponent<SimpleCarController>().ChangeRunFlag();
                     //レース開始。
@@ -119,20 +124,40 @@ public class LaceManager : Photon.MonoBehaviour
                 }
                 break;
             case LacePhase.Goal:
+                //全員ゴールが出来た。
                 if (GoalPlyerNum== LacePlayStartNum)
                 {
-                    NowLacePhase = LacePhase.Result;
+                    for (int i = 0; i < LacePlayStartNum; i++)
+                    {
+                        if (LaceRanking[i] == UseLaceCar.GetComponent<PhotonView>().ownerId)
+                        {
+                            UseLaceCar.transform.position = PodiumPos[i].position;
+                            NowLacePhase = LacePhase.Result;
+                            return;
+                        }
+                    }                    
                 }
+
+                //カウントダウンが終了した時点で全員がゴールしていなくてもレースを終わらせる。
                 if (CountDownTimeText.GetComponent<CountDownTime>().CountDown() == true)
                 {
-                    NowLacePhase = LacePhase.Result;
+                    for (int i = 0; i < LacePlayStartNum; i++)
+                    {
+                        if (LaceRanking[i] == UseLaceCar.GetComponent<PhotonView>().ownerId)
+                        {
+                            UseLaceCar.transform.position = PodiumPos[i].position;
+                            NowLacePhase = LacePhase.Result;
+                            return;
+                        }
+                    }
                 }
                 break;
             case LacePhase.Result:
                 Debug.Log(NowLacePhase);
+                NowLacePhase = LacePhase.End;
                 break;
             case LacePhase.End:
-                Debug.Log(NowLacePhase);
+                
                 break;
             default:
                 break;
@@ -232,6 +257,9 @@ public class LaceManager : Photon.MonoBehaviour
 
                 //カウントダウン開始。
                 CountDownTimeText.GetComponent<CountDownTime>().CountDownStart(3.0f,"0");
+                Anim.SetActive(true);
+                Anim.GetComponent<Animator>().Play("countDown");
+
             }
            
             //プレイヤーを開始位置に移動。
