@@ -30,6 +30,8 @@ public class LaceManager : Photon.MonoBehaviour
     [SerializeField]
     private GameObject MiniMap;                         //ミニマップ。
     [SerializeField]
+    private GameObject MainCamera;                      //メインカメラ。
+    [SerializeField]
     private bool IsLaceFlag;                            //レース中のフラグ。
     [SerializeField]
     private int LacePlayStartNum;                       //開始人数。
@@ -260,6 +262,9 @@ public class LaceManager : Photon.MonoBehaviour
                 Anim.SetActive(true);
                 Anim.GetComponent<Animator>().Play("countDown");
 
+                MainCamera.GetComponent<NoboCamera>().enabled = false;
+                MainCamera.GetComponent<ExampleClass>().enabled = true;
+                MainCamera.GetComponent<ExampleClass>().SetTarget(UseLaceCar.transform);
             }
            
             //プレイヤーを開始位置に移動。
