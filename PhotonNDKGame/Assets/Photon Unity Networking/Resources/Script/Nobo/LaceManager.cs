@@ -45,7 +45,7 @@ public class LaceManager : Photon.MonoBehaviour
     [SerializeField]
     private GameObject UseLaceCar;                      //レースで実際に使った車。
     [SerializeField]
-    private GameObject Anim;                             //カウントダウンアニメーション。
+    private GameObject Anim;                            //カウントダウンアニメーション。
     private enum LacePhase                              //レースの段階。
     {
         None,               //なにもしない時。
