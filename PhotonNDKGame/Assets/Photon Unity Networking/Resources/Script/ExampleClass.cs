@@ -7,15 +7,19 @@ public class ExampleClass : MonoBehaviour
     public Transform target;
 
     //ターゲットからカメラをどれだけ離すか。
+    [SerializeField]
     private const float distance = 5.2f;
+    [SerializeField]
     private Vector3 _offset = new Vector3(0.0f, 1.4f, distance);
+    [SerializeField]
     private Vector3 _lookDown = new Vector3(0.0f, 0.0f, 0.0f);
+    [SerializeField]
     private const float _followRate = 0.1f;
 
     void Start()
     {
-        //transform.position = target.TransformPoint(_offset);
-        //transform.LookAt(target, Vector3.up);
+        transform.position = target.TransformPoint(_offset);
+        transform.LookAt(target, Vector3.up);
     }
 
     void FixedUpdate()
@@ -31,5 +35,12 @@ public class ExampleClass : MonoBehaviour
             transform.LookAt(target, Vector3.up);
             transform.Rotate(_lookDown);
         }
+    }
+
+    public void SetTarget(Transform trans)
+    {
+        target = trans;
+        transform.position = target.TransformPoint(_offset);
+        transform.LookAt(target, Vector3.up);
     }
 }
