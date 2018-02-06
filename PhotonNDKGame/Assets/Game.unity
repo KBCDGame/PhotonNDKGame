@@ -5066,7 +5066,6 @@ MonoBehaviour:
   IfPos: {x: 1012, y: 2.8, z: 774}
   PlayerPrefab: {fileID: 1508788585902566, guid: 1dba949e65734244282d0d80db17f888,
     type: 2}
-  OneGeneratedObjectPrefabList: []
 --- !u!4 &891160277
 Transform:
   m_ObjectHideFlags: 0
@@ -6264,7 +6263,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ReservationPanel: {fileID: 245544491}
-  MaxReservationNum: 1
   CanPlayFlag: 1
   Rb: {fileID: 1081474393}
   MyPTV: {fileID: 1081474394}
@@ -9317,6 +9315,7 @@ MonoBehaviour:
   TotalTime: 0
   CountDownTimeText: {fileID: 1643063559}
   IsCountDownEnd: 1
+  TimeToString: 0
 --- !u!222 &1643063561
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9466,11 +9465,14 @@ MonoBehaviour:
   CountDownTimeText: {fileID: 1643063559}
   CarSpeedText: {fileID: 1096732078}
   LaceTimeText: {fileID: 0}
-  IsStartFlag: 0
+  MiniMap: {fileID: 0}
+  IsLaceFlag: 0
   LacePlayStartNum: 1
   CountDownTime: 0
+  LaceRanking: 
+  GoalPlyerNum: 0
   PlayerList: []
-  UseLaceCar: {fileID: 0}
+  UseLaceCar: {fileID: 1870297287247680, guid: 91079bd6a7b599d428040859ddbb6870, type: 2}
   NowLacePhase: 0
 --- !u!4 &1651558346
 Transform:
