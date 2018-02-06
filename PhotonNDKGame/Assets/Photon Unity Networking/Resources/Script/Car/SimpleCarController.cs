@@ -159,4 +159,9 @@ public class SimpleCarController : Photon.MonoBehaviour
     {
         return Velocity;
     }
+
+    public void  SetVelocity(Vector3 vec)
+    {
+        RigidBody.velocity = vec;
+    }
 }
