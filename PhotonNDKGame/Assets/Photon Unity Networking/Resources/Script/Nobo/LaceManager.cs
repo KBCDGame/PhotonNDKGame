@@ -18,6 +18,8 @@ public class LaceManager : Photon.MonoBehaviour
     [SerializeField]
     private Transform[] StartPos =new Transform[4];     //レース開始位置。
     [SerializeField]
+    private Transform[] PodiumPos = new Transform[4];   //表彰体の位置。
+    [SerializeField]
     private PhotonView MyPV;
     [SerializeField]
     private Text CountDownTimeText;                     //カウントダウン用のテキスト。
@@ -119,13 +121,32 @@ public class LaceManager : Photon.MonoBehaviour
                 }
                 break;
             case LacePhase.Goal:
+                //全員ゴールが出来た。
                 if (GoalPlyerNum== LacePlayStartNum)
                 {
-                    NowLacePhase = LacePhase.Result;
+                    for (int i = 0; i < LacePlayStartNum; i++)
+                    {
+                        if (LaceRanking[i] == UseLaceCar.GetComponent<PhotonView>().ownerId)
+                        {
+                            UseLaceCar.transform.position = PodiumPos[i].position;
+                            NowLacePhase = LacePhase.Result;
+                            return;
+                        }
+                    }                    
                 }
+
+                //カウントダウンが終了した時点で全員がゴールしていなくてもレースを終わらせる。
                 if (CountDownTimeText.GetComponent<CountDownTime>().CountDown() == true)
                 {
-                    NowLacePhase = LacePhase.Result;
+                    for (int i = 0; i < LacePlayStartNum; i++)
+                    {
+                        if (LaceRanking[i] == UseLaceCar.GetComponent<PhotonView>().ownerId)
+                        {
+                            UseLaceCar.transform.position = PodiumPos[i].position;
+                            NowLacePhase = LacePhase.Result;
+                            return;
+                        }
+                    }
                 }
                 break;
             case LacePhase.Result:
