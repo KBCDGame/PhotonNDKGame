@@ -825,7 +825,7 @@ MonoBehaviour:
   Velocity: {x: 0.00000037178347, y: -0.000008100644, z: 0.000000690644}
   IsRunFlag: 0
   Acceleration: {x: 0, y: 0, z: 0}
-  particlsystem: {fileID: 0}
+  particle: {fileID: 1396435398320632, guid: 74c9f06799ba111488bdcebfde9c6a41, type: 2}
   MyPV: {fileID: 114941323265784686}
   MyPTV: {fileID: 114153350696872542}
 --- !u!114 &114941323265784686
