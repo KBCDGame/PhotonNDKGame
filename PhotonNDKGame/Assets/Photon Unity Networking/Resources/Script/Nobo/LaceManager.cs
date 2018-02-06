@@ -44,6 +44,8 @@ public class LaceManager : Photon.MonoBehaviour
     private List<LacePlayerInfo> PlayerList;
     [SerializeField]
     private GameObject UseLaceCar;                      //レースで実際に使った車。
+    [SerializeField]
+    private GameObject Anim;                             //カウントダウンアニメーション。
     private enum LacePhase                              //レースの段階。
     {
         None,               //なにもしない時。
@@ -69,7 +71,7 @@ public class LaceManager : Photon.MonoBehaviour
         LaceRanking = new int[LacePlayStartNum];
         IsLaceFlag = false;
         MiniMap.SetActive(false);
-
+        Anim.SetActive(false);
     }
 
     // Update is called once per frame
@@ -86,6 +88,7 @@ public class LaceManager : Photon.MonoBehaviour
                 //カウントダウンが終わったら。
                 if (CountDownTimeText.GetComponent<CountDownTime>().CountDown()==true)
                 {
+                    Anim.SetActive(false);
                     //車のハンドブレーキを降ろす。
                     UseLaceCar.GetComponent<SimpleCarController>().ChangeRunFlag();
                     //レース開始。
@@ -254,6 +257,9 @@ public class LaceManager : Photon.MonoBehaviour
 
                 //カウントダウン開始。
                 CountDownTimeText.GetComponent<CountDownTime>().CountDownStart(3.0f,"0");
+                Anim.SetActive(true);
+                Anim.GetComponent<Animator>().Play("countDown");
+
             }
            
             //プレイヤーを開始位置に移動。

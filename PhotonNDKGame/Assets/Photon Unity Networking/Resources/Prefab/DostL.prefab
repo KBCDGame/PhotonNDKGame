@@ -52,7 +52,7 @@ ParticleSystem:
   simulationSpeed: 0.5
   looping: 1
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 0
   useRigidbodyForVelocity: 1
