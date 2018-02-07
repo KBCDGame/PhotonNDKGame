@@ -34,8 +34,6 @@ public class SimpleCarController : Photon.MonoBehaviour
     private Vector3 Acceleration;  //加速度
     private float Motor;
     private float Braek;
-    [SerializeField]
-    public GameObject particle;
     //オンライン化に必要なコンポーネントを設定。
     [SerializeField]
     private PhotonView MyPV;
@@ -46,6 +44,7 @@ public class SimpleCarController : Photon.MonoBehaviour
     void Start()
     {
         IsRunFlag = false;
+        
     }
     public void ApplyLocalPositionToVisuals(WheelCollider collider)
     {
@@ -75,7 +74,6 @@ public class SimpleCarController : Photon.MonoBehaviour
         Motor = maxMotorTorque * Input.GetAxis("Accel");
         Braek = maxbrakeTorque * Input.GetAxis("Jump");
         float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
-
         if (IsRunFlag == false)
         {
             Stop();
@@ -92,8 +90,7 @@ public class SimpleCarController : Photon.MonoBehaviour
             {
                 axleInfo.leftWheel.motorTorque = Motor;
                 axleInfo.rightWheel.motorTorque = Motor;
-                particle.GetComponent<ParticleSystem>().Play();
-                
+              
             }
             if (axleInfo.brake)
             {
@@ -102,8 +99,9 @@ public class SimpleCarController : Photon.MonoBehaviour
             }
             ApplyLocalPositionToVisuals(axleInfo.leftWheel);
             ApplyLocalPositionToVisuals(axleInfo.rightWheel);
+          
         }
-
+      
         //スムーズな同期のためにPhotonTransformViewに速度値を渡す。
         //RigidBody.transform.position -= Acceleration;
         Velocity = RigidBody.velocity;

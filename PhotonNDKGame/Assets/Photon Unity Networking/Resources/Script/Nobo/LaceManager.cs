@@ -72,6 +72,8 @@ public class LaceManager : Photon.MonoBehaviour
         IsLaceFlag = false;
         MiniMap.SetActive(false);
         Anim.SetActive(false);
+
+        
     }
 
     // Update is called once per frame
@@ -86,7 +88,7 @@ public class LaceManager : Photon.MonoBehaviour
                 break;
             case LacePhase.Start:
                 //カウントダウンが終わったら。
-                if (CountDownTimeText.GetComponent<CountDownTime>().CountDown()==true)
+                if (Anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >1/*CountDownTimeText.GetComponent<CountDownTime>().CountDown()==true*/)
                 {
                     Anim.SetActive(false);
                     //車のハンドブレーキを降ろす。
@@ -259,6 +261,7 @@ public class LaceManager : Photon.MonoBehaviour
                 CountDownTimeText.GetComponent<CountDownTime>().CountDownStart(3.0f,"0");
                 Anim.SetActive(true);
                 Anim.GetComponent<Animator>().Play("countDown");
+                SoundManager.Instance.PlaySE(1);
 
             }
            

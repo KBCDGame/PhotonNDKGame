@@ -3354,6 +3354,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114264761901708732, guid: 654487a06246bb4479e6701302274155,
+        type: 2}
+      propertyPath: SE.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4958746685250336, guid: 654487a06246bb4479e6701302274155, type: 2}
       propertyPath: m_LocalPosition.x
       value: 2886.93
@@ -3386,6 +3391,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 18
       objectReference: {fileID: 0}
+    - target: {fileID: 114264761901708732, guid: 654487a06246bb4479e6701302274155,
+        type: 2}
+      propertyPath: SE.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 73355e4bf423c0743b98a14c26615eed, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 654487a06246bb4479e6701302274155, type: 2}
   m_IsPrefabParent: 0
@@ -8154,7 +8164,7 @@ Animator:
   m_GameObject: {fileID: 1348171822}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3bd8eb1d2fde75d4ba35399a9d5e5a3f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8fa65c3ea2597984ead66ed83af9c56a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
