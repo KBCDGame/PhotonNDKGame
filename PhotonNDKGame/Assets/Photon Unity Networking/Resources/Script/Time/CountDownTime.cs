@@ -39,7 +39,7 @@ public class CountDownTime : MonoBehaviour {
         TimeToString = type;
     }
 
-    public bool CountDown()
+    public bool GetCountDownEnd()
     {
         //制限時間以下。
         if (TotalTime <= 0f)
