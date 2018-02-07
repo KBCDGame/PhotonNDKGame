@@ -11,7 +11,7 @@ public class LaceGoal : MonoBehaviour {
     {
         if (other.gameObject.tag == "Car")
         {
-            LaceManager.GetComponent<LaceManager>().AddLaceResult(other.gameObject.GetComponent<PhotonView>().ownerId, PhotonNetwork.playerName, true);
+            LaceManager.GetComponent<LaceManager>().AddLaceResult(other.gameObject.GetComponent<PhotonView>().ownerId, other.gameObject.GetComponent<PhotonView>().owner.NickName);
             other.gameObject.GetComponent<SimpleCarController>().ChangeRunFlag();
         }
     }

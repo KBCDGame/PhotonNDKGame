@@ -83,9 +83,8 @@ public class LaceManager : Photon.MonoBehaviour
         //レースで使う変数の初期化。
         LaceGoalID = new int[LacePlayStartNum];
         IsLaceFlag = false;
-        
 
-
+        LaceUseVariableReset();
 
     }
 
@@ -122,7 +121,7 @@ public class LaceManager : Photon.MonoBehaviour
                 if (GoalPlyerNum == 1)
                 {
                     //レース時間テキスト非表示。
-                    LaceTimeText.gameObject.SetActive(false);
+                    //LaceTimeText.gameObject.SetActive(false);
                     //カウントダウンテキストを表示。
                     for (int i = 0; i < LacePlayStartNum; i++)
                     {
@@ -159,49 +158,30 @@ public class LaceManager : Photon.MonoBehaviour
                 //カウントダウンが終了した時点で全員がゴールしていなくてもレースを終わらせる。
                 if (CountDownTimeText.GetComponent<CountDownTime>().GetCountDownEnd() == true)
                 {
+                    //カウントダウンを非表示。
+                    CountDownTimeText.gameObject.SetActive(false);
                     for (int i = 0; i < LacePlayStartNum; i++)
                     {
+                        //ゴールしている時の処理。
                         if (LaceGoalID[i] == UseLaceCar.GetComponent<PhotonView>().ownerId)
                         {
                             UseLaceCar.transform.position = PodiumPos[i].position;
-                            //カウントダウン開始。
-                            CountDownTimeText.gameObject.SetActive(false);
-                            NowLacePhase = LacePhase.Result;
-                            
+                           
                         }
+                        //ゴールしていない
+                        else if (LaceGoalID[i] == -1)
+                        {
+                            //ゴールしていないプレイヤーのリザルトを設定。
+                            MyPV.RPC("RPCAddLaceResult", PhotonTargets.All, -1, "----------", PhotonNetwork.playerName);
+                        }
+                        NowLacePhase = LacePhase.Result;
                     }
 
-                    return;
+                   
                 }
                 break;
             case LacePhase.Result:
 
-                //ゴールしていないプレイヤーがいる。
-                if (LacePlayStartNum!=GoalPlyerNum)
-                {
-                    //ゴールしていないプレイヤーを探す。
-                    for (int i = 0; i < LacePlayStartNum;)
-                    {
-                        for (int j = 0; j < GoalPlyerNum; j++)
-                        {
-                            //ゴールしているなら何もしない。
-                            if (LaceGoalID[j] == PlayerList[i].ID)
-                            {
-                                i++;
-                                break;
-                            }
-
-                            //ゴールしていないプレイヤーのリザルトを設定。。
-                            if (j > GoalPlyerNum)
-                            {
-                                MyPV.RPC("RPCAddLaceResult", PhotonTargets.All, PlayerList[i].ID, "----------", PlayerList[i].Player.GetComponent<PhotonView>().owner, false);
-                                i++;
-                                break;
-                            }
-                        }
-                    }
-                }
-                
                 //リザルトを表示。
                 LaceResultPanel.SetActive(true);
                 //ミニマップを非表示。
@@ -311,6 +291,9 @@ public class LaceManager : Photon.MonoBehaviour
                 Anim.SetActive(true);
                 Anim.GetComponent<Animator>().Play("countDown");
 
+                
+                SoundManager.Instance.PlaySE(1);
+
                 MainCamera.GetComponent<NoboCamera>().enabled = false;
                 MainCamera.GetComponent<ExampleClass>().enabled = true;
                 MainCamera.GetComponent<ExampleClass>().SetTarget(UseLaceCar.transform);
@@ -325,9 +308,9 @@ public class LaceManager : Photon.MonoBehaviour
     }
 
     //ゴールに着いた順番にPhotonIDと名前とTimeをリストに追加。
-    public void  AddLaceResult(int id,string name,bool isGoal)
+    public void  AddLaceResult(int id,string name)
     {
-        MyPV.RPC("RPCAddLaceResult", PhotonTargets.All, id, LaceTimeText.text,name, isGoal);
+        MyPV.RPC("RPCAddLaceResult", PhotonTargets.All, id, LaceTimeText.text,name);
     }
 
     public  void LaceUseVariableReset()
@@ -339,7 +322,7 @@ public class LaceManager : Photon.MonoBehaviour
     }
 
     [PunRPC]
-    private void RPCAddLaceResult(int id,string time,string name,bool isGoal)
+    private void RPCAddLaceResult(int id,string time,string name)
     {
         //同じIDははじく。
         for (int i = 0; i < LacePlayStartNum; i++)
@@ -353,21 +336,25 @@ public class LaceManager : Photon.MonoBehaviour
         if (IsLaceFlag == true)
         {
             //正常にゴールした。
-            if (isGoal == true)
+            if (id !=-1)
             {
-                //順位、名前、Timeをテキストに設定。
+                //ゴールしたIDを追加。
+                LaceGoalID[GoalPlyerNum] = id;
+
+                //ゴールした時間を設定。
+                LaceResultTimeTextList[GoalPlyerNum].text = time;
+
+                //順位、名前をテキストに設定。
                 LaceResultTextList[GoalPlyerNum].text = (GoalPlyerNum + 1).ToString() + "        " + name;
+            
             }
             else
             {
-                //正常にゴール出来なかったので順に無し。
+                //ゴールした時間を設定。
+                LaceResultTimeTextList[GoalPlyerNum].text = time;
+                //正常にゴール出来なかったので順位無し。
                 LaceResultTextList[GoalPlyerNum].text = "-" + "        " + name;
             }
-            //ゴールしたIDを追加。
-            LaceGoalID[GoalPlyerNum] = id;
-
-            //ゴールした時間を設定。
-            LaceResultTimeTextList[GoalPlyerNum].text = time;
 
             //Gaolした人数を更新。
             GoalPlyerNum++;
