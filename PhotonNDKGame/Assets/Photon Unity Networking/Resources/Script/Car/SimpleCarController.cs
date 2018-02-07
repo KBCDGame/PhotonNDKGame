@@ -67,7 +67,6 @@ public class SimpleCarController : Photon.MonoBehaviour
     public void FixedUpdate()
     {
         //自キャラかどうかの判定。
-        //自キャラであれば実行。
         if (!MyPV.isMine)
         {
             return;
@@ -122,10 +121,14 @@ public class SimpleCarController : Photon.MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Joystick1Button6))
+        if (IsRunFlag != false)
         {
-            CarRest();
+            if (Input.GetKeyDown(KeyCode.Joystick1Button6))
+            {
+                CarRest();
+            }
         }
+       
     }
 
     //車が倒れた時に使うリセット処理。
@@ -149,19 +152,17 @@ public class SimpleCarController : Photon.MonoBehaviour
         IsRunFlag = !IsRunFlag;
     }
 
-    //減速処理。
+    //車を止める処理。
     private void Stop()
     {
+        Motor = 0.0f;
         Braek = 1.0f;
+        RigidBody.velocity = Vector3.zero;
+        MyPTV.SetSynchronizedValues(Velocity, 0);
     }
 
     public Vector3 GetVelocity()
     {
         return Velocity;
-    }
-
-    public void  SetVelocity(Vector3 vec)
-    {
-        RigidBody.velocity = vec;
     }
 }

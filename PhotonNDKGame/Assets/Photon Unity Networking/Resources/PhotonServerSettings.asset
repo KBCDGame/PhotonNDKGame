@@ -43,4 +43,5 @@ MonoBehaviour:
   - ChangeCanPlayFlag
   - RPCAddLacePriority
   - RPCCountDown
+  - RPCAddLaceResult
   DisableAutoOpenWizard: 1
