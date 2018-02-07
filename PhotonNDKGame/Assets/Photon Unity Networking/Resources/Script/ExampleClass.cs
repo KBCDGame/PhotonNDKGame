@@ -7,13 +7,13 @@ public class ExampleClass : MonoBehaviour
     public Transform target;
 
     //ターゲットからカメラをどれだけ離すか。
-    [SerializeField]
+    //[SerializeField]
     private const float distance = 5.2f;
-    [SerializeField]
+   //[SerializeField]
     private Vector3 _offset = new Vector3(0.0f, 1.4f, distance);
-    [SerializeField]
+    //[SerializeField]
     private Vector3 _lookDown = new Vector3(0.0f, 0.0f, 0.0f);
-    [SerializeField]
+    //[SerializeField]
     private const float _followRate = 0.1f;
 
     void Start()
