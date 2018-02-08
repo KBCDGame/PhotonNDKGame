@@ -7,14 +7,14 @@ public class ExampleClass : MonoBehaviour
     public Transform target;
 
     //ターゲットからカメラをどれだけ離すか。
-    //[SerializeField]
+    [SerializeField]
     private const float distance = 5.2f;
-   //[SerializeField]
+    [SerializeField]
     private Vector3 _offset = new Vector3(0.0f, 1.4f, distance);
-    //[SerializeField]
+    [SerializeField]
     private Vector3 _lookDown = new Vector3(0.0f, 0.0f, 0.0f);
-    //[SerializeField]
-    private const float _followRate = 0.1f;
+    [SerializeField]
+    private const float _followRate = 0.0001f;
 
     void Start()
     {
@@ -24,7 +24,7 @@ public class ExampleClass : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (target!=null)
+        if (target != null)
         {
             Vector3 desiredPosition = target.TransformPoint(_offset);
             Vector3 lerp = Vector3.Lerp(transform.position, desiredPosition, _followRate);
@@ -40,7 +40,10 @@ public class ExampleClass : MonoBehaviour
     public void SetTarget(Transform trans)
     {
         target = trans;
-        transform.position = target.TransformPoint(_offset);
-        transform.LookAt(target, Vector3.up);
+        if (target != null)
+        {
+            transform.position = target.TransformPoint(_offset);
+            transform.LookAt(target, Vector3.up);
+        }
     }
 }

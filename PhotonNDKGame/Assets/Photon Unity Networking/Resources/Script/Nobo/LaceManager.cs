@@ -81,6 +81,7 @@ public class LaceManager : Photon.MonoBehaviour
         LaceResultPanel.SetActive(false);
         LaceMiniMap.SetActive(false);
         Anim.SetActive(false);
+        MainCamera.GetComponent<ExampleClass>().enabled = false;
 
         //レースで使う変数の初期化。
         LaceGoalID = new int[LacePlayStartNum];
@@ -181,7 +182,6 @@ public class LaceManager : Photon.MonoBehaviour
                 }
                 break;
             case LacePhase.Result:
-
                 //レース時間テキスト非表示。
                 LaceTimeText.gameObject.SetActive(false);
                 //リザルトを表示。
@@ -216,6 +216,7 @@ public class LaceManager : Photon.MonoBehaviour
 
                         MainCamera.GetComponent<NoboCamera>().enabled = true;
                         MainCamera.GetComponent<ExampleClass>().enabled = false;
+                        MainCamera.GetComponent<ExampleClass>().SetTarget(null);
 
                         PhotonNetwork.Destroy(UseLaceCar);
                         UseLaceCar = null;
@@ -292,6 +293,7 @@ public class LaceManager : Photon.MonoBehaviour
             LacePlayerList[i].Player.GetComponent<PlayerManager>().AnEnable();
             //プレイヤーを非アクティブ化。
             LacePlayerList[i].Player.SetActive(false);
+
             if (LacePlayerList[i].ID == PhotonNetwork.player.ID)
             {
                 //自キャラでのみ車を作成。
@@ -324,6 +326,9 @@ public class LaceManager : Photon.MonoBehaviour
                 Anim.GetComponent<Animator>().Play("countDown");
 
                 SoundManager.Instance.PlaySE(1);
+                MainCamera.GetComponent<NoboCamera>().enabled = false;
+                MainCamera.GetComponent<ExampleClass>().enabled = true;
+                MainCamera.GetComponent<ExampleClass>().SetTarget(UseLaceCar.GetComponent<SimpleCarController>().GetLaceCameraTrans());
                 //プレイヤーを開始位置に移動。
                 LacePlayerList[i].Player.transform.position = LaceStartPos[i].position;
             }
@@ -344,6 +349,13 @@ public class LaceManager : Photon.MonoBehaviour
         {
             LaceGoalID[i]= -1;
         }
+
+        CountDownTimeText.gameObject.SetActive(false);
+        CarSpeedText.gameObject.SetActive(false);
+        LaceTimeText.gameObject.SetActive(false);
+        LaceResultPanel.SetActive(false);
+        LaceMiniMap.SetActive(false);
+        Anim.SetActive(false);
     }
 
     //ゴールをした車のID、レースの時間、プレイヤーの名前、trueなら正常にゴールfalseなら時間切れのゴール。
@@ -376,7 +388,7 @@ public class LaceManager : Photon.MonoBehaviour
             else
             {
                 //正常にゴール出来なかったので順位無し。
-                LaceResultTextList[GoalPlyerNum].text = "ー" + "        " + name;
+                LaceResultTextList[GoalPlyerNum].text = "--" + "        " + name;
             }
 
             //Gaolした人数を更新。

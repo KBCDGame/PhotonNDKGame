@@ -39,6 +39,8 @@ public class SimpleCarController : Photon.MonoBehaviour
     private PhotonView MyPV;
     [SerializeField]
     private PhotonTransformView MyPTV;
+    [SerializeField]
+    private Transform LaceCameraTrans;
     // finds the corresponding visual wheel
     // correctly applies the transform
     void Start()
@@ -163,4 +165,10 @@ public class SimpleCarController : Photon.MonoBehaviour
     {
         return Velocity;
     }
+
+    public Transform GetLaceCameraTrans()
+    {
+        return LaceCameraTrans;
+    }
+
 }
