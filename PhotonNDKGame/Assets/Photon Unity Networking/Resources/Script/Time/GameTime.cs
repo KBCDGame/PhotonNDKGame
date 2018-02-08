@@ -36,7 +36,7 @@ public class GameTime : MonoBehaviour
         }
 
         //分は00分、秒は0.00まで表示。
-        TimerText.text = Minute.ToString("0") + ":" + Seconds.ToString("F2");
+        TimerText.text = string.Format("{0:00}:{1:00.00}", Minute, Seconds);
 
         OldSeconds = Seconds;
     }

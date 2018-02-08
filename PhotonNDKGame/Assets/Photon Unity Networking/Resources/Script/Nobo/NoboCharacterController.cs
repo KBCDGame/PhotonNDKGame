@@ -29,7 +29,7 @@ public class NoboCharacterController : MonoBehaviour {
     private Vector3 MoveDirection = Vector3.zero;
 
     [SerializeField]
-    private Animator PlayerAnimator; //アニメーション
+    private Animator PlayerAnimator; //アニメーション。
 
     // Use this for initialization
     void Start()
@@ -51,13 +51,6 @@ public class NoboCharacterController : MonoBehaviour {
         //自キャラじゃなければ実行。
         if (!MyPV.isMine)
         {
-            return;
-        }
-
-        if (transform.parent!=null)
-        {
-
-            MyPTV.SetSynchronizedValues(transform.parent.position, 0);
             return;
         }
 
@@ -139,8 +132,6 @@ public class NoboCharacterController : MonoBehaviour {
             
         }
     }
-
-
     //if (Input.GetKey(KeyCode.Joystick1Button0))
     //{
     //    Debug.Log("Button A Push");

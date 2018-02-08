@@ -11,7 +11,9 @@ public class LaceGoal : MonoBehaviour {
     {
         if (other.gameObject.tag == "Car")
         {
-            LaceManager.GetComponent<LaceManager>().AddLaceResult(other.gameObject.GetComponent<PhotonView>().ownerId, other.gameObject.GetComponent<PhotonView>().owner.NickName);
+            //ゴールに衝突した車のIDとプレイヤーの名前をレースマネージャーに送信。
+            LaceManager.GetComponent<LaceManager>().AddLaceResult(other.gameObject.GetComponent<PhotonView>().ownerId, other.gameObject.GetComponent<PhotonView>().owner.NickName, true);
+            //ゴールした車のハンドブレーキを引く。
             other.gameObject.GetComponent<SimpleCarController>().ChangeRunFlag();
         }
     }
