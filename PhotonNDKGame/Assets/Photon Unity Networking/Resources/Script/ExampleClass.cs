@@ -10,11 +10,11 @@ public class ExampleClass : MonoBehaviour
     //[SerializeField]
     private const float distance = 5.2f;
    //[SerializeField]
-    private Vector3 _offset = new Vector3(0.0f, 1.4f, distance);
+    private Vector3 _offset = new Vector3(0.0f, 1.5f, distance);
     //[SerializeField]
-    private Vector3 _lookDown = new Vector3(0.0f, 0.0f, 0.0f);
+    private Vector3 _lookDown = new Vector3(-15.0f, 0.0f, 0.0f);
     //[SerializeField]
-    private const float _followRate = 0.1f;
+    private const float _followRate = 0.01f;
 
     void Start()
     {
