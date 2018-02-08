@@ -10,14 +10,12 @@ public class LCube : MonoBehaviour {
 	}
 
     // Update is called once per frame
-    float x;
     float y;
     void Update()
     {
 
-        x += Time.deltaTime * 80;
-        y += Time.deltaTime * 80;
-        transform.rotation = Quaternion.Euler(x, y, 0);
+        y += Time.deltaTime * 40;
+        transform.rotation = Quaternion.Euler(-90, y, 0);
 
     }
 }
