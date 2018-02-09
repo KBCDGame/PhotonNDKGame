@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TitleCilinder : MonoBehaviour {
+public class titlewheel : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -11,8 +11,8 @@ public class TitleCilinder : MonoBehaviour {
 
     // Update is called once per frame
     float y;
-    void Update () {
-        y += Time.deltaTime * -10;
-        transform.rotation = Quaternion.Euler(0, 0, y);
+	void Update () {
+        y += Time.deltaTime * -400;
+        transform.rotation = Quaternion.Euler(y, 90, 0);
     }
 }
