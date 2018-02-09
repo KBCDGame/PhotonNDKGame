@@ -98,7 +98,7 @@ public class GameReservationPerson : Photon.MonoBehaviour {
     private void LaceManagerSetId()
     {
         LaceManager LM = LaceManager.GetComponent<LaceManager>();
-        for (int i = 0; i < ReservationPlayerList.Count; i++)
+        for (int i = 0; i < LaceManager.GetComponent<LaceManager>().GetLacePlayStartNum(); i++)
         {
             LM.AddLacePlyerIdList(ReservationPlayerList[i]);
         }

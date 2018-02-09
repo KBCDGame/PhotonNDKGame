@@ -4015,7 +4015,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000013989857612, guid: f85e3056e6d31594d8f370d05da256ff, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 25.965881
+      value: 34.33
       objectReference: {fileID: 0}
     - target: {fileID: 4000013989857612, guid: f85e3056e6d31594d8f370d05da256ff, type: 2}
       propertyPath: m_LocalPosition.y
@@ -4023,7 +4023,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013989857612, guid: f85e3056e6d31594d8f370d05da256ff, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 21.180786
+      value: -21.07
       objectReference: {fileID: 0}
     - target: {fileID: 4000013989857612, guid: f85e3056e6d31594d8f370d05da256ff, type: 2}
       propertyPath: m_LocalRotation.x
@@ -4056,6 +4056,14 @@ Prefab:
     - target: {fileID: 4000013989857612, guid: f85e3056e6d31594d8f370d05da256ff, type: 2}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010728788160, guid: f85e3056e6d31594d8f370d05da256ff, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010728788160, guid: f85e3056e6d31594d8f370d05da256ff, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.18
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 95000012239673052, guid: f85e3056e6d31594d8f370d05da256ff, type: 2}
@@ -11884,7 +11892,15 @@ MonoBehaviour:
   IsLaceFlag: 0
   LacePlayStartNum: 1
   CountDownTime: 0
-  LaceGoalID: 
+  LaceGoalPlayerInfoList:
+  - ID: 0
+    IsGoal: 0
+  - ID: 0
+    IsGoal: 0
+  - ID: 0
+    IsGoal: 0
+  - ID: 0
+    IsGoal: 0
   GoalPlyerNum: 0
   LacePlayerList: []
   UseLaceCar: {fileID: 0}
