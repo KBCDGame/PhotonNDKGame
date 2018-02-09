@@ -45,4 +45,5 @@ MonoBehaviour:
   - RPCCountDown
   - RPCAddLaceResult
   - Deleta
+  - BackLobby
   DisableAutoOpenWizard: 1
