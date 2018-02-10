@@ -46,6 +46,8 @@ public class LaceManager : Photon.MonoBehaviour
     [SerializeField]
     private Text[] LaceResultTimeTextList = new Text[4];    //レースのTimeを出すテキスト(名前と一緒に表示するとTimeがずれるのでそれを防ぐためのテキスト)。
     [SerializeField]
+    private TextMesh ReservationPlayerNameText = new TextMesh();    //予約しているプレイヤーの名前テキスト。
+    [SerializeField]
     private GameObject LaceResultTransparentPanel;          //リザルトで表示する透明な赤いパネル。
     [SerializeField]
     private GameObject LaceMiniMap;                         //レース中に使うミニマップ。
@@ -65,6 +67,8 @@ public class LaceManager : Photon.MonoBehaviour
     private List<LacePlayerInfo> LacePlayerList;            //レースに参加するプレイヤーリスト。
     [SerializeField]
     private GameObject UseLaceCar;                          //レースで実際に使った車。
+    [SerializeField]
+    private Button BackLobbyButton;                         //リザルトからlobbyに戻るボタン。
     private enum LacePhase                                  //レースの段階。
     {
         None,               //なにもしない時。
@@ -83,14 +87,9 @@ public class LaceManager : Photon.MonoBehaviour
     {
         //カウントダウンテキスト、速度表示テキスト、レース時間テキスト、
         //リザルトパネル、ミニマップ、アニメーションのカウントダウンを非表示。
-        CountDownTimeText.gameObject.SetActive(false);
-        CarSpeedText.gameObject.SetActive(false);
-        LaceTimeText.gameObject.SetActive(false);
-        LaceResultPanel.SetActive(false);
-        LaceMiniMap.SetActive(false);
-        Anim.SetActive(false);
+        SetActiveCollection(false);
         MainCamera.GetComponent<ExampleClass>().enabled = false;
-
+        BackLobbyButton.gameObject.SetActive(false);
         IsLaceFlag = false;
 
         LaceUseVariableReset();
@@ -99,9 +98,15 @@ public class LaceManager : Photon.MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateReservationPlayerNameText();
+        
         switch (NowLacePhase)
         {
             case LacePhase.None:
+                if (GoalPlyerNum < 0)
+                {
+                    LaceUseVariableReset();
+                }
                 break;
             case LacePhase.Ready:
                 LaceReady();
@@ -128,7 +133,7 @@ public class LaceManager : Photon.MonoBehaviour
                 //プレイヤーが一人ゴールした。
                 if (GoalPlyerNum == 1)
                 {
-                   
+
                     //カウントダウンテキストを表示。
                     for (int i = 0; i < LacePlayStartNum; i++)
                     {
@@ -146,7 +151,7 @@ public class LaceManager : Photon.MonoBehaviour
                 break;
             case LacePhase.Goal:
                 //全員ゴールが出来た。
-                if (GoalPlyerNum== LacePlayStartNum)
+                if (GoalPlyerNum == LacePlayStartNum)
                 {
                     for (int i = 0; i < LacePlayStartNum; i++)
                     {
@@ -204,6 +209,8 @@ public class LaceManager : Photon.MonoBehaviour
                 LaceResultPanel.SetActive(true);
                 //ミニマップを非表示。
                 LaceMiniMap.SetActive(false);
+                //lobbyに戻るボタンを表示。
+                BackLobbyButton.gameObject.SetActive(true);
                 break;
             case LacePhase.End:
                 for (int i = 0; i < LacePlayStartNum; i++)
@@ -236,7 +243,7 @@ public class LaceManager : Photon.MonoBehaviour
             default:
                 break;
         }
-        
+
     }
     //予約したプレイヤーのIDをリストに追加。
     public void AddLacePlyerIdList(int id)
@@ -247,20 +254,6 @@ public class LaceManager : Photon.MonoBehaviour
     [PunRPC]
     public void RPCAddLacePlyerIdList(int id)
     {
-
-        if (LacePlayerList.Count > 0)
-        {
-            //同じIDははじく。
-            for (int i = 0; i < LacePlayStartNum; i++)
-            {
-                if (LacePlayerList[i].ID == id)
-                {
-                    return;
-                }
-            }
-        }
-
-
         //ゲーム上のプレイヤー取得。
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         LacePlayerInfo info = new LacePlayerInfo();
@@ -279,15 +272,7 @@ public class LaceManager : Photon.MonoBehaviour
 
         LacePlayerList.Add(info);
 
-        //開始人数になったら準備開始。
-        if (LacePlayStartNum == LacePlayerList.Count)
-        {
-            //レースの段階を準備に進める。
-            NowLacePhase = LacePhase.Ready;
-
-            //レース中フラグを立てる。
-            IsLaceFlag = true;
-        }
+        CheckLacePhaseShiftToReady();
     }
     //指定された秒だけ待つ用のコルーチン。  
     private IEnumerator WaitSeceond(float second)
@@ -340,6 +325,7 @@ public class LaceManager : Photon.MonoBehaviour
                 Anim.GetComponent<Animator>().Play("countDown");
 
                 SoundManager.Instance.PlaySE(1);
+
                 MainCamera.GetComponent<NoboCamera>().enabled = false;
                 MainCamera.GetComponent<ExampleClass>().enabled = true;
                 MainCamera.GetComponent<ExampleClass>().SetTarget(UseLaceCar.GetComponent<SimpleCarController>().GetLaceCameraTrans());
@@ -352,17 +338,17 @@ public class LaceManager : Photon.MonoBehaviour
     }
 
     //ゴールに着いた順番にPhotonIDと名前とTimeをリストに追加。
-    public void  AddLaceResult(int id,string name,bool isGoal)
+    public void AddLaceResult(int id, string name, bool isGoal)
     {
-        MyPV.RPC("RPCAddLaceResult", PhotonTargets.All, id, LaceTimeText.text,name, isGoal);
+        MyPV.RPC("RPCAddLaceResult", PhotonTargets.All, id, LaceTimeText.text, name, isGoal);
     }
 
     //各数値の初期化。
-    public  void LaceUseVariableReset()
+    public void LaceUseVariableReset()
     {
         for (int i = 0; i < LacePlayStartNum; i++)
         {
-            LaceGoalPlayerInfoList[i].ID= -1;
+            LaceGoalPlayerInfoList[i].ID = -1;
             LaceGoalPlayerInfoList[i].IsGoal = false;
         }
 
@@ -371,12 +357,7 @@ public class LaceManager : Photon.MonoBehaviour
             LacePlayerList.Clear();
         }
 
-        CountDownTimeText.gameObject.SetActive(false);
-        CarSpeedText.gameObject.SetActive(false);
-        LaceTimeText.gameObject.SetActive(false);
-        LaceResultPanel.SetActive(false);
-        LaceMiniMap.SetActive(false);
-        Anim.SetActive(false);
+        SetActiveCollection(false);
 
         if (UseLaceCar != null)
         {
@@ -393,7 +374,7 @@ public class LaceManager : Photon.MonoBehaviour
 
     //ゴールをした車のID、レースの時間、プレイヤーの名前、trueなら正常にゴールfalseなら時間切れのゴール。
     [PunRPC]
-    private void RPCAddLaceResult(int id,string time,string name,bool isGoal)
+    private void RPCAddLaceResult(int id, string time, string name, bool isGoal)
     {
         //同じIDははじく。
         for (int i = 0; i < LacePlayStartNum; i++)
@@ -419,7 +400,7 @@ public class LaceManager : Photon.MonoBehaviour
             {
                 //順位、名前をテキストに設定。
                 LaceResultTextList[GoalPlyerNum].text = (GoalPlyerNum + 1).ToString() + "        " + name;
-            
+
             }
             else
             {
@@ -437,9 +418,97 @@ public class LaceManager : Photon.MonoBehaviour
         return LacePlayStartNum;
     }
 
-    [PunRPC]
     public void BackLobby()
     {
+        MyPV.RPC("RPCBackLobby", PhotonTargets.AllBuffered);
+        NowLacePhase = LacePhase.End;
+    }
+
+    [PunRPC]
+    private void RPCBackLobby()
+    {
         GoalPlyerNum--;
+    }
+
+    private void SetActiveCollection(bool flag)
+    {
+        CountDownTimeText.gameObject.SetActive(flag);
+        CarSpeedText.gameObject.SetActive(flag);
+        LaceTimeText.gameObject.SetActive(flag);
+        LaceResultPanel.SetActive(flag);
+        LaceMiniMap.SetActive(flag);
+        Anim.SetActive(flag);
+    }
+
+    //リスト取得。
+    public List<LacePlayerInfo> GetLacePlayerList()
+    {
+        return LacePlayerList;
+    }
+
+    //追加されるIDがすでに登録されていないかチェック。
+    public bool AddCheckLacePlayerList(int id)
+    {
+        //リストに1人以上追加されていたら。
+        if (LacePlayerList.Count > 0)
+        {
+            //同じIDははじく。
+            for (int i = 0; i < LacePlayerList.Count; i++)
+            {
+                if (LacePlayerList[i].ID == id)
+                {
+                    //追加出来ない。
+                    return false;
+                }
+            }
+        }
+        //追加。
+        MyPV.RPC("RPCAddLacePlyerIdList", PhotonTargets.AllBuffered, id);
+        return true;
+    }
+
+    //レースのフェーズをReadyに出来るかチェック。
+    public void CheckLacePhaseShiftToReady()
+    {
+      
+        //開始人数になったら準備開始。
+        if (LacePlayStartNum == LacePlayerList.Count)
+        {
+            //レースの段階を準備に進める。
+            NowLacePhase = LacePhase.Ready;
+
+            //レース中フラグを立てる。
+            IsLaceFlag = true;
+        }
+      
+    }
+
+    public void LacePhaseShiftToReady()
+    {
+        MyPV.RPC("RPCLacePhaseShiftToReady", PhotonTargets.AllBuffered);
+    }
+
+    [PunRPC]
+    private void RPCLacePhaseShiftToReady()
+    {
+
+        
+    }
+
+    private void UpdateReservationPlayerNameText()
+    {
+        if (IsLaceFlag==true)
+        {
+            ReservationPlayerNameText.text ="レース中";
+        }
+        else
+        {
+            ReservationPlayerNameText.text = "参加プレイヤー：";
+            //参加プレイヤー分名前を追加。
+            for (int i = 0; i < LacePlayerList.Count; i++)
+            {
+                ReservationPlayerNameText.text = ReservationPlayerNameText.text + LacePlayerList[i].Player.GetComponent<PhotonView>().owner.NickName + "　";
+            }
+        }   
     }
 }

@@ -1,13 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //Gameの予約を受け付け人数が揃ったらシーンを切り替えるキャラクター。
 public class GameReservationPerson : Photon.MonoBehaviour {
-    [SerializeField]
-    private GameObject ReservationPanel;  //予約ウィンドウ。
-    [SerializeField]
-    private bool CanPlayFlag;             //コースを遊べるかのフラグ。  
     [SerializeField]
     private Rigidbody Rb;                 //Rigidbodyコンポーネント。
     [SerializeField]
@@ -15,99 +12,46 @@ public class GameReservationPerson : Photon.MonoBehaviour {
     [SerializeField]
     private PhotonView MyPV;              //PhotonViewコンポーネント。     
     [SerializeField]
-    private List<int> ReservationPlayerList;//予約したプレイヤーのIDリスト。
+    private GameObject LaceManager;       //このオブジェクトが担当するレースのマネージャー。
     [SerializeField]
-    private GameObject LaceManager;         //このオブジェクトが担当するレースのマネージャー。
+    private TextMesh LaceStartNumText;    //レース開始までの人数を表示。
 
     // Use this for initialization
-    void Start () {
-        ReservationPanel.SetActive(false);
-     
-        ReservationPlayerList = new List<int>();
-
-        CanPlayFlag = true;
+    void Start()
+    {
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         Vector3 velocity = Rb.velocity;
         MyPTV.SetSynchronizedValues(velocity, 0.0f);
 
-        if (CanPlayFlag == false)
-        {
-            return;
-        }
 
-        //現在の予約人数がレースを始めれる人数と同じになった。
-        if (LaceManager.GetComponent<LaceManager>().GetLacePlayStartNum() == ReservationPlayerList.Count)
-        {
-            Debug.Log("人が集まりました。");
-            LaceManagerSetId();
-            CanPlayFlag = false;
-        }
-	}
+        //あと何人予約出来るのか計算。
+        //予約出来る人数=レース開始人数ー現在の予約人数。
+        int num;
+        num = LaceManager.GetComponent<LaceManager>().GetLacePlayStartNum() - LaceManager.GetComponent<LaceManager>().GetLacePlayerList().Count;
+        LaceStartNumText.text = "レースに必要な人数：あと"+num.ToString("0") + "人";
+    }
 
     //予約を行った人をリストに追加。
-    public void AddList(int id)
+    public void AddList()
     {
-
-        if (CanPlayFlag == false)
-        {
-            return;
-        }
-
-        //予約リストに同じIDがないかチェック。
-        for (int i = 0; i < ReservationPlayerList.Count; i++)
-        {
-            if (ReservationPlayerList[i] == id)
-            {
-                return;
-            }
-        }
-
         //追加処理。
-        MyPV.RPC("RPCAddList", PhotonTargets.AllBuffered, id);
+        int id = PhotonNetwork.player.ID;
+        if (LaceManager.GetComponent<LaceManager>().AddCheckLacePlayerList(id))
+        {
+            Debug.Log("追加出来た。");
+        }
+        else
+        {
+            Debug.Log("すでに追加されている");
+        }
     }
 
     //予約を行った人がキャンセルもしくは通信が切れたらリストから削除。
     public void SubList(int id)
     {
-       
-    }
 
-    //予約ウィンドウを閉じる。
-    public void CloseReservationPanel()
-    {
-        ReservationPanel.SetActive(false);
-    }
-
-    //予約ウィンドウを開く。
-    public void OpenReservationPanel()
-    {
-        ReservationPanel.SetActive(true);
-    }  
-
-    //追加の処理を全プレイヤーに通知。
-    [PunRPC]
-    public void RPCAddList(int id)
-    {
-        ReservationPlayerList.Add(id);
-    }
-
-    //レースマネージャーにレースをするプレイヤーのIDを設定。
-    private void LaceManagerSetId()
-    {
-        LaceManager LM = LaceManager.GetComponent<LaceManager>();
-        for (int i = 0; i < LaceManager.GetComponent<LaceManager>().GetLacePlayStartNum(); i++)
-        {
-            LM.AddLacePlyerIdList(ReservationPlayerList[i]);
-        }
-    }
-
-    //遊べるフラグをtrue->false、false->からtureにする。
-    [PunRPC]
-    public void ChangeCanPlayFlag()
-    {
-        CanPlayFlag = !CanPlayFlag;
     }
 }

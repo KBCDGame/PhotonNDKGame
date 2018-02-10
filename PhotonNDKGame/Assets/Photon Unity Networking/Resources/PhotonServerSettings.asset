@@ -46,4 +46,8 @@ MonoBehaviour:
   - RPCAddLaceResult
   - Deleta
   - BackLobby
+  - RPCBackLobby
+  - RPCLacePhaseShiftToReady
+  - LaceOk
+  - D
   DisableAutoOpenWizard: 1
