@@ -240,6 +240,9 @@ public class LaceManager : Photon.MonoBehaviour
                         MainCamera.GetComponent<NoboCamera>().enabled = true;
                         MainCamera.GetComponent<ExampleClass>().enabled = false;
                         MainCamera.GetComponent<ExampleClass>().SetTarget(null);
+
+                        //lobbyに戻るボタンを表示。
+                        BackLobbyButton.gameObject.SetActive(false);
                     }
 
                     NowLacePhase = LacePhase.None;
@@ -437,6 +440,10 @@ public class LaceManager : Photon.MonoBehaviour
     [PunRPC]
     private void RPCBackLobby()
     {
+        if (GoalPlyerNum < 0)
+        {
+            return;
+        }
         GoalPlyerNum--;
     }
 
