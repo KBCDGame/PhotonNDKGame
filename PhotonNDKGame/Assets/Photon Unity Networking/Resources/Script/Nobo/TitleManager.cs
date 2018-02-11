@@ -9,6 +9,7 @@ public class TitleManager : Photon.PunBehaviour
     private void Awake()
     {
         Application.targetFrameRate = 60;
+        SoundManager.Instance.PlayBGM(3);
     }
 
     //ログインボタンを押したときに実行される
