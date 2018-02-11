@@ -22,7 +22,8 @@ public class TitleManager : Photon.PunBehaviour
             Debug.Log("Photonに接続しました。");
             PhotonNetwork.LoadLevel("Lobby");//ロビーシーンをロード。
         }
-        
+        //ロビーBGM
+        SoundManager.Instance.PlayBGM(1);
     }
 
     ////Auto-JoinLobbyにチェックを入れているとPhotonに接続後OnJoinLobby()が呼ばれる。
