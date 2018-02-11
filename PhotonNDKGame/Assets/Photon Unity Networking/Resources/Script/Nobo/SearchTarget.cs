@@ -12,11 +12,11 @@ public class SearchTarget : MonoBehaviour
         //範囲内にPlayerがいた。
         if (other.gameObject.tag == "Player")
         {
-            if (Input.GetKey(KeyCode.Joystick1Button3))
+            if (Input.GetKeyDown(KeyCode.Joystick1Button3))
             {
                 if (ReservationPerson != null)
                 {
-                    ReservationPerson.AddList(PhotonNetwork.player.ID);
+                    ReservationPerson.AddList();
                 }
             }
         }
