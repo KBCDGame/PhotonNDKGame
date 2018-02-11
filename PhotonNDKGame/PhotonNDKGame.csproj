@@ -133,7 +133,6 @@
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\LCube.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\LogOut\LogOut.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\MiniMap\MiniMap.cs" />
-    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\FontScalable.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\GameManager.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\GameReservationPerson.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\LaceGoal.cs" />

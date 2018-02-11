@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class TitleManager : Photon.PunBehaviour
 {
     string _gameVersion = "test";   //ゲームのバージョン。仕様が異なるバージョンとなったときはバージョンを変更しないとエラーが発生する。
-
+   
     private void Awake()
     {
         Application.targetFrameRate = 60;
@@ -14,12 +14,15 @@ public class TitleManager : Photon.PunBehaviour
     //ログインボタンを押したときに実行される
     public void Connect()
     {
+      
         if (!PhotonNetwork.connected)
         {                         //Photonに接続できていなければ。
             PhotonNetwork.ConnectUsingSettings(_gameVersion);   //Photonに接続する。
             Debug.Log("Photonに接続しました。");
             PhotonNetwork.LoadLevel("Lobby");//ロビーシーンをロード。
         }
+        //ロビーBGM
+        SoundManager.Instance.PlayBGM(2);
     }
 
     ////Auto-JoinLobbyにチェックを入れているとPhotonに接続後OnJoinLobby()が呼ばれる。

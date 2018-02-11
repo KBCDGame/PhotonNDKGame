@@ -93,6 +93,8 @@ public class LaceManager : Photon.MonoBehaviour
         IsLaceFlag = false;
 
         LaceUseVariableReset();
+
+        
     }
 
     // Update is called once per frame
@@ -119,6 +121,9 @@ public class LaceManager : Photon.MonoBehaviour
                     UseLaceCar.GetComponent<SimpleCarController>().ChangeRunFlag();
                     //レース開始。
                     NowLacePhase = LacePhase.Game;
+
+                    //レースBGMを鳴らす
+                    SoundManager.Instance.PlayBGM(0);
 
                     //カウントダウンテキストを非表示。
                     CountDownTimeText.gameObject.SetActive(false);
@@ -319,11 +324,13 @@ public class LaceManager : Photon.MonoBehaviour
                 LaceMiniMap.GetComponent<MiniMap>().ChangeTarget(UseLaceCar.transform);
 
                 //カウントダウン開始。
-                CountDownTimeText.gameObject.SetActive(true);
+               // CountDownTimeText.gameObject.SetActive(true);
                 CountDownTimeText.GetComponent<CountDownTime>().CountDownStart(3.0f, "00");
                 Anim.SetActive(true);
                 Anim.GetComponent<Animator>().Play("countDown");
-
+                //直前のBGMを停止
+                SoundManager.Instance.StopBGM();
+                //カウントダウンのSE
                 SoundManager.Instance.PlaySE(1);
 
                 MainCamera.GetComponent<NoboCamera>().enabled = false;
@@ -335,12 +342,15 @@ public class LaceManager : Photon.MonoBehaviour
         }
         //レース段階を開始に進める。
         NowLacePhase = LacePhase.Start;
+       
     }
 
     //ゴールに着いた順番にPhotonIDと名前とTimeをリストに追加。
     public void AddLaceResult(int id, string name, bool isGoal)
     {
         MyPV.RPC("RPCAddLaceResult", PhotonTargets.All, id, LaceTimeText.text, name, isGoal);
+        //リザルト用BGM
+        SoundManager.Instance.PlayBGM(1);
     }
 
     //各数値の初期化。
