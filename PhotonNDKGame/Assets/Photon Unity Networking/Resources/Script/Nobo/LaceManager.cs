@@ -166,6 +166,7 @@ public class LaceManager : Photon.MonoBehaviour
                             //カウントダウン開始。
                             CountDownTimeText.gameObject.SetActive(false);
                             NowLacePhase = LacePhase.Result;
+                            SoundManager.Instance.PlaySE(2);
                         }
                     }
 
