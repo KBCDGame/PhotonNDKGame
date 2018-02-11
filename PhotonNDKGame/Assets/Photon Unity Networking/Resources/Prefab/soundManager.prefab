@@ -51,11 +51,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8353b2189b5afca4dbf4c361542e77ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume: {fileID: 0}
+  volume:
+    BGM: 0.3
+    Voice: 1
+    SE: 1
+    Mute: 0
   BGM:
-  - {fileID: 8300000, guid: 15afd096428fd734b8e4d72f630f8481, type: 3}
-  - {fileID: 8300000, guid: bd4f069b411874643b1e20742bc2fe36, type: 3}
+  - {fileID: 8300000, guid: 9cd7c3945c2d5934b8bb905222576ba3, type: 3}
   - {fileID: 8300000, guid: 828045edff7816d488d16f481f1a5945, type: 3}
+  - {fileID: 8300000, guid: bd4f069b411874643b1e20742bc2fe36, type: 3}
+  - {fileID: 8300000, guid: 34b493b1c984cfd47b49fde7816d8c11, type: 3}
+  - {fileID: 8300000, guid: 04eb098c60ac18748bcca366121532fd, type: 3}
+  - {fileID: 8300000, guid: 04eb098c60ac18748bcca366121532fd, type: 3}
   SE:
   - {fileID: 8300000, guid: 88eba235189c17f489c7817e4bee7df6, type: 3}
-  Voice: []
+  - {fileID: 8300000, guid: 73355e4bf423c0743b98a14c26615eed, type: 3}
+  Voice:
+  - {fileID: 8300000, guid: 828045edff7816d488d16f481f1a5945, type: 3}

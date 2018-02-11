@@ -9,7 +9,7 @@ public class TitleManager : Photon.PunBehaviour
     private void Awake()
     {
         Application.targetFrameRate = 60;
-        SoundManager.Instance.PlayBGM(3);
+        SoundManager.Instance.PlayBGM(0);
     }
 
     //ログインボタンを押したときに実行される
@@ -22,8 +22,7 @@ public class TitleManager : Photon.PunBehaviour
             Debug.Log("Photonに接続しました。");
             PhotonNetwork.LoadLevel("Lobby");//ロビーシーンをロード。
         }
-        //ロビーBGM
-        SoundManager.Instance.PlayBGM(2);
+        
     }
 
     ////Auto-JoinLobbyにチェックを入れているとPhotonに接続後OnJoinLobby()が呼ばれる。

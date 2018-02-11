@@ -319,7 +319,7 @@ Transform:
   m_Children:
   - {fileID: 2118848771}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &154070807
 MonoBehaviour:
@@ -743,7 +743,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &361326333
 GameObject:
@@ -1012,7 +1012,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &763870796
 GameObject:
@@ -1153,7 +1153,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &819010812
 GameObject:
@@ -1216,7 +1216,7 @@ Transform:
   - {fileID: 1874840346}
   - {fileID: 227727420}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &964209539
 GameObject:
@@ -1683,78 +1683,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42650589b18715489341d1d9e8f5e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1577942507
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 114264761901708732, guid: 654487a06246bb4479e6701302274155,
-        type: 2}
-      propertyPath: BGM.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114264761901708732, guid: 654487a06246bb4479e6701302274155,
-        type: 2}
-      propertyPath: Voice.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4958746685250336, guid: 654487a06246bb4479e6701302274155, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 2886.93
-      objectReference: {fileID: 0}
-    - target: {fileID: 4958746685250336, guid: 654487a06246bb4479e6701302274155, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -0.29
-      objectReference: {fileID: 0}
-    - target: {fileID: 4958746685250336, guid: 654487a06246bb4479e6701302274155, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 2724
-      objectReference: {fileID: 0}
-    - target: {fileID: 4958746685250336, guid: 654487a06246bb4479e6701302274155, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4958746685250336, guid: 654487a06246bb4479e6701302274155, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4958746685250336, guid: 654487a06246bb4479e6701302274155, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4958746685250336, guid: 654487a06246bb4479e6701302274155, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4958746685250336, guid: 654487a06246bb4479e6701302274155, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114264761901708732, guid: 654487a06246bb4479e6701302274155,
-        type: 2}
-      propertyPath: volume.BGM
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114264761901708732, guid: 654487a06246bb4479e6701302274155,
-        type: 2}
-      propertyPath: Voice.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 828045edff7816d488d16f481f1a5945, type: 3}
-    - target: {fileID: 114264761901708732, guid: 654487a06246bb4479e6701302274155,
-        type: 2}
-      propertyPath: BGM.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: 9cd7c3945c2d5934b8bb905222576ba3, type: 3}
-    - target: {fileID: 114264761901708732, guid: 654487a06246bb4479e6701302274155,
-        type: 2}
-      propertyPath: BGM.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: 04eb098c60ac18748bcca366121532fd, type: 3}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 654487a06246bb4479e6701302274155, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1705166168
 GameObject:
   m_ObjectHideFlags: 0

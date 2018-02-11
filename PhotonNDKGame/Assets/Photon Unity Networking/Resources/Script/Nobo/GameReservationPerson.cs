@@ -19,6 +19,8 @@ public class GameReservationPerson : Photon.MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        //ロビーBGM
+        SoundManager.Instance.PlayBGM(2);
     }
 
     // Update is called once per frame

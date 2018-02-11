@@ -123,7 +123,7 @@ public class LaceManager : Photon.MonoBehaviour
                     NowLacePhase = LacePhase.Game;
 
                     //レースBGMを鳴らす
-                    SoundManager.Instance.PlayBGM(0);
+                    SoundManager.Instance.PlayBGM(3);
 
                     //カウントダウンテキストを非表示。
                     CountDownTimeText.gameObject.SetActive(false);
@@ -353,7 +353,7 @@ public class LaceManager : Photon.MonoBehaviour
     {
         MyPV.RPC("RPCAddLaceResult", PhotonTargets.All, id, LaceTimeText.text, name, isGoal);
         //リザルト用BGM
-        SoundManager.Instance.PlayBGM(1);
+        SoundManager.Instance.PlayBGM(4);
     }
 
     //各数値の初期化。
@@ -435,6 +435,8 @@ public class LaceManager : Photon.MonoBehaviour
     {
         MyPV.RPC("RPCBackLobby", PhotonTargets.AllBuffered);
         NowLacePhase = LacePhase.End;
+        //ロビーBGM
+        SoundManager.Instance.PlayBGM(2);
     }
 
     [PunRPC]
