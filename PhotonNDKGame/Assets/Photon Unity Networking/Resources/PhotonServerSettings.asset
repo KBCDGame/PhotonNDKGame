@@ -50,4 +50,5 @@ MonoBehaviour:
   - RPCLacePhaseShiftToReady
   - LaceOk
   - D
+  - LaceUseVariableReset
   DisableAutoOpenWizard: 1

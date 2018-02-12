@@ -149,6 +149,10 @@ public class SimpleCarController : Photon.MonoBehaviour
 
     public void ChangeRunFlag()
     {
+        if (!MyPV.isMine)
+        {
+            return;
+        }
         IsRunFlag = !IsRunFlag;
     }
 

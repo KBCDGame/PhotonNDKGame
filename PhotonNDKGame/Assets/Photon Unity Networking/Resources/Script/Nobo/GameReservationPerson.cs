@@ -37,11 +37,11 @@ public class GameReservationPerson : Photon.MonoBehaviour {
     }
 
     //予約を行った人をリストに追加。
-    public void AddList()
+    public void AddList(int viewID)
     {
         //追加処理。
-        int id = PhotonNetwork.player.ID;
-        if (LaceManager.GetComponent<LaceManager>().AddCheckLacePlayerList(id))
+        int id = viewID;
+        if (LaceManager.GetComponent<LaceManager>().AddCheckLacePlayerList(id,PhotonNetwork.player.ID))
         {
             Debug.Log("追加出来た。");
         }

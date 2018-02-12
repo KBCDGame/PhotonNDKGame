@@ -132,6 +132,15 @@ public class NoboCharacterController : MonoBehaviour {
             
         }
     }
+
+    public void PhotonDestroy()
+    {
+        if (!MyPV.isMine)
+        {
+            return;
+        }
+        PhotonNetwork.Destroy(MyPV);
+    }
     //if (Input.GetKey(KeyCode.Joystick1Button0))
     //{
     //    Debug.Log("Button A Push");

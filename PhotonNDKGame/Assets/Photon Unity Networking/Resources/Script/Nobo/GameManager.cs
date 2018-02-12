@@ -19,7 +19,7 @@ public class GameManager : Photon.PunBehaviour {
 
         //Photonに接続していれば自プレイヤーを生成。
         //この関数で生成したオブジェクトは生成したプレイヤーがルームから消えると一緒に消される。
-        PhotonNetwork.Instantiate(this.PlayerPrefab.name, new Vector3(IfPos.x, IfPos.y, IfPos.z), Quaternion.identity, 0);
+        PhotonInstantiatePlayer(IfPos, Quaternion.identity, 0);
         //ルーム内BGM
         SoundManager.Instance.PlayBGM(2);
   
@@ -29,5 +29,12 @@ public class GameManager : Photon.PunBehaviour {
     void Update()
     {
        
+    }
+
+    //Photonネットワーク上にプレイヤーを生成。
+    public GameObject PhotonInstantiatePlayer(Vector3 pos,Quaternion rot, byte group)
+    {
+        GameObject pl = PhotonNetwork.Instantiate(this.PlayerPrefab.name, pos, rot, group);
+        return pl;
     }
 }

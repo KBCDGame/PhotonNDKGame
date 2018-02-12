@@ -16,7 +16,7 @@ public class SearchTarget : MonoBehaviour
             {
                 if (ReservationPerson != null)
                 {
-                    ReservationPerson.AddList();
+                    ReservationPerson.AddList(other.gameObject.GetComponent<PhotonView>().viewID);
                 }
             }
         }
