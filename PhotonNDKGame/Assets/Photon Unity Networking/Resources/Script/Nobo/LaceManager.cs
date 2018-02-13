@@ -66,6 +66,8 @@ public class LaceManager : Photon.MonoBehaviour
     private Button BackLobbyButton;                         //リザルトからlobbyに戻るボタン。
     [SerializeField]
     private List<int> PhotonIDList = new List<int>();
+    //[SerializeField]
+    //private GameObject MirrorCamera;
     private enum LacePhase                                  //レースの段階。
     {
         None,               //なにもしない時。
@@ -90,6 +92,8 @@ public class LaceManager : Photon.MonoBehaviour
         IsLaceFlag = false;
 
         LaceUseVariableReset();
+
+        LacePlayStartNum = PhotonNetwork.room.MaxPlayers;
 
         
     }
@@ -428,6 +432,7 @@ public class LaceManager : Photon.MonoBehaviour
         LaceResultPanel.SetActive(flag);
         LaceMiniMap.SetActive(flag);
         Anim.SetActive(flag);
+        //MirrorImage.gameObject.SetActive(flag);
     }
 
     //リスト取得。

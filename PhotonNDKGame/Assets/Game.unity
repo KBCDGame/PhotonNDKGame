@@ -3733,7 +3733,7 @@ Camera:
   far clip plane: 1000
   field of view: 67
   orthographic: 1
-  orthographic size: 150
+  orthographic size: 500
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
@@ -3756,7 +3756,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 462991620}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 777, y: 200, z: 2121}
+  m_LocalPosition: {x: 3264, y: 200, z: 2121}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1640894802}
@@ -5619,7 +5619,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 150}
+  m_AnchoredPosition: {x: 262.5, y: 150}
   m_SizeDelta: {x: 200, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &663227283
@@ -7591,7 +7591,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &881392614
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7608,7 +7608,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -312, y: 130}
+  m_AnchoredPosition: {x: -324, y: -1}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &881392615
@@ -12784,7 +12784,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 100}
+  m_AnchoredPosition: {x: 262.2, y: 100}
   m_SizeDelta: {x: 200, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1643063563
@@ -12918,7 +12918,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameManager: {fileID: 891160272}
   MyPV: {fileID: 1651558344}
-  LaceCarPrefab: {fileID: 1911009313488788, guid: 60c4707c45b77e24ab1777bad3b78844,
+  LaceCarPrefab: {fileID: 1870297287247680, guid: 91079bd6a7b599d428040859ddbb6870,
     type: 2}
   LaceStartPos:
   - {fileID: 1970706157}
@@ -12951,7 +12951,7 @@ MonoBehaviour:
   LaceMiniMap: {fileID: 462991620}
   MainCamera: {fileID: 2090447319}
   IsLaceFlag: 0
-  LacePlayStartNum: 3
+  LacePlayStartNum: 1
   CountDownTime: 30
   GoalPlyerNum: 0
   LacePlayerList:
