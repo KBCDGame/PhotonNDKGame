@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 4728004424157216}
   - component: {fileID: 33086230371470950}
   - component: {fileID: 23548721576869488}
+  - component: {fileID: 64029768153111096}
   m_Layer: 9
   m_Name: car_body
   m_TagString: Untagged
@@ -123,6 +124,7 @@ GameObject:
   - component: {fileID: 114156251602293520}
   - component: {fileID: 114848201322404126}
   - component: {fileID: 114864251296862786}
+  - component: {fileID: 65276186181140438}
   m_Layer: 9
   m_Name: roadStream_voilet
   m_TagString: Car
@@ -205,7 +207,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4822586481817566}
-  - component: {fileID: 65555670240273894}
   m_Layer: 9
   m_Name: body
   m_TagString: Untagged
@@ -349,13 +350,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1136354911743186}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.2, z: 0.3}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4935794847057936}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4723009885224988
 Transform:
   m_ObjectHideFlags: 1
@@ -430,7 +431,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1442005964593058}
   m_LocalRotation: {x: -0.005729287, y: 3.055684e-11, z: 0.0000000011184516, w: 0.9999836}
-  m_LocalPosition: {x: 3040.5562, y: 23.92395, z: 2410.2073}
+  m_LocalPosition: {x: 2626.354, y: -0.034623407, z: 2503.0771}
   m_LocalScale: {x: 14.5, y: 14.5, z: 14.5}
   m_Children:
   - {fileID: 4822586481817566}
@@ -688,18 +689,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!65 &65555670240273894
-BoxCollider:
+--- !u!64 &64029768153111096
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1855312926017224}
+  m_GameObject: {fileID: 1343684383152338}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.8, y: 0.7, z: 4}
-  m_Center: {x: 0, y: 0.56, z: -0.1}
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 3c4269138e10dba499c53348370928bb, type: 3}
+--- !u!65 &65276186181140438
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1442005964593058}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 0.01, z: 0.01}
+  m_Center: {x: 0, y: 0.02, z: -0.155}
 --- !u!114 &114156251602293520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -796,6 +811,7 @@ MonoBehaviour:
   Acceleration: {x: 0, y: 0, z: 0}
   MyPV: {fileID: 114980512483790734}
   MyPTV: {fileID: 114156251602293520}
+  LaceCameraTrans: {fileID: 4616805409359938}
 --- !u!114 &114848201322404126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -849,7 +865,7 @@ MonoBehaviour:
   viewIdField: 0
   instantiationId: -1
   currentMasterID: -1
-  isRuntimeInstantiated: 1
+  isRuntimeInstantiated: 0
 --- !u!146 &146562394271929234
 WheelCollider:
   m_ObjectHideFlags: 1

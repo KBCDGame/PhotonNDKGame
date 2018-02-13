@@ -4849,7 +4849,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &663227279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11326,7 +11326,7 @@ MonoBehaviour:
   LaceMiniMap: {fileID: 462991620}
   MainCamera: {fileID: 2090447319}
   IsLaceFlag: 0
-  LacePlayStartNum: 2
+  LacePlayStartNum: 1
   CountDownTime: 5
   GoalPlyerNum: 0
   LacePlayerList:
