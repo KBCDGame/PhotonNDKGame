@@ -8378,7 +8378,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa936503ffd01144289ac1113dfd54a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fontScale: 1
 --- !u!102 &1137409792
 TextMesh:
   serializedVersion: 3
@@ -13627,7 +13626,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa936503ffd01144289ac1113dfd54a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fontScale: 1
 --- !u!102 &2008356233
 TextMesh:
   serializedVersion: 3

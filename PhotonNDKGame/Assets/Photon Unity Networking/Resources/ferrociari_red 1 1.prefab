@@ -919,7 +919,7 @@ MonoBehaviour:
     steering: 1
   maxMotorTorque: 2000
   maxbrakeTorque: 10000
-  maxSteeringAngle: 45
+  maxSteeringAngle: 20
   RigidBody: {fileID: 54677724811485780}
   Velocity: {x: 0.000000555968, y: 0.0000067800283, z: -0.0000007878911}
   IsRunFlag: 0
