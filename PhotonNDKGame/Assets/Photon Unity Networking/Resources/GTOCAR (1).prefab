@@ -27,6 +27,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1043425414268892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4202466100791252}
+  m_Layer: 0
+  m_Name: CameraPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1147130465612716
 GameObject:
   m_ObjectHideFlags: 0
@@ -35,7 +50,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4512651101440978}
-  - component: {fileID: 65539190277354904}
   m_Layer: 0
   m_Name: body
   m_TagString: Untagged
@@ -218,6 +232,7 @@ GameObject:
   - component: {fileID: 4909247996118586}
   - component: {fileID: 33030690476144178}
   - component: {fileID: 23782611111252300}
+  - component: {fileID: 64253177179944522}
   m_Layer: 0
   m_Name: Empty_Mesh_3
   m_TagString: Untagged
@@ -290,9 +305,10 @@ GameObject:
   - component: {fileID: 114470835222676998}
   - component: {fileID: 114856609843398896}
   - component: {fileID: 114225939429949940}
+  - component: {fileID: 65305313814668668}
   m_Layer: 0
   m_Name: GTOCAR (1)
-  m_TagString: Player
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -327,6 +343,19 @@ Transform:
   m_Father: {fileID: 4512651101440978}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4202466100791252
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1043425414268892}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4277285879806778}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4277285879806778
 Transform:
   m_ObjectHideFlags: 1
@@ -334,11 +363,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1911009313488788}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2846.204, y: 0.6400199, z: 2785.016}
+  m_LocalPosition: {x: 2625.0938, y: 0.64001966, z: 2504.1274}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4512651101440978}
   - {fileID: 4106946820370510}
+  - {fileID: 4202466100791252}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -677,7 +707,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2a65a2e725f3bef428b69cba2b982969, type: 2}
+  - {fileID: 2100000, guid: e54fa79f823e2d84ba35a3a26e4dbb34, type: 2}
   - {fileID: 2100000, guid: db84180d29dc8e546bfb135b6e2bc1d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -952,18 +982,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!65 &65539190277354904
-BoxCollider:
+--- !u!64 &64253177179944522
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1147130465612716}
+  m_GameObject: {fileID: 1689499540595144}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.4, y: 0.5, z: 4.6}
-  m_Center: {x: 0, y: -0.2, z: 0.1}
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300006, guid: 9ebc9b62bd42c26409d910219e476774, type: 3}
+--- !u!65 &65305313814668668
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1911009313488788}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: -0.08, z: -2.3}
 --- !u!114 &114056233029085398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -995,6 +1039,7 @@ MonoBehaviour:
   Acceleration: {x: 0, y: 0, z: 0}
   MyPV: {fileID: 114773548226863438}
   MyPTV: {fileID: 114470835222676998}
+  LaceCameraTrans: {fileID: 4202466100791252}
 --- !u!114 &114225939429949940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1022,7 +1067,7 @@ MonoBehaviour:
   m_PositionModel:
     SynchronizeEnabled: 1
     TeleportEnabled: 1
-    TeleportIfDistanceGreaterThan: 3
+    TeleportIfDistanceGreaterThan: 10
     InterpolateOption: 3
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 1
@@ -1067,7 +1112,7 @@ MonoBehaviour:
     SynchronizeEnabled: 1
     InterpolateOption: 2
     InterpolateRotateTowardsSpeed: 180
-    InterpolateLerpSpeed: 3
+    InterpolateLerpSpeed: 10
   m_ScaleModel:
     SynchronizeEnabled: 0
     InterpolateOption: 0
