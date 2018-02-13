@@ -12299,7 +12299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameManager: {fileID: 891160272}
   MyPV: {fileID: 1651558344}
-  LaceCarPrefab: {fileID: 1870297287247680, guid: 91079bd6a7b599d428040859ddbb6870,
+  LaceCarPrefab: {fileID: 1911009313488788, guid: 60c4707c45b77e24ab1777bad3b78844,
     type: 2}
   LaceStartPos:
   - {fileID: 1970706157}
