@@ -42,6 +42,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1279617543585166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4496604324612278}
+  m_Layer: 0
+  m_Name: CameraPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1315041242196962
 GameObject:
   m_ObjectHideFlags: 1
@@ -149,7 +164,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4530050382237392}
-  - component: {fileID: 65992745370758908}
   m_Layer: 0
   m_Name: body
   m_TagString: Untagged
@@ -218,6 +232,7 @@ GameObject:
   - component: {fileID: 4113574896721556}
   - component: {fileID: 33990272535531422}
   - component: {fileID: 23214737180142152}
+  - component: {fileID: 64829996553082784}
   m_Layer: 0
   m_Name: Empty_Mesh_3
   m_TagString: Untagged
@@ -254,9 +269,12 @@ GameObject:
   - component: {fileID: 114764282652026368}
   - component: {fileID: 114773260513003584}
   - component: {fileID: 114749287221925594}
+  - component: {fileID: 114000066554281570}
+  - component: {fileID: 114656046176694874}
+  - component: {fileID: 65039349657342954}
   m_Layer: 0
   m_Name: GTOCAR (1)(Clone)
-  m_TagString: Player
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -285,11 +303,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1905682315157388}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1005.82495, y: 0.75530183, z: 734.63043}
+  m_LocalPosition: {x: 2834.6196, y: 0.75530183, z: 2704.049}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4530050382237392}
   - {fileID: 4947629351593214}
+  - {fileID: 4496604324612278}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -383,6 +402,19 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4530050382237392}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4496604324612278
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1279617543585166}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.37, z: 0.28}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4035972189474196}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4523683958828940
@@ -881,18 +913,59 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!65 &65992745370758908
-BoxCollider:
+--- !u!64 &64829996553082784
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1795782581694552}
+  m_GameObject: {fileID: 1889035883420574}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.8, y: 0.8, z: 4.7}
-  m_Center: {x: 0, y: -0.1, z: 0.1}
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300006, guid: 9ebc9b62bd42c26409d910219e476774, type: 3}
+--- !u!65 &65039349657342954
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905682315157388}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: -0.2, z: -2.3}
+--- !u!114 &114000066554281570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905682315157388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93ab6885b03e4cf41baf79a434af8b63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Car: {fileID: 1905682315157388}
+  CarSpeedText: {fileID: 0}
+  MyPV: {fileID: 114773260513003584}
+--- !u!114 &114656046176694874
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905682315157388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b8b2ff5c9599904e8c143eca650a781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerUIPrefab: {fileID: 1218546969427294, guid: e7253efefb365ff45a3f4d98b0d252d3,
+    type: 2}
 --- !u!114 &114749287221925594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -907,7 +980,7 @@ MonoBehaviour:
   m_PositionModel:
     SynchronizeEnabled: 1
     TeleportEnabled: 1
-    TeleportIfDistanceGreaterThan: 3
+    TeleportIfDistanceGreaterThan: 10
     InterpolateOption: 3
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 1
@@ -952,7 +1025,7 @@ MonoBehaviour:
     SynchronizeEnabled: 1
     InterpolateOption: 2
     InterpolateRotateTowardsSpeed: 180
-    InterpolateLerpSpeed: 3
+    InterpolateLerpSpeed: 10
   m_ScaleModel:
     SynchronizeEnabled: 0
     InterpolateOption: 0
@@ -989,7 +1062,7 @@ MonoBehaviour:
   Acceleration: {x: 0, y: 0, z: 0}
   MyPV: {fileID: 114773260513003584}
   MyPTV: {fileID: 114749287221925594}
-  LaceCameraTrans: {fileID: 0}
+  LaceCameraTrans: {fileID: 4496604324612278}
 --- !u!114 &114773260513003584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1015,7 +1088,7 @@ MonoBehaviour:
   viewIdField: 0
   instantiationId: -1
   currentMasterID: -1
-  isRuntimeInstantiated: 1
+  isRuntimeInstantiated: 0
 --- !u!146 &146357212711398976
 WheelCollider:
   m_ObjectHideFlags: 1
