@@ -147,6 +147,7 @@
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\PlayerNameUI.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\RoomElement.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\SearchTarget.cs" />
+    <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\SkyRoadCollision.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Nobo\TitleManager.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Time\CountDownTime.cs" />
     <Compile Include="Assets\Photon Unity Networking\Resources\Script\Time\GameTime.cs" />
