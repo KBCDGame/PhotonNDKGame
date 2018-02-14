@@ -463,7 +463,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1442005964593058}
   m_LocalRotation: {x: -0.005729287, y: 3.055684e-11, z: 0.0000000011184516, w: 0.9999836}
-  m_LocalPosition: {x: 1616.2728, y: -0.034623407, z: 2806.0315}
+  m_LocalPosition: {x: 2851.7478, y: 0, z: 2725.2131}
   m_LocalScale: {x: 14.5, y: 14.5, z: 14.5}
   m_Children:
   - {fileID: 4822586481817566}
@@ -969,7 +969,7 @@ WheelCollider:
     damper: 4500
     targetPosition: 0
   m_SuspensionDistance: 0.04
-  m_ForceAppPointDistance: 0
+  m_ForceAppPointDistance: 1
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -998,7 +998,7 @@ WheelCollider:
     damper: 4000
     targetPosition: 0
   m_SuspensionDistance: 0.04
-  m_ForceAppPointDistance: 0
+  m_ForceAppPointDistance: 1
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -1006,13 +1006,13 @@ WheelCollider:
     m_ExtremumValue: 2
     m_AsymptoteSlip: 2000
     m_AsymptoteValue: 6
-    m_Stiffness: 0.9
+    m_Stiffness: 1
   m_SidewaysFriction:
     m_ExtremumSlip: 1
     m_ExtremumValue: 1
     m_AsymptoteSlip: 800
     m_AsymptoteValue: 7.5
-    m_Stiffness: 0.9
+    m_Stiffness: 1
   m_Enabled: 1
 --- !u!146 &146935166234309606
 WheelCollider:
@@ -1027,7 +1027,7 @@ WheelCollider:
     damper: 4500
     targetPosition: 0
   m_SuspensionDistance: 0.04
-  m_ForceAppPointDistance: 0
+  m_ForceAppPointDistance: 1
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -1056,7 +1056,7 @@ WheelCollider:
     damper: 4000
     targetPosition: 0
   m_SuspensionDistance: 0.04
-  m_ForceAppPointDistance: 0
+  m_ForceAppPointDistance: 1
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -1064,11 +1064,11 @@ WheelCollider:
     m_ExtremumValue: 2
     m_AsymptoteSlip: 2000
     m_AsymptoteValue: 6
-    m_Stiffness: 0.9
+    m_Stiffness: 1
   m_SidewaysFriction:
     m_ExtremumSlip: 1
     m_ExtremumValue: 1
     m_AsymptoteSlip: 800
     m_AsymptoteValue: 7.5
-    m_Stiffness: 0.9
+    m_Stiffness: 1
   m_Enabled: 1

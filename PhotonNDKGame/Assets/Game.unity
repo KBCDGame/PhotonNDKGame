@@ -3664,6 +3664,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 294474796}
   m_Mesh: {fileID: 4300000, guid: 8548e1206ac5f2c4bb3ca9e5a703f442, type: 3}
+--- !u!1 &295118218 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1683329886857742, guid: b74307f22e3c8d7418cb8d6277f10e16,
+    type: 2}
+  m_PrefabInternal: {fileID: 590700692}
 --- !u!1 &299704129
 GameObject:
   m_ObjectHideFlags: 0
@@ -6752,7 +6757,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4481383649491598, guid: b74307f22e3c8d7418cb8d6277f10e16, type: 2}
       propertyPath: m_RootOrder
-      value: 31
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 1683329886857742, guid: b74307f22e3c8d7418cb8d6277f10e16, type: 2}
       propertyPath: m_Name
@@ -6761,6 +6766,15 @@ Prefab:
     - target: {fileID: 4481383649491598, guid: b74307f22e3c8d7418cb8d6277f10e16, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 114688765982485182, guid: b74307f22e3c8d7418cb8d6277f10e16,
+        type: 2}
+      propertyPath: LaceManager
+      value: 
+      objectReference: {fileID: 295118218}
+    - target: {fileID: 1683329886857742, guid: b74307f22e3c8d7418cb8d6277f10e16, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b74307f22e3c8d7418cb8d6277f10e16, type: 2}
@@ -9615,7 +9629,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4481383649491598, guid: b74307f22e3c8d7418cb8d6277f10e16, type: 2}
       propertyPath: m_RootOrder
-      value: 32
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 114688765982485182, guid: b74307f22e3c8d7418cb8d6277f10e16,
         type: 2}
