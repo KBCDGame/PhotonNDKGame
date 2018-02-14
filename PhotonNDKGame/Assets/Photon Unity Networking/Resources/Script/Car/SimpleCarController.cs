@@ -157,11 +157,12 @@ public class SimpleCarController : Photon.MonoBehaviour
     }
 
     //車を止める処理。
-    private void Stop()
+    public void Stop()
     {
         Motor = 0.0f;
         Braek = 1.0f;
         RigidBody.velocity = Vector3.zero;
+        RigidBody.angularVelocity = Vector3.zero;
         MyPTV.SetSynchronizedValues(Velocity, 0);
     }
 
