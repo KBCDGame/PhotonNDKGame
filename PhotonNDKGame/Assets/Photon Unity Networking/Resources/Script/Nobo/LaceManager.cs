@@ -93,9 +93,10 @@ public class LaceManager : Photon.MonoBehaviour
 
         LaceUseVariableReset();
 
-        LacePlayStartNum = PhotonNetwork.room.MaxPlayers;
-
-        
+        if (PhotonNetwork.connected)
+        {                         //Photonに接続できていなければ。
+            LacePlayStartNum = PhotonNetwork.room.MaxPlayers;
+        }
     }
 
     // Update is called once per frame
