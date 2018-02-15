@@ -23,5 +23,7 @@ public class LogOut : MonoBehaviour
     public void OnLeftRoom()
     {
         PhotonNetwork.LoadLevel("Lobby");
+        SoundManager.Instance.PlayBGM(1);
+
     }
 }

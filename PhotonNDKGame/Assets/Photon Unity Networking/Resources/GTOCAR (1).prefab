@@ -38,7 +38,8 @@ GameObject:
   - component: {fileID: 20870834522754420}
   - component: {fileID: 124936364920799136}
   - component: {fileID: 92529848556535296}
-  - component: {fileID: 81687966458641338}
+  - component: {fileID: 114814692793517306}
+  - component: {fileID: 114735406293511602}
   m_Layer: 0
   m_Name: MirrorCamera
   m_TagString: Untagged
@@ -1077,13 +1078,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.1, z: 0.1}
   m_Center: {x: 0, y: -0.08, z: -2.3}
---- !u!81 &81687966458641338
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1042557134579628}
-  m_Enabled: 1
 --- !u!92 &92529848556535296
 Behaviour:
   m_ObjectHideFlags: 1
@@ -1201,6 +1195,20 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &114735406293511602
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1042557134579628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9e99749fe678574b8fbe0061ffd6a5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 4202466100791252}
+  MyPV: {fileID: 114814692793517306}
+  MyCamera: {fileID: 20870834522754420}
 --- !u!114 &114773548226863438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1222,6 +1230,32 @@ MonoBehaviour:
   ownershipTransfer: 0
   ObservedComponents:
   - {fileID: 114470835222676998}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
+--- !u!114 &114814692793517306
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1042557134579628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1

@@ -6,7 +6,7 @@ public class TitleManager : Photon.PunBehaviour
 {
     string _gameVersion = "test";   //ゲームのバージョン。仕様が異なるバージョンとなったときはバージョンを変更しないとエラーが発生する。
    
-    private void Awake()
+    public void Start()
     {
         Application.targetFrameRate = 60;
         SoundManager.Instance.PlayBGM(0);
