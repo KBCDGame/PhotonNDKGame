@@ -12,7 +12,7 @@ public class SearchTarget : MonoBehaviour
         //範囲内にPlayerがいた。
         if (other.gameObject.tag == "Player")
         {
-            if (Input.GetKeyDown(KeyCode.Joystick1Button3))
+            if (Input.GetKeyDown(KeyCode.Joystick1Button3)||Input.GetKeyDown(KeyCode.Space))
             {
                 if (ReservationPerson != null)
                 {
