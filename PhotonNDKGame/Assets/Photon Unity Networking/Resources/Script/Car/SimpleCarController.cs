@@ -73,6 +73,7 @@ public class SimpleCarController : Photon.MonoBehaviour
         }
 
         Motor = maxMotorTorque * Input.GetAxis("Accel");
+        Motor = maxMotorTorque * Input.GetAxis("Vertical");
         Braek = maxbrakeTorque * Input.GetAxis("Jump");
         float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
         if (IsRunFlag == false)
