@@ -87,7 +87,8 @@ GameObject:
   - component: {fileID: 20868791432656926}
   - component: {fileID: 124415056237010684}
   - component: {fileID: 92953560726895320}
-  - component: {fileID: 81356311121095968}
+  - component: {fileID: 114391772822387142}
+  - component: {fileID: 114611017060142170}
   m_Layer: 9
   m_Name: MirrorCamera
   m_TagString: Untagged
@@ -784,13 +785,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.01, y: 0.01, z: 0.01}
   m_Center: {x: 0, y: 0.02, z: -0.155}
---- !u!81 &81356311121095968
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1289280274881398}
-  m_Enabled: 1
 --- !u!92 &92953560726895320
 Behaviour:
   m_ObjectHideFlags: 1
@@ -863,6 +857,32 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &114391772822387142
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1289280274881398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!114 &114545067096665470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -895,6 +915,20 @@ MonoBehaviour:
   MyPV: {fileID: 114980512483790734}
   MyPTV: {fileID: 114156251602293520}
   LaceCameraTrans: {fileID: 4616805409359938}
+--- !u!114 &114611017060142170
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1289280274881398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9e99749fe678574b8fbe0061ffd6a5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 4616805409359938}
+  MyPV: {fileID: 114391772822387142}
+  MyCamera: {fileID: 20868791432656926}
 --- !u!114 &114848201322404126
 MonoBehaviour:
   m_ObjectHideFlags: 1
